@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "outDir": "./dist/",
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "strict": true,
+    "declaration": true,
+    "isolatedModules": true,
+    "noImplicitAny": true,
+    "inlineSourceMap": true,
+    "removeComments": true,
+    "lib": ["dom", "dom.iterable", "esnext"]
+  },
+  "exclude": ["node_modules", ".yarn", "dist", "public"]
+}
