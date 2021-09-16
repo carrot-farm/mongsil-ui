@@ -1,9 +1,8 @@
 import * as React from 'react';
+import ComplexForm from './components/ComplexForm/ComplexForm';
 
-function App(): React.ReactElement {
-  console.log('> tes');
-
-  return <div>Hello World!!</div>;
+function App() {
+  return <ComplexForm onSubmit={() => {}} onCancel={() => {}} />;
 }
 
 export default App;
