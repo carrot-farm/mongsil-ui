@@ -1,20 +1,20 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "module": "esnext",
     "outDir": "./dist/",
     "baseUrl": ".",
     "moduleResolution": "node",
     "jsx": "react",
     "strict": true,
-    "allowJs": true,
+    "allowJs": false,
     "declaration": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "esModuleInterop": true,
     "noImplicitAny": true,
     "inlineSourceMap": true,
-    "removeComments": true,
-    "lib": ["dom", "dom.iterable", "esnext"]
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "types": ["vite/client", "node"]
   },
   "exclude": ["node_modules", ".yarn", "dist", "public"]
 }
