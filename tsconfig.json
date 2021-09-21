@@ -7,13 +7,14 @@
     "moduleResolution": "node",
     "jsx": "react",
     "strict": true,
+    "allowJs": true,
     "declaration": true,
     "isolatedModules": false,
     "esModuleInterop": true,
     "noImplicitAny": true,
     "inlineSourceMap": true,
     "removeComments": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["dom", "dom.iterable", "esnext"]
   },
   "exclude": ["node_modules", ".yarn", "dist", "public"]
 }
