@@ -3,6 +3,7 @@ import * as React from 'react';
 
 function App() {
   // return <ComplexForm onSubmit={() => {}} onCancel={() => {}} />;
+  console.log('test');
   return <div>Hello World!</div>;
 }
 
