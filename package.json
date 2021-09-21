@@ -4,6 +4,7 @@
   "description": "react ui library",
   "main": "dist/*.bundle.ts",
   "scripts": {
+    "dev": "vite",
     "start": "webpack serve --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "lint": "eslint ./src/**/*.tsx --fix",
@@ -11,9 +12,6 @@
     "test": "jest --config=jest.config.js",
     "storybook": "start-storybook -p 9002",
     "build-storybook": "build-storybook",
-    "cy": "cypress run --browser chrome",
-    "cy:open": "cypress open",
-    "test:cypress": "wait on http://localhost:9002/ && yarn cy",
     "test:snapshots": "jest --config=jest.config.js storybook.test.ts"
   },
   "lint-staged": {
@@ -46,7 +44,6 @@
   "packageManager": "yarn@3.0.2",
   "devDependencies": {
     "@babel/core": "^7.15.5",
-    "@cypress/snapshot": "^2.1.7",
     "@mdx-js/react": "^1.6.22",
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-docs": "^6.3.8",
@@ -65,7 +62,6 @@
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
     "babel-loader": "^8.2.2",
-    "cypress": "^8.4.0",
     "esbuild-loader": "^2.15.1",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -87,7 +83,6 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "cypress-image-snapshot": "^4.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }
