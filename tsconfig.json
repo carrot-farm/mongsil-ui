@@ -13,8 +13,10 @@
     "esModuleInterop": true,
     "noImplicitAny": true,
     "inlineSourceMap": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "types": ["vite/client", "node"]
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["dom", "dom.iterable", "esnext"]
   },
+  "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", ".yarn", "dist", "public"]
 }
