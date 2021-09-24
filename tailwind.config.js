@@ -2,7 +2,13 @@ module.exports = {
   mode: 'jit',
   darkMode: false,
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        base: {
+          DEFAULT: 'var(--color-base)',
+        },
+      },
+    },
   },
   variants: {},
   plugins: [],
