@@ -1,6 +1,8 @@
 :root {
   --color-base-deg: 216;
   --color-base: hsl(var(--color-base-deg) 22% 95%);
+  --color-primary: hsl(216deg 100% 72%);
+  --color-secondary: hsl(360deg 100% 72%);
 }
 
 /*! tailwindcss v2.2.15 | MIT License | https://tailwindcss.com */
