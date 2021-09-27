@@ -7,6 +7,12 @@ module.exports = {
         base: {
           DEFAULT: 'var(--color-base)',
         },
+        primary: {
+          DEFAULT: 'var(--color-primary)',
+        },
+        secondary: {
+          DEFAULT: 'var(--color-secondary)',
+        },
       },
     },
   },
