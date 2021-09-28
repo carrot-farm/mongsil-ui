@@ -71,3 +71,7 @@
       inset -7px -7px 20px hsl(var(--color-base-deg) 5% 100% / 80%);
   }
 }
+
+.button {
+  @apply emboss-300 font-semibold py-2 px-4 rounded;
+}
