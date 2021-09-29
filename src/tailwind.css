@@ -3,6 +3,54 @@
   --color-base: hsl(var(--color-base-deg) 22% 95%);
   --color-primary: hsl(216deg 100% 72%);
   --color-secondary: hsl(360deg 100% 72%);
+  --emboss-0: 0px 0px 0px hsl(var(--color-base-deg) 3% 5% / 6%),
+    0px 0px 0px hsl(var(--color-base-deg) 3% 5% / 10%),
+    0px 0px 0px hsl(var(--color-base-deg) 3% 100% / 80%),
+    0px 0px 0px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --emboss-100: 1px 1px 1px hsl(var(--color-base-deg) 3% 5% / 6%),
+    2px 2px 4px hsl(var(--color-base-deg) 3% 5% / 10%),
+    -1px -1px 1px hsl(var(--color-base-deg) 3% 100% / 80%),
+    -2px -2px 4px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --emboss-200: 2px 2px 2px hsl(var(--color-base-deg) 3% 5% / 6%),
+    4px 4px 8px hsl(var(--color-base-deg) 3% 5% / 10%),
+    -2px -2px 2px hsl(var(--color-base-deg) 3% 100% / 80%),
+    -4px -4px 8px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --emboss-300: 3px 3px 3px hsl(var(--color-base-deg) 3% 5% / 6%),
+    5px 5px 12px hsl(var(--color-base-deg) 3% 5% / 10%),
+    -3px -3px 3px hsl(var(--color-base-deg) 3% 100% / 80%),
+    -5px -5px 12px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --emboss-400: 4px 4px 4px hsl(var(--color-base-deg) 3% 5% / 6%),
+    6px 6px 16px hsl(var(--color-base-deg) 3% 5% / 10%),
+    -4px -4px 4px hsl(var(--color-base-deg) 3% 100% / 80%),
+    -6px -6px 16px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --emboss-500: 5px 5px 5px hsl(var(--color-base-deg) 3% 5% / 6%),
+    7px 7px 20px hsl(var(--color-base-deg) 3% 5% / 10%),
+    -5px -5px 5px hsl(var(--color-base-deg) 3% 100% / 80%),
+    -7px -7px 20px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --dent-0: inset 0px 0px 0px hsl(var(--color-base-deg) 3% 5% / 6%),
+    inset 0px 0px 0px hsl(var(--color-base-deg) 3% 5% / 10%),
+    inset 0px -0px 0px hsl(var(--color-base-deg) 3% 100% / 80%),
+    inset 0px 0px 0px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --dent-100: inset 1px 1px 1px hsl(var(--color-base-deg) 3% 5% / 6%),
+    inset 2px 2px 4px hsl(var(--color-base-deg) 3% 5% / 10%),
+    inset -1px -1px 1px hsl(var(--color-base-deg) 3% 100% / 80%),
+    inset -2px -2px 4px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --dent-200: inset 2px 2px 2px hsl(var(--color-base-deg) 3% 5% / 6%),
+    inset 4px 4px 8px hsl(var(--color-base-deg) 3% 5% / 10%),
+    inset -2px -2px 2px hsl(var(--color-base-deg) 3% 100% / 80%),
+    inset -4px -4px 8px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --dent-300: inset 3px 3px 3px hsl(var(--color-base-deg) 3% 5% / 6%),
+    inset 5px 5px 12px hsl(var(--color-base-deg) 3% 5% / 10%),
+    inset -3px -3px 3px hsl(var(--color-base-deg) 3% 100% / 80%),
+    inset -5px -5px 12px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --dent-400: inset 4px 4px 4px hsl(var(--color-base-deg) 3% 5% / 6%),
+    inset 6px 6px 16px hsl(var(--color-base-deg) 3% 5% / 10%),
+    inset -4px -4px 4px hsl(var(--color-base-deg) 3% 100% / 80%),
+    inset -6px -6px 16px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --dent-500: inset 5px 5px 5px hsl(var(--color-base-deg) 3% 5% / 6%),
+    inset 7px 7px 20px hsl(var(--color-base-deg) 3% 5% / 10%),
+    inset -5px -5px 5px hsl(var(--color-base-deg) 3% 100% / 80%),
+    inset -7px -7px 20px hsl(var(--color-base-deg) 5% 100% / 80%);
 }
 
 @tailwind base;
@@ -11,67 +59,44 @@
 
 @layer base {
   .emboss-100 {
-    box-shadow: 1px 1px 1px hsl(var(--color-base-deg) 3% 5% / 6%),
-      2px 2px 4px hsl(var(--color-base-deg) 3% 5% / 10%),
-      -1px -1px 1px hsl(var(--color-base-deg) 3% 100% / 80%),
-      -2px -2px 4px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--emboss-100);
   }
   .emboss-200 {
-    box-shadow: 2px 2px 2px hsl(var(--color-base-deg) 3% 5% / 6%),
-      4px 4px 8px hsl(var(--color-base-deg) 3% 5% / 10%),
-      -2px -2px 2px hsl(var(--color-base-deg) 3% 100% / 80%),
-      -4px -4px 8px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--emboss-200);
   }
   .emboss-300 {
-    box-shadow: 3px 3px 3px hsl(var(--color-base-deg) 3% 5% / 6%),
-      5px 5px 12px hsl(var(--color-base-deg) 3% 5% / 10%),
-      -3px -3px 3px hsl(var(--color-base-deg) 3% 100% / 80%),
-      -5px -5px 12px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--emboss-300);
   }
   .emboss-400 {
-    box-shadow: 4px 4px 4px hsl(var(--color-base-deg) 3% 5% / 6%),
-      6px 6px 16px hsl(var(--color-base-deg) 3% 5% / 10%),
-      -4px -4px 4px hsl(var(--color-base-deg) 3% 100% / 80%),
-      -6px -6px 16px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--emboss-400);
   }
   .emboss-500 {
-    box-shadow: 5px 5px 5px hsl(var(--color-base-deg) 3% 5% / 6%),
-      7px 7px 20px hsl(var(--color-base-deg) 3% 5% / 10%),
-      -5px -5px 5px hsl(var(--color-base-deg) 3% 100% / 80%),
-      -7px -7px 20px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--emboss-500);
   }
   .dent-100 {
-    box-shadow: inset 1px 1px 1px hsl(var(--color-base-deg) 3% 5% / 6%),
-      inset 2px 2px 4px hsl(var(--color-base-deg) 3% 5% / 10%),
-      inset -1px -1px 1px hsl(var(--color-base-deg) 3% 100% / 80%),
-      inset -2px -2px 4px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--dent-100);
   }
   .dent-200 {
-    box-shadow: inset 2px 2px 2px hsl(var(--color-base-deg) 3% 5% / 6%),
-      inset 4px 4px 8px hsl(var(--color-base-deg) 3% 5% / 10%),
-      inset -2px -2px 2px hsl(var(--color-base-deg) 3% 100% / 80%),
-      inset -4px -4px 8px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--dent-200);
   }
   .dent-300 {
-    box-shadow: inset 3px 3px 3px hsl(var(--color-base-deg) 3% 5% / 6%),
-      inset 5px 5px 12px hsl(var(--color-base-deg) 3% 5% / 10%),
-      inset -3px -3px 3px hsl(var(--color-base-deg) 3% 100% / 80%),
-      inset -5px -5px 12px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--dent-300);
   }
   .dent-400 {
-    box-shadow: inset 4px 4px 4px hsl(var(--color-base-deg) 3% 5% / 6%),
-      inset 6px 6px 16px hsl(var(--color-base-deg) 3% 5% / 10%),
-      inset -4px -4px 4px hsl(var(--color-base-deg) 3% 100% / 80%),
-      inset -6px -6px 16px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--dent-400);
   }
   .dent-500 {
-    box-shadow: inset 5px 5px 5px hsl(var(--color-base-deg) 3% 5% / 6%),
-      inset 7px 7px 20px hsl(var(--color-base-deg) 3% 5% / 10%),
-      inset -5px -5px 5px hsl(var(--color-base-deg) 3% 100% / 80%),
-      inset -7px -7px 20px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--dent-500);
   }
 }
 
 .button {
-  @apply emboss-300 font-semibold py-2 px-4 rounded;
+  @apply emboss-300 font-semibold px-4 py-2 rounded;
+}
+
+.input-base {
+  @apply appearance-none bg-transparent px-4 py-2 text-gray-700 leading-tight focus:outline-none focus:bg-transparent;
+}
+.input-container {
+  @apply bg-transparent rounded border border-gray-300;
 }

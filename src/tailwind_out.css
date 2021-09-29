@@ -3,6 +3,54 @@
   --color-base: hsl(var(--color-base-deg) 22% 95%);
   --color-primary: hsl(216deg 100% 72%);
   --color-secondary: hsl(360deg 100% 72%);
+  --emboss-0: 0px 0px 0px hsl(var(--color-base-deg) 3% 5% / 6%),
+    0px 0px 0px hsl(var(--color-base-deg) 3% 5% / 10%),
+    0px 0px 0px hsl(var(--color-base-deg) 3% 100% / 80%),
+    0px 0px 0px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --emboss-100: 1px 1px 1px hsl(var(--color-base-deg) 3% 5% / 6%),
+    2px 2px 4px hsl(var(--color-base-deg) 3% 5% / 10%),
+    -1px -1px 1px hsl(var(--color-base-deg) 3% 100% / 80%),
+    -2px -2px 4px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --emboss-200: 2px 2px 2px hsl(var(--color-base-deg) 3% 5% / 6%),
+    4px 4px 8px hsl(var(--color-base-deg) 3% 5% / 10%),
+    -2px -2px 2px hsl(var(--color-base-deg) 3% 100% / 80%),
+    -4px -4px 8px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --emboss-300: 3px 3px 3px hsl(var(--color-base-deg) 3% 5% / 6%),
+    5px 5px 12px hsl(var(--color-base-deg) 3% 5% / 10%),
+    -3px -3px 3px hsl(var(--color-base-deg) 3% 100% / 80%),
+    -5px -5px 12px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --emboss-400: 4px 4px 4px hsl(var(--color-base-deg) 3% 5% / 6%),
+    6px 6px 16px hsl(var(--color-base-deg) 3% 5% / 10%),
+    -4px -4px 4px hsl(var(--color-base-deg) 3% 100% / 80%),
+    -6px -6px 16px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --emboss-500: 5px 5px 5px hsl(var(--color-base-deg) 3% 5% / 6%),
+    7px 7px 20px hsl(var(--color-base-deg) 3% 5% / 10%),
+    -5px -5px 5px hsl(var(--color-base-deg) 3% 100% / 80%),
+    -7px -7px 20px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --dent-0: inset 0px 0px 0px hsl(var(--color-base-deg) 3% 5% / 6%),
+    inset 0px 0px 0px hsl(var(--color-base-deg) 3% 5% / 10%),
+    inset 0px -0px 0px hsl(var(--color-base-deg) 3% 100% / 80%),
+    inset 0px 0px 0px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --dent-100: inset 1px 1px 1px hsl(var(--color-base-deg) 3% 5% / 6%),
+    inset 2px 2px 4px hsl(var(--color-base-deg) 3% 5% / 10%),
+    inset -1px -1px 1px hsl(var(--color-base-deg) 3% 100% / 80%),
+    inset -2px -2px 4px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --dent-200: inset 2px 2px 2px hsl(var(--color-base-deg) 3% 5% / 6%),
+    inset 4px 4px 8px hsl(var(--color-base-deg) 3% 5% / 10%),
+    inset -2px -2px 2px hsl(var(--color-base-deg) 3% 100% / 80%),
+    inset -4px -4px 8px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --dent-300: inset 3px 3px 3px hsl(var(--color-base-deg) 3% 5% / 6%),
+    inset 5px 5px 12px hsl(var(--color-base-deg) 3% 5% / 10%),
+    inset -3px -3px 3px hsl(var(--color-base-deg) 3% 100% / 80%),
+    inset -5px -5px 12px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --dent-400: inset 4px 4px 4px hsl(var(--color-base-deg) 3% 5% / 6%),
+    inset 6px 6px 16px hsl(var(--color-base-deg) 3% 5% / 10%),
+    inset -4px -4px 4px hsl(var(--color-base-deg) 3% 100% / 80%),
+    inset -6px -6px 16px hsl(var(--color-base-deg) 5% 100% / 80%);
+  --dent-500: inset 5px 5px 5px hsl(var(--color-base-deg) 3% 5% / 6%),
+    inset 7px 7px 20px hsl(var(--color-base-deg) 3% 5% / 10%),
+    inset -5px -5px 5px hsl(var(--color-base-deg) 3% 100% / 80%),
+    inset -7px -7px 20px hsl(var(--color-base-deg) 5% 100% / 80%);
 }
 
 /*! tailwindcss v2.2.15 | MIT License | https://tailwindcss.com */
@@ -564,74 +612,49 @@ video {
   display: none;
 }
 
+*, ::before, ::after {
+  --tw-border-opacity: 1;
+  border-color: rgba(229, 231, 235, var(--tw-border-opacity));
+}
+
 .emboss-100 {
-    box-shadow: 1px 1px 1px hsl(var(--color-base-deg) 3% 5% / 6%),
-      2px 2px 4px hsl(var(--color-base-deg) 3% 5% / 10%),
-      -1px -1px 1px hsl(var(--color-base-deg) 3% 100% / 80%),
-      -2px -2px 4px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--emboss-100);
   }
 
 .emboss-200 {
-    box-shadow: 2px 2px 2px hsl(var(--color-base-deg) 3% 5% / 6%),
-      4px 4px 8px hsl(var(--color-base-deg) 3% 5% / 10%),
-      -2px -2px 2px hsl(var(--color-base-deg) 3% 100% / 80%),
-      -4px -4px 8px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--emboss-200);
   }
 
 .emboss-300 {
-    box-shadow: 3px 3px 3px hsl(var(--color-base-deg) 3% 5% / 6%),
-      5px 5px 12px hsl(var(--color-base-deg) 3% 5% / 10%),
-      -3px -3px 3px hsl(var(--color-base-deg) 3% 100% / 80%),
-      -5px -5px 12px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--emboss-300);
   }
 
 .emboss-400 {
-    box-shadow: 4px 4px 4px hsl(var(--color-base-deg) 3% 5% / 6%),
-      6px 6px 16px hsl(var(--color-base-deg) 3% 5% / 10%),
-      -4px -4px 4px hsl(var(--color-base-deg) 3% 100% / 80%),
-      -6px -6px 16px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--emboss-400);
   }
 
 .emboss-500 {
-    box-shadow: 5px 5px 5px hsl(var(--color-base-deg) 3% 5% / 6%),
-      7px 7px 20px hsl(var(--color-base-deg) 3% 5% / 10%),
-      -5px -5px 5px hsl(var(--color-base-deg) 3% 100% / 80%),
-      -7px -7px 20px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--emboss-500);
   }
 
 .dent-100 {
-    box-shadow: inset 1px 1px 1px hsl(var(--color-base-deg) 3% 5% / 6%),
-      inset 2px 2px 4px hsl(var(--color-base-deg) 3% 5% / 10%),
-      inset -1px -1px 1px hsl(var(--color-base-deg) 3% 100% / 80%),
-      inset -2px -2px 4px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--dent-100);
   }
 
 .dent-200 {
-    box-shadow: inset 2px 2px 2px hsl(var(--color-base-deg) 3% 5% / 6%),
-      inset 4px 4px 8px hsl(var(--color-base-deg) 3% 5% / 10%),
-      inset -2px -2px 2px hsl(var(--color-base-deg) 3% 100% / 80%),
-      inset -4px -4px 8px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--dent-200);
   }
 
 .dent-300 {
-    box-shadow: inset 3px 3px 3px hsl(var(--color-base-deg) 3% 5% / 6%),
-      inset 5px 5px 12px hsl(var(--color-base-deg) 3% 5% / 10%),
-      inset -3px -3px 3px hsl(var(--color-base-deg) 3% 100% / 80%),
-      inset -5px -5px 12px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--dent-300);
   }
 
 .dent-400 {
-    box-shadow: inset 4px 4px 4px hsl(var(--color-base-deg) 3% 5% / 6%),
-      inset 6px 6px 16px hsl(var(--color-base-deg) 3% 5% / 10%),
-      inset -4px -4px 4px hsl(var(--color-base-deg) 3% 100% / 80%),
-      inset -6px -6px 16px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--dent-400);
   }
 
 .dent-500 {
-    box-shadow: inset 5px 5px 5px hsl(var(--color-base-deg) 3% 5% / 6%),
-      inset 7px 7px 20px hsl(var(--color-base-deg) 3% 5% / 10%),
-      inset -5px -5px 5px hsl(var(--color-base-deg) 3% 100% / 80%),
-      inset -7px -7px 20px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--dent-500);
   }
 .ml-10 {
   margin-left: 2.5rem;
@@ -648,17 +671,11 @@ video {
 @keyframes press-300-0 {
 
   0% {
-    box-shadow: 3px 3px 3px hsl(var(--color-base-deg) 3% 5% / 6%),
-              5px 5px 12px hsl(var(--color-base-deg) 3% 5% / 10%),
-              -3px -3px 3px hsl(var(--color-base-deg) 3% 100% / 80%),
-              -5px -5px 12px hsl(var(--color-base-deg) 5% 100% / 80%);;
+    box-shadow: var(--emboss-300);
   }
 
   100% {
-    box-shadow: 0px 0px 0px hsl(var(--color-base-deg) 3% 5% / 6%),
-              0px 0px 0px hsl(var(--color-base-deg) 3% 5% / 10%),
-              0px 0px 0px hsl(var(--color-base-deg) 3% 100% / 80%),
-              0px 0px 0px hsl(var(--color-base-deg) 5% 100% / 80%);;
+    box-shadow: var(--emboss-0);
   }
 }
 .animate-press-300-0 {
@@ -677,10 +694,26 @@ video {
 .animate-scale-1-09 {
   animation: scale-1-09 200ms cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
+@keyframes dent-0-100 {
+
+  0% {
+    box-shadow: var(--dent-0);
+  }
+
+  100% {
+    box-shadow: var(--dent-100);
+  }
+}
+.animate-dent-0-100 {
+  animation: dent-0-100 200ms cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.border-none {
+  border-style: none;
 }
 .bg-base {
   background-color: var(--color-base);
@@ -694,14 +727,37 @@ video {
 }
 
 .button {
-    box-shadow: 3px 3px 3px hsl(var(--color-base-deg) 3% 5% / 6%),
-      5px 5px 12px hsl(var(--color-base-deg) 3% 5% / 10%),
-      -3px -3px 3px hsl(var(--color-base-deg) 3% 100% / 80%),
-      -5px -5px 12px hsl(var(--color-base-deg) 5% 100% / 80%);
+    box-shadow: var(--emboss-300);
     border-radius: 0.25rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     font-weight: 600;
   }
+
+.input-base {
+  -webkit-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  line-height: 1.25;
+  --tw-text-opacity: 1;
+  color: rgba(55, 65, 81, var(--tw-text-opacity));
+}
+
+.input-base:focus {
+  background-color: transparent;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.input-container {
+  border-radius: 0.25rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgba(209, 213, 219, var(--tw-border-opacity));
+  background-color: transparent;
+}

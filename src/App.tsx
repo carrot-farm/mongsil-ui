@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import Button from './components/Button';
+import Input from './components/Input';
 
 function App(): any {
   return (
@@ -23,6 +24,9 @@ function App(): any {
         <Button className="text-gray-500">small</Button>
         <Button>medium</Button>
         <Button>large</Button>
+      </div>
+      <div className="p-5 flex space-x-4">
+        <Input />
       </div>
     </div>
   );
