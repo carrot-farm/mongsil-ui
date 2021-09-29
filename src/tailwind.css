@@ -88,15 +88,15 @@
   .dent-500 {
     box-shadow: var(--dent-500);
   }
-}
 
-.button {
-  @apply emboss-300 font-semibold px-4 py-2 rounded;
-}
+  .button {
+    @apply emboss-300 font-semibold px-4 py-2 rounded;
+  }
 
-.input-base {
-  @apply appearance-none bg-transparent px-4 py-2 text-gray-700 leading-tight focus:outline-none focus:bg-transparent;
-}
-.input-container {
-  @apply bg-transparent rounded border border-gray-300;
+  .input-base {
+    @apply appearance-none bg-transparent px-4 py-2 text-gray-700 leading-tight focus:outline-none focus:bg-transparent;
+  }
+  .input-container {
+    @apply bg-transparent rounded border border-gray-300;
+  }
 }

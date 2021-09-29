@@ -18,7 +18,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div
-        className={`input-container ${isFocused ? 'animate-dent-0-100 border-none' : ''}`}
+        className={`input-container ${isFocused ? 'animate-input-focus ' : ''}`}
         onFocus={handleFocus}
         onBlur={handleBlur}
       >

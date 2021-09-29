@@ -656,6 +656,43 @@ video {
 .dent-500 {
     box-shadow: var(--dent-500);
   }
+
+.button {
+    box-shadow: var(--emboss-300);
+    border-radius: 0.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+.input-base {
+  -webkit-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  line-height: 1.25;
+  --tw-text-opacity: 1;
+  color: rgba(55, 65, 81, var(--tw-text-opacity));
+}
+
+.input-base:focus {
+  background-color: transparent;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.input-container {
+  border-radius: 0.25rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgba(209, 213, 219, var(--tw-border-opacity));
+  background-color: transparent;
+}
 .ml-10 {
   margin-left: 2.5rem;
 }
@@ -694,26 +731,27 @@ video {
 .animate-scale-1-09 {
   animation: scale-1-09 200ms cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
-@keyframes dent-0-100 {
+@keyframes input-focus {
 
   0% {
+    border: 1px soild;
+    border-color: rgba(209, 213, 219, 50%);
     box-shadow: var(--dent-0);
   }
 
   100% {
+    border: 1px soild;
+    border-color: rgba(209, 213, 219, 0%);
     box-shadow: var(--dent-100);
   }
 }
-.animate-dent-0-100 {
-  animation: dent-0-100 200ms cubic-bezier(0.25, 1, 0.5, 1) forwards;
+.animate-input-focus {
+  animation: input-focus 500ms cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
-}
-.border-none {
-  border-style: none;
 }
 .bg-base {
   background-color: var(--color-base);
@@ -724,40 +762,4 @@ video {
 .text-gray-500 {
   --tw-text-opacity: 1;
   color: rgba(107, 114, 128, var(--tw-text-opacity));
-}
-
-.button {
-    box-shadow: var(--emboss-300);
-    border-radius: 0.25rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    font-weight: 600;
-  }
-
-.input-base {
-  -webkit-appearance: none;
-          appearance: none;
-  background-color: transparent;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  line-height: 1.25;
-  --tw-text-opacity: 1;
-  color: rgba(55, 65, 81, var(--tw-text-opacity));
-}
-
-.input-base:focus {
-  background-color: transparent;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
-.input-container {
-  border-radius: 0.25rem;
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgba(209, 213, 219, var(--tw-border-opacity));
-  background-color: transparent;
 }
