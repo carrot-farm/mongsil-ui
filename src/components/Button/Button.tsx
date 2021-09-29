@@ -40,6 +40,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={`button ${ing ? 'animate-press-300-0' : ''} ${className ?? ''}`}
         onMouseDown={pressed}
         onMouseUp={unPressed}
+        onMouseLeave={unPressed}
         onTouchStart={pressed}
         onTouchEnd={unPressed}
         onAnimationEnd={handleAnimationEnd}
