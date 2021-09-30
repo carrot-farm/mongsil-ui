@@ -104,6 +104,21 @@
     transition-timing-function: ease-in-out;
     transition-duration: 200ms;
   }
+  .m-transition-border {
+    transition-property: border;
+    transition-timing-function: ease-in-out;
+    transition-duration: 200ms;
+  }
+  .m-transition-color {
+    transition-property: color;
+    transition-timing-function: ease-in-out;
+    transition-duration: 200ms;
+  }
+  .m-transition-bg {
+    transition-property: background-color;
+    transition-timing-function: ease-in-out;
+    transition-duration: 200ms;
+  }
 }
 
 @layer components {
@@ -123,15 +138,51 @@
 
   /* ===== input ===== */
   .Mongsil-input-root {
-    @apply bg-transparent rounded border border-gray-300;
-    @apply dent-0 m-transition-shadow;
+    @apply bg-transparent rounded border;
+    @apply border-gray-300 dent-0 m-transition-shadow m-transition-border;
   }
   .Mongsil-input-root.focused {
-    @apply dent-100;
+    @apply border-transparent dent-100;
   }
   .Mongsil-input-root > .Mongsil-input-base {
     @apply appearance-none bg-transparent px-4 py-2 text-gray-700 leading-tight focus:outline-none focus:bg-transparent;
   }
 
   /* ===== checkbox ===== */
+  .Mongsil-checkbox-root {
+    @apply relative inline-flex items-center justify-center cursor-pointer p-2;
+  }
+  .Mongsil-checkbox-root > .Mongsil-checkbox-base {
+    @apply appearance-none;
+  }
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker {
+    @apply inline-flex items-center justify-center rounded w-5 h-5  text-gray-300 bg-transparent;
+    @apply m-transition-shadow emboss-200;
+  }
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.Mongsil-fill {
+    transition: background-color 200ms ease-in-out, color 200ms ease-in-out,
+      box-shadow 200ms ease-in-out;
+  }
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.Mongsil-border {
+    transition: border 200ms ease-in-out, color 200ms ease-in-out, box-shadow 200ms ease-in-out;
+    @apply border border-transparent;
+  }
+  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker {
+    @apply emboss-0;
+  }
+  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.Mongsil-fill {
+    @apply bg-primary text-base;
+  }
+  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.Mongsil-border {
+    @apply border-gray-300 text-primary;
+  }
+  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.Mongsil-none {
+    @apply text-primary;
+  }
+  .Mongsil-checkbox-root .Mongsil-checkbox-icon {
+    @apply w-3;
+  }
+  .Mongsil-checkbox-root > label {
+    @apply ml-3 cursor-pointer;
+  }
 }
