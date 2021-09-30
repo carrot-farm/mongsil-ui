@@ -18,11 +18,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div
-        className={`input-container ${isFocused ? 'animate-input-focus ' : ''}`}
+        className={`Mongsil-input-root ${isFocused ? 'focused' : ''}`}
+        ref={ref}
         onFocus={handleFocus}
         onBlur={handleBlur}
       >
-        <input className={`input-base ${className ?? ''}`} {...args} ref={ref} />
+        <input className={`Mongsil-input-base ${className ?? ''}`} {...args} />
       </div>
     );
   },
