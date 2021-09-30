@@ -22,7 +22,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       setIsPressed(false);
     }, []);
 
-    const handleAnimationEnd = React.useCallback(() => {
+    const handleTransitionEnd = React.useCallback(() => {
       setIsAnimationEnd(true);
     }, []);
 
@@ -37,17 +37,17 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <button
-        className={`button ${ing ? 'animate-press-300-0' : ''} ${className ?? ''}`}
+        className={`Mongsil-button-root ${ing ? 'pressed' : ''} ${className ?? ''}`}
         onMouseDown={pressed}
         onMouseUp={unPressed}
         onMouseLeave={unPressed}
         onTouchStart={pressed}
         onTouchEnd={unPressed}
-        onAnimationEnd={handleAnimationEnd}
+        onTransitionEnd={handleTransitionEnd}
         {...args}
         ref={ref}
       >
-        <div className={ing ? 'animate-scale-1-09' : ''}>{children}</div>
+        <div className="Mongsil-button-label">{children}</div>
       </button>
     );
   },

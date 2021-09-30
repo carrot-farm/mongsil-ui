@@ -58,6 +58,9 @@
 @tailwind utilities;
 
 @layer base {
+  .emboss-0 {
+    box-shadow: var(--emboss-0);
+  }
   .emboss-100 {
     box-shadow: var(--emboss-100);
   }
@@ -72,6 +75,9 @@
   }
   .emboss-500 {
     box-shadow: var(--emboss-500);
+  }
+  .dent-0 {
+    box-shadow: var(--dent-0);
   }
   .dent-100 {
     box-shadow: var(--dent-100);
@@ -88,15 +94,44 @@
   .dent-500 {
     box-shadow: var(--dent-500);
   }
+  .m-transition-shadow {
+    transition-property: box-shadow;
+    transition-timing-function: ease-in-out;
+    transition-duration: 200ms;
+  }
+  .m-transition-transform {
+    transition-property: transform;
+    transition-timing-function: ease-in-out;
+    transition-duration: 200ms;
+  }
+}
 
-  .button {
-    @apply emboss-300 font-semibold px-4 py-2 rounded;
+@layer components {
+  /* ===== button ===== */
+  .Mongsil-button-root {
+    @apply font-semibold px-4 py-2 rounded emboss-300 m-transition-shadow;
+  }
+  .Mongsil-button-root.pressed {
+    @apply emboss-0;
+  }
+  .Mongsil-button-root > .Mongsil-button-label {
+    @apply m-transition-transform;
+  }
+  .Mongsil-button-root.pressed > .Mongsil-button-label {
+    transform: scale(0.95);
   }
 
-  .input-base {
+  /* ===== input ===== */
+  .Mongsil-input-root {
+    @apply bg-transparent rounded border border-gray-300;
+    @apply dent-0 m-transition-shadow;
+  }
+  .Mongsil-input-root.focused {
+    @apply dent-100;
+  }
+  .Mongsil-input-root > .Mongsil-input-base {
     @apply appearance-none bg-transparent px-4 py-2 text-gray-700 leading-tight focus:outline-none focus:bg-transparent;
   }
-  .input-container {
-    @apply bg-transparent rounded border border-gray-300;
-  }
+
+  /* ===== checkbox ===== */
 }

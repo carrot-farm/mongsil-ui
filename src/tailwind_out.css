@@ -656,9 +656,12 @@ video {
 .dent-500 {
     box-shadow: var(--dent-500);
   }
-
-.button {
+/* ===== button ===== */
+.Mongsil-button-root {
     box-shadow: var(--emboss-300);
+    transition-property: box-shadow;
+    transition-timing-function: ease-in-out;
+    transition-duration: 200ms;
     border-radius: 0.25rem;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -666,8 +669,33 @@ video {
     padding-bottom: 0.5rem;
     font-weight: 600;
   }
-
-.input-base {
+.Mongsil-button-root.pressed {
+    box-shadow: var(--emboss-0);
+  }
+.Mongsil-button-root > .Mongsil-button-label {
+    transition-property: transform;
+    transition-timing-function: ease-in-out;
+    transition-duration: 200ms;
+  }
+.Mongsil-button-root.pressed > .Mongsil-button-label {
+    transform: scale(0.95);
+  }
+/* ===== input ===== */
+.Mongsil-input-root {
+  border-radius: 0.25rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgba(209, 213, 219, var(--tw-border-opacity));
+  background-color: transparent;
+    box-shadow: var(--dent-0);
+    transition-property: box-shadow;
+    transition-timing-function: ease-in-out;
+    transition-duration: 200ms;
+}
+.Mongsil-input-root.focused {
+    box-shadow: var(--dent-100);
+  }
+.Mongsil-input-root > .Mongsil-input-base {
   -webkit-appearance: none;
           appearance: none;
   background-color: transparent;
@@ -679,20 +707,12 @@ video {
   --tw-text-opacity: 1;
   color: rgba(55, 65, 81, var(--tw-text-opacity));
 }
-
-.input-base:focus {
+.Mongsil-input-root > .Mongsil-input-base:focus {
   background-color: transparent;
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
-
-.input-container {
-  border-radius: 0.25rem;
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgba(209, 213, 219, var(--tw-border-opacity));
-  background-color: transparent;
-}
+/* ===== checkbox ===== */
 .ml-10 {
   margin-left: 2.5rem;
 }
@@ -704,49 +724,6 @@ video {
 }
 .w-20 {
   width: 5rem;
-}
-@keyframes press-300-0 {
-
-  0% {
-    box-shadow: var(--emboss-300);
-  }
-
-  100% {
-    box-shadow: var(--emboss-0);
-  }
-}
-.animate-press-300-0 {
-  animation: press-300-0 200ms cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-@keyframes scale-1-09 {
-
-  0% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(0.94);
-  }
-}
-.animate-scale-1-09 {
-  animation: scale-1-09 200ms cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-@keyframes input-focus {
-
-  0% {
-    border: 1px soild;
-    border-color: rgba(209, 213, 219, 50%);
-    box-shadow: var(--dent-0);
-  }
-
-  100% {
-    border: 1px soild;
-    border-color: rgba(209, 213, 219, 0%);
-    box-shadow: var(--dent-100);
-  }
-}
-.animate-input-focus {
-  animation: input-focus 500ms cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
