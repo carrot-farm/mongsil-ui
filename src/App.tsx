@@ -5,6 +5,8 @@ import Input from './components/Input';
 import Checkbox from './components/Checkbox';
 import Radio from './components/Radio';
 import Switch from './components/Switch';
+import Select from './components/Select';
+import { Option } from './components/Select';
 
 function App(): any {
   return (
@@ -45,6 +47,13 @@ function App(): any {
       <div className="p-5 flex space-x-4">
         <Switch name="switch-dent" variant="dent" />
         <Switch name="switch-emboss" variant="emboss" />
+      </div>
+      <div className="p-5 flex space-x-4">
+        <Select name="select" value={'c'}>
+          <Option value="a">a</Option>
+          <Option value="b">b</Option>
+          <Option value="c">c</Option>
+        </Select>
       </div>
     </div>
   );
