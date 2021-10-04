@@ -4,6 +4,7 @@ import Button from './components/Button';
 import Input from './components/Input';
 import Checkbox from './components/Checkbox';
 import Radio from './components/Radio';
+import Switch from './components/Switch';
 
 function App(): any {
   return (
@@ -40,6 +41,10 @@ function App(): any {
         <Radio name="name" label="label-a" value="a" />
         <Radio name="name" label="label-b" value="b" />
         <Radio name="name" label="label-c" value="c" />
+      </div>
+      <div className="p-5 flex space-x-4">
+        <Switch name="switch-dent" variant="dent" />
+        <Switch name="switch-emboss" variant="emboss" />
       </div>
     </div>
   );
