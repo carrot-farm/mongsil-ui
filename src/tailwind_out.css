@@ -860,6 +860,54 @@ video {
   margin-left: 0.75rem;
   cursor: pointer;
 }
+/* ===== switch ===== */
+.Mongsil-switch-root {
+  position: relative;
+  display: inline-flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+.Mongsil-switch-root > .Mongsil-switch-base {
+  -webkit-appearance: none;
+          appearance: none;
+}
+.Mongsil-switch-root > .Mongsil-switch-bg {
+  position: relative;
+  height: 1.5rem;
+  width: 2.75rem;
+  border-radius: 9999px;
+}
+.Mongsil-switch-root > .Mongsil-switch-bg.dent {
+    box-shadow: var(--dent-100);
+  }
+.Mongsil-switch-root > .Mongsil-switch-bg.emboss {
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgba(209, 213, 219, var(--tw-border-opacity));
+}
+.Mongsil-switch-root .Mongsil-switch-checker {
+  display: inline-flex;
+  height: 1rem;
+  width: 1rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  position: absolute;
+  --tw-bg-opacity: 1;
+  background-color: rgba(209, 213, 219, var(--tw-bg-opacity));
+    left: 4px;
+    top: 4px;
+    transition: transform 200ms ease-in-out, background-color 200ms ease-in-out;
+}
+.Mongsil-switch-root .Mongsil-switch-bg.emboss .Mongsil-switch-checker {
+    box-shadow: var(--emboss-200);
+  }
+.Mongsil-switch-root .Mongsil-switch-base:checked + .Mongsil-switch-bg .Mongsil-switch-checker {
+  background-color: var(--color-primary);
+    transform: translateX(20px);
+}
 .ml-10 {
   margin-left: 2.5rem;
 }

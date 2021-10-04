@@ -226,4 +226,35 @@
   .Mongsil-radio-root > .Mongsil-radio-label {
     @apply ml-3 cursor-pointer;
   }
+
+  /* ===== switch ===== */
+  .Mongsil-switch-root {
+    @apply relative inline-flex items-center justify-center cursor-pointer p-2;
+  }
+  .Mongsil-switch-root > .Mongsil-switch-base {
+    @apply appearance-none;
+  }
+  .Mongsil-switch-root > .Mongsil-switch-bg {
+    @apply relative w-11 h-6  rounded-full;
+  }
+  .Mongsil-switch-root > .Mongsil-switch-bg.dent {
+    @apply dent-100;
+  }
+  .Mongsil-switch-root > .Mongsil-switch-bg.emboss {
+    @apply border border-gray-300;
+  }
+  .Mongsil-switch-root .Mongsil-switch-checker {
+    @apply w-4 h-4 inline-flex items-center justify-center rounded-full;
+    @apply absolute bg-gray-300;
+    left: 4px;
+    top: 4px;
+    transition: transform 200ms ease-in-out, background-color 200ms ease-in-out;
+  }
+  .Mongsil-switch-root .Mongsil-switch-bg.emboss .Mongsil-switch-checker {
+    @apply emboss-200;
+  }
+  .Mongsil-switch-root .Mongsil-switch-base:checked + .Mongsil-switch-bg .Mongsil-switch-checker {
+    @apply bg-primary;
+    transform: translateX(20px);
+  }
 }
