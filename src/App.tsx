@@ -3,6 +3,7 @@ import * as React from 'react';
 import Button from './components/Button';
 import Input from './components/Input';
 import Checkbox from './components/Checkbox';
+import Radio from './components/Radio';
 
 function App(): any {
   return (
@@ -34,6 +35,11 @@ function App(): any {
         <Checkbox variant="border" />
         <Checkbox variant="none" />
         <Checkbox label="label" />
+      </div>
+      <div className="p-5 flex space-x-4">
+        <Radio name="name" label="label-a" value="a" />
+        <Radio name="name" label="label-b" value="b" />
+        <Radio name="name" label="label-c" value="c" />
       </div>
     </div>
   );
