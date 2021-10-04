@@ -11,7 +11,7 @@ interface CheckboxProps {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-const Checkbox = React.forwardRef<HTMLDivElement, CheckboxProps>(
+const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
   (
     {
       className,
@@ -45,7 +45,9 @@ const Checkbox = React.forwardRef<HTMLDivElement, CheckboxProps>(
 
     return (
       <span
-        className={`Mongsil-checkbox-root ${isChecked ? 'checked' : ''}`}
+        className={`Mongsil-checkbox-root ${isChecked ? 'checked' : ''} ${
+          className ? className : ''
+        }`}
         ref={ref}
         onClick={handleClick}
       >

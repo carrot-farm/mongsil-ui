@@ -185,4 +185,45 @@
   .Mongsil-checkbox-root > label {
     @apply ml-3 cursor-pointer;
   }
+
+  /* ===== radio ===== */
+  .Mongsil-radio-root {
+    @apply relative inline-flex items-center justify-center cursor-pointer p-2;
+  }
+  .Mongsil-radio-root > .Mongsil-radio-base {
+    @apply appearance-none;
+  }
+  .Mongsil-radio-root > .Mongsil-radio-checker {
+    @apply relative inline-flex items-center justify-center rounded-full w-5 h-5  text-gray-300 bg-base;
+    @apply m-transition-shadow emboss-200;
+  }
+  .Mongsil-radio-root > .Mongsil-radio-checker > .Mongsil-radio-checker-outer {
+    @apply relative inline-flex items-center justify-center rounded-full border-2 border-gray-300;
+    width: 14px;
+    height: 14px;
+    transition: border-color 200ms ease-in-out;
+  }
+  .Mongsil-radio-root > .Mongsil-radio-checker .Mongsil-radio-checker-inner {
+    @apply bg-primary rounded-full scale-0 transition-transform;
+    width: 6px;
+    height: 6px;
+  }
+  .Mongsil-radio-root > .Mongsil-radio-base:checked + .Mongsil-radio-checker {
+    @apply emboss-0;
+  }
+  .Mongsil-radio-root
+    > .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker
+    > .Mongsil-radio-checker-outer {
+    @apply border-primary;
+  }
+  .Mongsil-radio-root
+    > .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker
+    .Mongsil-radio-checker-inner {
+    @apply scale-100;
+  }
+  .Mongsil-radio-root > .Mongsil-radio-label {
+    @apply ml-3 cursor-pointer;
+  }
 }
