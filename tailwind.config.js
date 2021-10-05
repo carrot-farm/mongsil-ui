@@ -17,6 +17,20 @@ module.exports = {
       },
       // # keyframes
       keyframes: {
+        'visible-panel': {
+          '0%': {
+            visibility: 'hidden',
+            opacity: 0,
+            transform: 'scaleY(0)',
+          },
+          '10%': {
+            visibility: 'visible',
+          },
+          '100%': {
+            opacity: 1,
+            transform: 'scaleY(1)',
+          },
+        },
         'dent-0-100': {
           '0%': {
             'box-shadow': 'var(--dent-0)',
@@ -55,6 +69,7 @@ module.exports = {
         },
       },
       animation: {
+        'visible-panel': 'visible-panel 200ms cubic-bezier(0.25, 1, 0.5, 1) forwards',
         'press-300-0': 'press-300-0 200ms cubic-bezier(0.25, 1, 0.5, 1) forwards',
         'dent-0-100': 'dent-0-100 200ms cubic-bezier(0.25, 1, 0.5, 1) forwards',
         'scale-1-09': 'scale-1-09 200ms cubic-bezier(0.25, 1, 0.5, 1) forwards',
