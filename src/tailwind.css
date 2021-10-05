@@ -257,4 +257,46 @@
     @apply bg-primary;
     transform: translateX(20px);
   }
+
+  /* ===== select ===== */
+  .Mongsil-select-root {
+    @apply relative inline-flex flex-col items-center justify-center;
+  }
+  .Mongsil-select-root > .Mongsil-select-value-container {
+    @apply flex items-center justify-between border border-gray-300 rounded px-4 py-2 cursor-pointer;
+  }
+  .Mongsil-select-root .Mongsil-select-value {
+    @apply inline-flex leading-normal;
+    height: 1.5rem;
+    min-width: 3rem;
+  }
+  .Mongsil-select-root .Mongsil-select-icon {
+    @apply appearance-none ml-2;
+  }
+  .Mongsil-select-root .Mongsil-select-float-container {
+    @apply relative w-full;
+  }
+  .Mongsil-select-root .Mongsil-select-float-panel {
+    @apply absolute left-0  shadow-xl w-full cursor-pointer z-10 rounded-b;
+    top: 0;
+    backdrop-filter: blur(2px);
+    background: hsl(var(--color-base-deg) 22% 98% / 15%);
+    border: 1px solid hsl(var(--color-base-deg) 22% 98%);
+    box-sizing: border-box;
+    transform-origin: top;
+    display: none;
+  }
+  .Mongsil-select-root .Mongsil-select-float-panel.animate-visible-panel {
+    display: block;
+  }
+
+  /* ===== select.option ===== */
+  .Mongsil-option-root {
+    @apply px-4 py-2;
+  }
+  .Mongsil-option-root:hover,
+  .Mongsil-option-root.selected {
+    backdrop-filter: blur(2px);
+    background: hsl(var(--color-base-deg) 22% 80% / 20%);
+  }
 }

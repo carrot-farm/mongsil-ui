@@ -34,6 +34,13 @@ function App(): any {
         <Input />
       </div>
       <div className="p-5 flex space-x-4">
+        <Select name="select" value={'ㅇㄹㅇㄹㅇㅇ'}>
+          <Option value="a">option 1</Option>
+          <Option value="b">option 2</Option>
+          <Option value="c">option 3</Option>
+        </Select>
+      </div>
+      <div className="p-5 flex space-x-4">
         <Checkbox variant="fill" />
         <Checkbox variant="border" />
         <Checkbox variant="none" />
@@ -47,13 +54,6 @@ function App(): any {
       <div className="p-5 flex space-x-4">
         <Switch name="switch-dent" variant="dent" />
         <Switch name="switch-emboss" variant="emboss" />
-      </div>
-      <div className="p-5 flex space-x-4">
-        <Select name="select" value={'c'}>
-          <Option value="a">a</Option>
-          <Option value="b">b</Option>
-          <Option value="c">c</Option>
-        </Select>
       </div>
     </div>
   );
