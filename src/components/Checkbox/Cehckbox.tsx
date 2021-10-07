@@ -1,47 +1,59 @@
 import * as React from 'react';
 import { FaCheck } from 'react-icons/fa';
 
-interface CheckboxProps {
-  children?: React.ReactNode;
-  className?: string;
-  variant?: 'fill' | 'border' | 'none';
-  label?: React.ReactNode;
-  checked?: boolean;
-  defaultChecked?: boolean;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-}
+import { CheckboxProps } from './checkbox.d';
 
 const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
   (
     {
       className,
       children,
-      checked,
-      defaultChecked = false,
       variant = 'fill',
+      stateBind = 'both',
       label,
+      name,
+      checked,
+      defaultChecked,
       onChange,
+      onClick,
       ...args
     },
     ref,
   ) => {
-    const [isChecked, setIsChecked] = React.useState<boolean>(() => defaultChecked);
+    const [isChecked, setIsChecked] = React.useState<boolean>(
+      () => defaultChecked ?? false,
+    );
 
-    const handleClick = React.useCallback(() => {
-      setIsChecked((c) => !c);
-    }, []);
+    /** 클릭 이벤트 */
+    const handleClick = React.useCallback(
+      (_checked) => {
+        const newValue = !_checked;
 
-    const handleChange = React.useCallback((e) => {
-      if (onChange) {
-        onChange(e);
-      }
-    }, []);
+        if (onClick) {
+          onClick(newValue, name);
+        }
 
+        if (
+          (onChange && onChange(newValue, name) === false) ||
+          stateBind === 'stateOnly'
+        ) {
+          return;
+        }
+
+        setIsChecked(newValue);
+      },
+      [name, onClick, onChange],
+    );
+
+    /** 체인지 이벤트 */
+    const handleChange = React.useCallback(() => {}, []);
+
+    /** 상태에 따라 변환 */
     React.useEffect(() => {
-      if (checked === true || checked === false) {
+      if ((checked === true || checked === false) && stateBind !== 'none') {
         setIsChecked(checked);
       }
-    }, [checked]);
+    }, [checked, stateBind]);
 
     return (
       <span
@@ -49,14 +61,15 @@ const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
           className ? className : ''
         }`}
         ref={ref}
-        onClick={handleClick}
+        onClick={React.useCallback(() => handleClick(isChecked), [isChecked])}
       >
         <input
           className={`Mongsil-checkbox-base`}
-          {...args}
           type="checkbox"
+          name={name}
           checked={isChecked}
           onChange={handleChange}
+          {...args}
         />
         <span className={`Mongsil-checkbox-checker Mongsil-${variant}`}>
           <FaCheck className="Mongsil-checkbox-icon" />

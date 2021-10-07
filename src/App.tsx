@@ -3,6 +3,7 @@ import * as React from 'react';
 import Button from './components/Button';
 import Input from './components/Input';
 import Checkbox from './components/Checkbox';
+import CheckboxCreator from './components/CheckboxCreator';
 import Radio from './components/Radio';
 import Switch from './components/Switch';
 import Select from './components/Select';
@@ -34,17 +35,33 @@ function App(): any {
         <Input />
       </div>
       <div className="p-5 flex space-x-4">
-        <Select name="select" value={'ㅇㄹㅇㄹㅇㅇ'}>
+        <Select name="select" value={'a'}>
           <Option value="a">option 1</Option>
           <Option value="b">option 2</Option>
           <Option value="c">option 3</Option>
         </Select>
       </div>
       <div className="p-5 flex space-x-4">
-        <Checkbox variant="fill" />
+        <Checkbox
+          variant="fill"
+          stateBind="stateOnly"
+          onChange={(c) => console.log('> change: ', c)}
+        />
         <Checkbox variant="border" />
         <Checkbox variant="none" />
         <Checkbox label="label" />
+      </div>
+      <div className="p-5 flex space-x-4">
+        <CheckboxCreator
+          name="state_both"
+          values={['a', 'c']}
+          model={[
+            { label: 'a', value: 'a' },
+            { label: 'b', value: 'b' },
+            { label: 'c', value: 'c' },
+          ]}
+          onChange={(v, n) => console.log('> onChange: ', v, n)}
+        />
       </div>
       <div className="p-5 flex space-x-4">
         <Radio name="name" label="label-a" value="a" />
