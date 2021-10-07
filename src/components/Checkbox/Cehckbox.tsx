@@ -61,7 +61,7 @@ const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
           className ? className : ''
         }`}
         ref={ref}
-        onClick={React.useCallback(() => handleClick(isChecked), [isChecked])}
+        onClick={() => handleClick(isChecked)}
       >
         <input
           className={`Mongsil-checkbox-base`}

@@ -23,6 +23,8 @@ const CheckboxCreator = React.forwardRef<HTMLSpanElement, CheckboxCreatorProps>(
       () => defaultValues || _values || [],
     );
 
+    console.log('> outside : ', values);
+
     /** 클릭 이벤트 */
     const handleClick = useCallback<HandleClick>(
       (value) => {
@@ -36,6 +38,8 @@ const CheckboxCreator = React.forwardRef<HTMLSpanElement, CheckboxCreatorProps>(
           onClick(newValues, name);
         }
 
+        console.log('> ', values, newValues);
+
         if (
           (onChange && onChange(newValues, name) === false) ||
           stateBind === 'stateOnly'
@@ -43,7 +47,7 @@ const CheckboxCreator = React.forwardRef<HTMLSpanElement, CheckboxCreatorProps>(
           return;
         }
 
-        setValues(newValues);
+        setValues([...newValues]);
       },
       [name, values, stateBind, onChange, onClick],
     );

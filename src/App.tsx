@@ -60,7 +60,7 @@ function App(): any {
             { label: 'b', value: 'b' },
             { label: 'c', value: 'c' },
           ]}
-          onChange={(v, n) => console.log('> onChange: ', v, n)}
+          // onChange={(v, n) => console.log('> onChange: ', v, n)}
         />
       </div>
       <div className="p-5 flex space-x-4">
