@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 interface ButtonProps {
   children?: React.ReactNode;
@@ -8,25 +9,34 @@ interface ButtonProps {
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, children, ...args }, ref) => {
-    const [isPressed, setIsPressed] = React.useState<boolean>(false);
-    const [isAnimationEnd, setIsAnimationEnd] = React.useState<boolean>(true);
-    const [ing, setIng] = React.useState<boolean>(false);
+    const [isPressed, setIsPressed] = useState<boolean>(false);
+    const [isAnimationEnd, setIsAnimationEnd] = useState<boolean>(true);
+    const [ing, setIng] = useState<boolean>(false);
 
-    const pressed = React.useCallback(() => {
+    const pressed = useCallback(() => {
       setIsPressed(true);
       setIsAnimationEnd(false);
       setIng(true);
     }, []);
 
-    const unPressed = React.useCallback(() => {
+    const unPressed = useCallback(() => {
       setIsPressed(false);
+
+      /** 꼬여서 안나올 경우를 대비한 코드.(나중에 제대로 로직을 수정하자) */
+      if (timerFunc) {
+        clearTimeout(timerFunc);
+      }
+
+      timerFunc = setTimeout(() => {
+        setIng(false);
+      }, 200);
     }, []);
 
-    const handleTransitionEnd = React.useCallback(() => {
+    const handleTransitionEnd = useCallback(() => {
       setIsAnimationEnd(true);
     }, []);
 
-    React.useEffect(() => {
+    useEffect(() => {
       if (ing === false) {
         return;
       }
@@ -37,7 +47,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <button
-        className={`Mongsil-button-root ${ing ? 'pressed' : ''} ${className ?? ''}`}
+        className={`Mongsil-button-root ${ing ? 'pressed' : ''} ${
+          className ?? ''
+        }`}
         onMouseDown={pressed}
         onMouseUp={unPressed}
         onMouseLeave={unPressed}
@@ -52,5 +64,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     );
   },
 );
+
+let timerFunc: ReturnType<typeof setTimeout> | undefined;
 
 export default Button;
