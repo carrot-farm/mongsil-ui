@@ -27,9 +27,8 @@ function App(): any {
         <div className="w-20 h-20 bg-base dent-500 ml-10"></div>
       </div>
       <div className="p-5 flex space-x-4">
-        <Button className="text-gray-500">small</Button>
-        <Button>medium</Button>
-        <Button>large</Button>
+        <Button variant="emboss">emboss</Button>
+        <Button variant="dent">dent</Button>
       </div>
       <div className="p-5 flex space-x-4">
         <Input />

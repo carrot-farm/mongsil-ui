@@ -124,10 +124,19 @@
 @layer components {
   /* ===== button ===== */
   .Mongsil-button-root {
-    @apply font-semibold px-4 py-2 rounded emboss-300 m-transition-shadow;
+    @apply font-semibold px-4 py-2 rounded m-transition-shadow;
   }
-  .Mongsil-button-root.pressed {
+  .Mongsil-button-root.emboss {
+    @apply emboss-300;
+  }
+  .Mongsil-button-root.emboss.pressed {
     @apply emboss-0;
+  }
+  .Mongsil-button-root.dent {
+    @apply dent-0;
+  }
+  .Mongsil-button-root.dent.pressed {
+    @apply dent-200;
   }
   .Mongsil-button-root > .Mongsil-button-label {
     @apply m-transition-transform;
@@ -164,7 +173,8 @@
       box-shadow 200ms ease-in-out;
   }
   .Mongsil-checkbox-root > .Mongsil-checkbox-checker.Mongsil-border {
-    transition: border 200ms ease-in-out, color 200ms ease-in-out, box-shadow 200ms ease-in-out;
+    transition: border 200ms ease-in-out, color 200ms ease-in-out,
+      box-shadow 200ms ease-in-out;
     @apply border border-transparent;
   }
   .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker {
@@ -253,7 +263,10 @@
   .Mongsil-switch-root .Mongsil-switch-bg.emboss .Mongsil-switch-checker {
     @apply emboss-200;
   }
-  .Mongsil-switch-root .Mongsil-switch-base:checked + .Mongsil-switch-bg .Mongsil-switch-checker {
+  .Mongsil-switch-root
+    .Mongsil-switch-base:checked
+    + .Mongsil-switch-bg
+    .Mongsil-switch-checker {
     @apply bg-primary;
     transform: translateX(20px);
   }

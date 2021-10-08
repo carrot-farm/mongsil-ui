@@ -1,14 +1,10 @@
 import * as React from 'react';
 import { useEffect, useState, useCallback } from 'react';
 
-interface ButtonProps {
-  children?: React.ReactNode;
-  className?: string;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-}
+import { ButtonProps } from './Button.d';
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, children, ...args }, ref) => {
+  ({ className, variant, children, ...args }, ref) => {
     const [isPressed, setIsPressed] = useState<boolean>(false);
     const [isAnimationEnd, setIsAnimationEnd] = useState<boolean>(true);
     const [ing, setIng] = useState<boolean>(false);
@@ -48,8 +44,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         className={`Mongsil-button-root ${ing ? 'pressed' : ''} ${
-          className ?? ''
-        }`}
+          variant ?? 'emboss'
+        } ${className ?? ''}`}
         onMouseDown={pressed}
         onMouseUp={unPressed}
         onMouseLeave={unPressed}
