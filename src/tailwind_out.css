@@ -714,7 +714,6 @@ video {
 }
 /* ===== button ===== */
 .Mongsil-button-root {
-    box-shadow: var(--emboss-300);
     transition-property: box-shadow;
     transition-timing-function: ease-in-out;
     transition-duration: 200ms;
@@ -725,8 +724,17 @@ video {
     padding-bottom: 0.5rem;
     font-weight: 600;
   }
-.Mongsil-button-root.pressed {
+.Mongsil-button-root.emboss {
+    box-shadow: var(--emboss-300);
+  }
+.Mongsil-button-root.emboss.pressed {
     box-shadow: var(--emboss-0);
+  }
+.Mongsil-button-root.dent {
+    box-shadow: var(--dent-0);
+  }
+.Mongsil-button-root.dent.pressed {
+    box-shadow: var(--dent-200);
   }
 .Mongsil-button-root > .Mongsil-button-label {
     transition-property: -webkit-transform;
@@ -808,7 +816,8 @@ video {
       box-shadow 200ms ease-in-out;
   }
 .Mongsil-checkbox-root > .Mongsil-checkbox-checker.Mongsil-border {
-    transition: border 200ms ease-in-out, color 200ms ease-in-out, box-shadow 200ms ease-in-out;
+    transition: border 200ms ease-in-out, color 200ms ease-in-out,
+      box-shadow 200ms ease-in-out;
     border-width: 1px;
     border-color: transparent;
   }
@@ -961,7 +970,10 @@ video {
 .Mongsil-switch-root .Mongsil-switch-bg.emboss .Mongsil-switch-checker {
     box-shadow: var(--emboss-200);
   }
-.Mongsil-switch-root .Mongsil-switch-base:checked + .Mongsil-switch-bg .Mongsil-switch-checker {
+.Mongsil-switch-root
+    .Mongsil-switch-base:checked
+    + .Mongsil-switch-bg
+    .Mongsil-switch-checker {
   background-color: var(--color-primary);
     -webkit-transform: translateX(20px);
             transform: translateX(20px);
