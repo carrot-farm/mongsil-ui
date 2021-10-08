@@ -10,6 +10,7 @@
     "lint": "eslint ./src/**/*.tsx --fix",
     "format": "prettier --write ./src",
     "test": "jest --config=jest.config.js",
+    "test:watch": "jest --config=jest.config.js --watch",
     "tw:watch": "TAILWIND_MODE=watch NODE_ENV=development postcss ./src/tailwind.css -o ./src/tailwind_out.css -w",
     "tw:build": "NODE_ENV=production postcss ./src/tailwind.css -o ./src/tailwind_out.css/"
   },
