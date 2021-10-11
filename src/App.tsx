@@ -10,6 +10,7 @@ import Select from './components/Select';
 import { Option } from './components/Select';
 
 function App(): any {
+  const radioChange = () => console.log('> chagne');
   return (
     <div className="app bg-base">
       <div className="p-5 flex">
@@ -41,14 +42,13 @@ function App(): any {
         </Select>
       </div>
       <div className="p-5 flex space-x-4">
-        <Checkbox
-          variant="fill"
-          stateBind="stateOnly"
-          onChange={(c) => console.log('> change: ', c)}
-        />
-        <Checkbox variant="border" />
-        <Checkbox variant="none" />
-        <Checkbox label="label" />
+        <Checkbox label="emboss" variant="emboss" />
+        <Checkbox label="emboss-outline " variant="emboss-outline" />
+        <Checkbox label="emboss-fill" variant="emboss-fill" />
+      </div>
+      <div className="p-5 flex space-x-4">
+        <Checkbox label="dent" variant="dent" />
+        <Checkbox label="dent-outline " variant="dent-outline" />
       </div>
       <div className="p-5 flex space-x-4">
         <CheckboxCreator
@@ -59,17 +59,48 @@ function App(): any {
             { label: 'b', value: 'b' },
             { label: 'c', value: 'c' },
           ]}
-          // onChange={(v, n) => console.log('> onChange: ', v, n)}
+        />
+      </div>
+
+      <div className="p-5 flex space-x-4">
+        <Radio
+          name="emboss-radio"
+          label="emboss-a"
+          value="a"
+          onChange={radioChange}
+        />
+        <Radio
+          name="emboss-radio"
+          label="emboss-b"
+          value="b"
+          onChange={radioChange}
+        />
+        <Radio
+          name="emboss-radio"
+          label="emboss-c"
+          value="c"
+          onChange={radioChange}
         />
       </div>
       <div className="p-5 flex space-x-4">
-        <Radio name="name" label="label-a" value="a" />
-        <Radio name="name" label="label-b" value="b" />
-        <Radio name="name" label="label-c" value="c" />
+        <Radio name="dent-radio" label="dent-a" value="a" variant="dent" />
+        <Radio name="dent-radio" label="dent-b" value="b" variant="dent" />
+        <Radio
+          name="dent-radio"
+          label="dent-c"
+          value="c"
+          variant="dent"
+          onChange={() => false}
+        />
       </div>
       <div className="p-5 flex space-x-4">
         <Switch name="switch-dent" variant="dent" />
         <Switch name="switch-emboss" variant="emboss" />
+      </div>
+      <div>
+        <div className="test-box">
+          <div className="inner-box"></div>
+        </div>
       </div>
     </div>
   );

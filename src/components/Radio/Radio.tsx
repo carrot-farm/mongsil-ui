@@ -1,43 +1,23 @@
 import * as React from 'react';
+import { forwardRef, useEffect, useCallback, useState } from 'react';
 
-interface RadioProps {
-  className?: string;
-  name?: string;
-  value?: string;
-  checked?: boolean;
-  defaultChecked?: boolean;
-  label?: React.ReactNode;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-}
+import { RadioProps } from './radio.d';
 
-const Radio = React.forwardRef<HTMLLabelElement, RadioProps>(
-  ({ className, checked, defaultChecked = true, label, onChange, ...args }, ref) => {
-    const [isChecked, setIsChecked] = React.useState<boolean>(() => defaultChecked);
-
-    const handleChange = React.useCallback((e) => {
-      if (onChange) {
-        onChange(e);
-      }
-
-      setIsChecked(e.target.checked);
-    }, []);
-
-    React.useEffect(() => {
-      if (checked === true || checked === false) {
-        setIsChecked(checked);
-      }
-    }, [checked]);
-
+const Radio = forwardRef<HTMLLabelElement, RadioProps>(
+  (
+    { className, checked, label, name, variant = 'emboss', onChange, ...args },
+    ref,
+  ) => {
     return (
-      <label className={`Mongsil-radio-root ${className} ${isChecked ? 'checked' : ''}`} ref={ref}>
+      <label className={`Mongsil-radio-root ${className ?? ''}`} ref={ref}>
         <input
           className="Mongsil-radio-base"
-          {...args}
           type="radio"
-          checked={isChecked}
-          onChange={handleChange}
+          name={name}
+          checked={checked}
+          {...args}
         />
-        <span className="Mongsil-radio-checker">
+        <span className={`Mongsil-radio-checker ${variant ?? ''}`}>
           <span className="Mongsil-radio-checker-outer">
             <span className="Mongsil-radio-checker-inner"></span>
           </span>

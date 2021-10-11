@@ -8,7 +8,7 @@ const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
     {
       className,
       children,
-      variant = 'fill',
+      variant = 'emboss-outline',
       stateBind = 'both',
       label,
       name,
@@ -34,7 +34,8 @@ const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
         }
 
         if (
-          (onChange && onChange(newValue, name) === false) ||
+          onChange &&
+          onChange(newValue, name) === false &&
           stateBind === 'stateOnly'
         ) {
           return;
@@ -71,7 +72,7 @@ const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
           onChange={handleChange}
           {...args}
         />
-        <span className={`Mongsil-checkbox-checker Mongsil-${variant}`}>
+        <span className={`Mongsil-checkbox-checker ${variant ?? ''}`}>
           <FaCheck className="Mongsil-checkbox-icon" />
         </span>
         {label && <label className={'Mongsil-checkbox-label'}>{label}</label>}

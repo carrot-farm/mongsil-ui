@@ -3,6 +3,7 @@
   --color-base: hsl(var(--color-base-deg) 22% 95%);
   --color-primary: hsl(216deg 100% 72%);
   --color-secondary: hsl(360deg 100% 72%);
+  --easing: 200ms ease-in-out;
   --emboss-0: 0px 0px 0px hsl(var(--color-base-deg) 3% 5% / 6%),
     0px 0px 0px hsl(var(--color-base-deg) 3% 5% / 10%),
     0px 0px 0px hsl(var(--color-base-deg) 3% 100% / 80%),
@@ -806,36 +807,60 @@ video {
   background-color: transparent;
   --tw-text-opacity: 1;
   color: rgba(209, 213, 219, var(--tw-text-opacity));
-    box-shadow: var(--emboss-200);
-    transition-property: box-shadow;
-    transition-timing-function: ease-in-out;
-    transition-duration: 200ms;
+    transition: box-shadow var(--easing), color var(--easing);
 }
-.Mongsil-checkbox-root > .Mongsil-checkbox-checker.Mongsil-fill {
+.Mongsil-checkbox-root > .Mongsil-checkbox-checker.emboss, .Mongsil-checkbox-root > .Mongsil-checkbox-checker.emboss-outline, .Mongsil-checkbox-root > .Mongsil-checkbox-checker.emboss-fill {
+    box-shadow: var(--emboss-200);
+  }
+.Mongsil-checkbox-root > .Mongsil-checkbox-checker.emboss-outline {
+  border-width: 1px;
+  border-color: transparent;
+    transition: border var(--easing), color 200ms var(--easing),
+      box-shadow var(--easing);
+}
+.Mongsil-checkbox-root > .Mongsil-checkbox-checker.emboss-fill {
     transition: background-color 200ms ease-in-out, color 200ms ease-in-out,
       box-shadow 200ms ease-in-out;
-  }
-.Mongsil-checkbox-root > .Mongsil-checkbox-checker.Mongsil-border {
-    transition: border 200ms ease-in-out, color 200ms ease-in-out,
-      box-shadow 200ms ease-in-out;
-    border-width: 1px;
-    border-color: transparent;
   }
 .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker {
     box-shadow: var(--emboss-0);
   }
-.Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.Mongsil-fill {
+.Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.emboss {
+  color: var(--color-primary);
+}
+.Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.emboss-fill {
   background-color: var(--color-primary);
   font-size: 1rem;
   line-height: 1.5rem;
   color: var(--color-base);
 }
-.Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.Mongsil-border {
+.Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.emboss-outline {
   --tw-border-opacity: 1;
   border-color: rgba(209, 213, 219, var(--tw-border-opacity));
   color: var(--color-primary);
 }
-.Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.Mongsil-none {
+/* dent */
+.Mongsil-checkbox-root > .Mongsil-checkbox-checker.dent, .Mongsil-checkbox-root > .Mongsil-checkbox-checker.dent-outline {
+    box-shadow: var(--dent-0);
+  }
+.Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.dent, .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.dent-outline {
+    box-shadow: var(--dent-100);
+  }
+.Mongsil-checkbox-root > .Mongsil-checkbox-checker.dent {
+    transition: color var(--easing);
+  }
+.Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.dent {
+  color: var(--color-primary);
+}
+.Mongsil-checkbox-root > .Mongsil-checkbox-checker.dent-outline {
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgba(209, 213, 219, var(--tw-border-opacity));
+    transition: border var(--easing), color 200ms var(--easing),
+      box-shadow var(--easing);
+}
+.Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.dent-outline {
+  border-color: transparent;
   color: var(--color-primary);
 }
 .Mongsil-checkbox-root .Mongsil-checkbox-icon {
@@ -869,10 +894,6 @@ video {
   background-color: var(--color-base);
   --tw-text-opacity: 1;
   color: rgba(209, 213, 219, var(--tw-text-opacity));
-    box-shadow: var(--emboss-200);
-    transition-property: box-shadow;
-    transition-timing-function: ease-in-out;
-    transition-duration: 200ms;
 }
 .Mongsil-radio-root > .Mongsil-radio-checker > .Mongsil-radio-checker-outer {
   position: relative;
@@ -885,7 +906,13 @@ video {
   border-color: rgba(209, 213, 219, var(--tw-border-opacity));
     width: 14px;
     height: 14px;
-    transition: border-color 200ms ease-in-out;
+    transition: border-color var(--easing);
+}
+.Mongsil-radio-root
+    .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker
+    > .Mongsil-radio-checker-outer {
+  border-color: var(--color-primary);
 }
 .Mongsil-radio-root > .Mongsil-radio-checker .Mongsil-radio-checker-inner {
   --tw-scale-x: 0;
@@ -902,15 +929,6 @@ video {
     width: 6px;
     height: 6px;
 }
-.Mongsil-radio-root > .Mongsil-radio-base:checked + .Mongsil-radio-checker {
-    box-shadow: var(--emboss-0);
-  }
-.Mongsil-radio-root
-    > .Mongsil-radio-base:checked
-    + .Mongsil-radio-checker
-    > .Mongsil-radio-checker-outer {
-  border-color: var(--color-primary);
-}
 .Mongsil-radio-root
     > .Mongsil-radio-base:checked
     + .Mongsil-radio-checker
@@ -923,6 +941,46 @@ video {
 .Mongsil-radio-root > .Mongsil-radio-label {
   margin-left: 0.75rem;
   cursor: pointer;
+}
+/* emboss */
+.Mongsil-radio-root > .Mongsil-radio-checker.emboss {
+    box-shadow: var(--emboss-200);
+  }
+.Mongsil-radio-root
+    .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker.emboss {
+    box-shadow: var(--emboss-0);
+  }
+/* dent */
+.Mongsil-radio-root > .Mongsil-radio-checker.dent {
+    box-shadow: var(--dent-0);
+    border-width: 1px;
+    --tw-border-opacity: 1;
+    border-color: rgba(209, 213, 219, var(--tw-border-opacity));
+    transition: box-shadow var(--easing), border-color var(--easing);
+  }
+.Mongsil-radio-root
+    .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker.dent {
+    box-shadow: var(--dent-100);
+    border-color: transparent;
+  }
+.Mongsil-radio-root
+    > .Mongsil-radio-checker.dent
+    .Mongsil-radio-checker-outer, .Mongsil-radio-root
+    > .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker.dent
+    .Mongsil-radio-checker-outer {
+  border-style: none;
+}
+.Mongsil-radio-root
+    > .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker.dent
+    .Mongsil-radio-checker-inner {
+  --tw-scale-x: 1.5;
+  --tw-scale-y: 1.5;
+  -webkit-transform: var(--tw-transform);
+          transform: var(--tw-transform);
 }
 /* ===== switch ===== */
 .Mongsil-switch-root {
@@ -1115,9 +1173,6 @@ video {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
-}
-.border {
-  border-width: 1px;
 }
 .bg-base {
   background-color: var(--color-base);
