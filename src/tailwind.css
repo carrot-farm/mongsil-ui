@@ -3,6 +3,7 @@
   --color-base: hsl(var(--color-base-deg) 22% 95%);
   --color-primary: hsl(216deg 100% 72%);
   --color-secondary: hsl(360deg 100% 72%);
+  --easing: 200ms ease-in-out;
   --emboss-0: 0px 0px 0px hsl(var(--color-base-deg) 3% 5% / 6%),
     0px 0px 0px hsl(var(--color-base-deg) 3% 5% / 10%),
     0px 0px 0px hsl(var(--color-base-deg) 3% 100% / 80%),
@@ -166,28 +167,56 @@
   }
   .Mongsil-checkbox-root > .Mongsil-checkbox-checker {
     @apply inline-flex items-center justify-center rounded w-5 h-5  text-gray-300 bg-transparent;
-    @apply m-transition-shadow emboss-200;
+    transition: box-shadow var(--easing), color var(--easing);
   }
-  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.Mongsil-fill {
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.emboss,
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.emboss-outline,
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.emboss-fill {
+    @apply emboss-200;
+  }
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.emboss-outline {
+    @apply border border-transparent;
+    transition: border var(--easing), color 200ms var(--easing),
+      box-shadow var(--easing);
+  }
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.emboss-fill {
     transition: background-color 200ms ease-in-out, color 200ms ease-in-out,
       box-shadow 200ms ease-in-out;
-  }
-  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.Mongsil-border {
-    transition: border 200ms ease-in-out, color 200ms ease-in-out,
-      box-shadow 200ms ease-in-out;
-    @apply border border-transparent;
   }
   .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker {
     @apply emboss-0;
   }
-  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.Mongsil-fill {
+  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.emboss {
+    @apply text-primary;
+  }
+  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.emboss-fill {
     @apply bg-primary text-base;
   }
-  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.Mongsil-border {
+  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.emboss-outline {
     @apply border-gray-300 text-primary;
   }
-  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.Mongsil-none {
+  /* dent */
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.dent,
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.dent-outline {
+    @apply dent-0;
+  }
+  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.dent,
+  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.dent-outline {
+    @apply dent-100;
+  }
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.dent {
+    transition: color var(--easing);
+  }
+  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.dent {
     @apply text-primary;
+  }
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.dent-outline {
+    @apply border border-gray-300;
+    transition: border var(--easing), color 200ms var(--easing),
+      box-shadow var(--easing);
+  }
+  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.dent-outline {
+    @apply border-transparent text-primary;
   }
   .Mongsil-checkbox-root .Mongsil-checkbox-icon {
     @apply w-3;
@@ -205,27 +234,23 @@
   }
   .Mongsil-radio-root > .Mongsil-radio-checker {
     @apply relative inline-flex items-center justify-center rounded-full w-5 h-5  text-gray-300 bg-base;
-    @apply m-transition-shadow emboss-200;
   }
   .Mongsil-radio-root > .Mongsil-radio-checker > .Mongsil-radio-checker-outer {
     @apply relative inline-flex items-center justify-center rounded-full border-2 border-gray-300;
     width: 14px;
     height: 14px;
-    transition: border-color 200ms ease-in-out;
+    transition: border-color var(--easing);
+  }
+  .Mongsil-radio-root
+    .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker
+    > .Mongsil-radio-checker-outer {
+    @apply border-primary;
   }
   .Mongsil-radio-root > .Mongsil-radio-checker .Mongsil-radio-checker-inner {
     @apply bg-primary rounded-full scale-0 transition-transform;
     width: 6px;
     height: 6px;
-  }
-  .Mongsil-radio-root > .Mongsil-radio-base:checked + .Mongsil-radio-checker {
-    @apply emboss-0;
-  }
-  .Mongsil-radio-root
-    > .Mongsil-radio-base:checked
-    + .Mongsil-radio-checker
-    > .Mongsil-radio-checker-outer {
-    @apply border-primary;
   }
   .Mongsil-radio-root
     > .Mongsil-radio-base:checked
@@ -235,6 +260,42 @@
   }
   .Mongsil-radio-root > .Mongsil-radio-label {
     @apply ml-3 cursor-pointer;
+  }
+
+  /* emboss */
+  .Mongsil-radio-root > .Mongsil-radio-checker.emboss {
+    @apply emboss-200;
+  }
+  .Mongsil-radio-root
+    .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker.emboss {
+    @apply emboss-0;
+  }
+
+  /* dent */
+  .Mongsil-radio-root > .Mongsil-radio-checker.dent {
+    @apply dent-0 border border-gray-300;
+    transition: box-shadow var(--easing), border-color var(--easing);
+  }
+  .Mongsil-radio-root
+    .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker.dent {
+    @apply dent-100 border-transparent;
+  }
+  .Mongsil-radio-root
+    > .Mongsil-radio-checker.dent
+    .Mongsil-radio-checker-outer,
+  .Mongsil-radio-root
+    > .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker.dent
+    .Mongsil-radio-checker-outer {
+    @apply border-none;
+  }
+  .Mongsil-radio-root
+    > .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker.dent
+    .Mongsil-radio-checker-inner {
+    @apply scale-150;
   }
 
   /* ===== switch ===== */

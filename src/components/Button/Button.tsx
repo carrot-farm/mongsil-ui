@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect, useState, useCallback } from 'react';
 
-import { ButtonProps } from './Button.d';
+import { ButtonProps } from './button.d';
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, children, ...args }, ref) => {
