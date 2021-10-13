@@ -1,32 +1,57 @@
 import * as React from 'react';
+import { useState, forwardRef, useCallback } from 'react';
 
-interface InputProps {
-  className?: string;
-}
+import { InputProps } from './input.d';
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, children, ...args }, ref) => {
-    const [isFocused, setIsFocused] = React.useState<boolean>(false);
+const Input = forwardRef<HTMLDivElement, InputProps>(
+  ({ className, onChange, ...args }, ref) => {
+    const [isFocused, setIsFocused] = useState<boolean>(false);
 
-    const handleFocus = React.useCallback(() => {
+    // console.log('> input render: ', args.value);
+
+    /** event: focus in */
+    const handleFocus = useCallback(() => {
       setIsFocused(true);
     }, []);
 
-    const handleBlur = React.useCallback(() => {
+    /** event: focus out */
+    const handleBlur = useCallback(() => {
       setIsFocused(false);
     }, []);
 
+    /** 값 변경 */
+    const handleChange = useCallback<
+      (e: React.ChangeEvent<HTMLInputElement>) => void
+    >(
+      (e) => {
+        const { name, value } = e.target;
+
+        if (onChange) {
+          onChange(value, name);
+        }
+      },
+      [onChange],
+    );
+
     return (
       <div
-        className={`Mongsil-input-root ${isFocused ? 'focused' : ''}`}
+        className={`Mongsil-input-root ${isFocused ? 'focused' : ''} ${
+          className ?? ''
+        }`}
         ref={ref}
         onFocus={handleFocus}
         onBlur={handleBlur}
       >
-        <input className={`Mongsil-input-base ${className ?? ''}`} {...args} />
+        <input
+          className="Mongsil-input-base"
+          onChange={handleChange}
+          {...args}
+        />
       </div>
     );
   },
 );
 
-export default Input;
+Input.displayName = 'Input';
+
+export default React.memo(Input);

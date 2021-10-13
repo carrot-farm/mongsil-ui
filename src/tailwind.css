@@ -373,4 +373,26 @@
     backdrop-filter: blur(2px);
     background: hsl(var(--color-base-deg) 22% 80% / 20%);
   }
+
+  /* ===== form-item ===== */
+  .Mongsil-form_item-root {
+    @apply relative flex;
+  }
+  .Mongsil-form_item-root .Mongsil-form_item-container {
+    @apply relative;
+  }
+  /* label */
+  .Mongsil-form_item-root .Mongsil-form_item-label {
+    @apply text-sm;
+  }
+  .Mongsil-form_item-root.flex-col .Mongsil-form_item-label {
+    @apply pb-2;
+  }
+  .Mongsil-form_item-root.flex-row .Mongsil-form_item-label > span {
+    @apply inline-block pr-2 pt-2;
+  }
+  /* helper text */
+  .Mongsil-form_item-root .Mongsil-form_item-helper_text {
+    @apply text-xs mt-1;
+  }
 }

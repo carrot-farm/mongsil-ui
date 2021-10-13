@@ -6,8 +6,9 @@ import Checkbox from './components/Checkbox';
 import CheckboxCreator from './components/CheckboxCreator';
 import Radio from './components/Radio';
 import Switch from './components/Switch';
-import Select from './components/Select';
-import { Option } from './components/Select';
+import Select, { Option } from './components/Select';
+import FormItem from './components/FormItem';
+import Form from './components/Form';
 
 function App(): any {
   const radioChange = () => console.log('> chagne');
@@ -97,10 +98,39 @@ function App(): any {
         <Switch name="switch-dent" variant="dent" />
         <Switch name="switch-emboss" variant="emboss" />
       </div>
-      <div>
-        <div className="test-box">
-          <div className="inner-box"></div>
-        </div>
+      <div className="p-5 flex space-x-4">
+        <FormItem
+          label="label"
+          helper="helperText"
+          name="test-name"
+          direction="y"
+        >
+          <Input />
+        </FormItem>
+        <FormItem
+          label="label"
+          helper="helperText"
+          direction="x"
+          name="test-name-2"
+        >
+          <Input />
+        </FormItem>
+      </div>
+      <div className="p-5 flex space-x-4">
+        <Form onSubmit={console.log}>
+          <FormItem
+            label="label"
+            helper="helperText"
+            name="test-input-1"
+            value="test"
+            onChange={(value) => console.log(value)}
+          >
+            <Input />
+          </FormItem>
+          <FormItem label="label-2" name="test-input-2">
+            <Input />
+          </FormItem>
+        </Form>
       </div>
     </div>
   );

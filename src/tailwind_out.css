@@ -1044,6 +1044,9 @@ video {
   align-items: center;
   justify-content: center;
 }
+.Mongsil-form_item-root.Mongsil-select-root .Mongsil-form_item-label {
+  padding-bottom: 0.5rem;
+}
 .Mongsil-select-root > .Mongsil-select-value-container {
   display: flex;
   cursor: pointer;
@@ -1109,6 +1112,33 @@ video {
             backdrop-filter: blur(2px);
     background: hsl(var(--color-base-deg) 22% 80% / 20%);
   }
+/* ===== form-item ===== */
+.Mongsil-form_item-root {
+  position: relative;
+  display: flex;
+}
+.Mongsil-form_item-root .Mongsil-form_item-container {
+  position: relative;
+}
+/* label */
+.Mongsil-form_item-root .Mongsil-form_item-label {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.Mongsil-form_item-root.flex-col .Mongsil-form_item-label {
+  padding-bottom: 0.5rem;
+}
+.Mongsil-form_item-root.flex-row .Mongsil-form_item-label > span {
+  display: inline-block;
+  padding-right: 0.5rem;
+  padding-top: 0.5rem;
+}
+/* helper text */
+.Mongsil-form_item-root .Mongsil-form_item-helper_text {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
 .visible {
   visibility: visible;
 }
@@ -1168,6 +1198,12 @@ video {
 .animate-visible-panel {
   -webkit-animation: visible-panel 200ms cubic-bezier(0.25, 1, 0.5, 1) forwards;
           animation: visible-panel 200ms cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-col {
+  flex-direction: column;
 }
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
