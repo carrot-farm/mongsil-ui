@@ -34,8 +34,7 @@ const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
         }
 
         if (
-          onChange &&
-          onChange(newValue, name) === false &&
+          (onChange && onChange(newValue, name) === false) ||
           stateBind === 'stateOnly'
         ) {
           return;
