@@ -3,6 +3,8 @@
   --color-base: hsl(var(--color-base-deg) 22% 95%);
   --color-primary: hsl(216deg 100% 72%);
   --color-secondary: hsl(360deg 100% 72%);
+  --color-error: hsl(0deg 84% 60%);
+  --color-warning: hsl(38deg 92% 50%);
   --easing: 200ms ease-in-out;
   --emboss-0: 0px 0px 0px hsl(var(--color-base-deg) 3% 5% / 6%),
     0px 0px 0px hsl(var(--color-base-deg) 3% 5% / 10%),
@@ -354,7 +356,7 @@
     @apply absolute left-0  shadow-xl w-full cursor-pointer z-10 rounded-b;
     top: 0;
     backdrop-filter: blur(2px);
-    background: hsl(var(--color-base-deg) 22% 98% / 15%);
+    background: hsl(var(--color-base-deg) 22% 98% / 50%);
     border: 1px solid hsl(var(--color-base-deg) 22% 98%);
     box-sizing: border-box;
     transform-origin: top;
@@ -371,7 +373,7 @@
   .Mongsil-option-root:hover,
   .Mongsil-option-root.selected {
     backdrop-filter: blur(2px);
-    background: hsl(var(--color-base-deg) 22% 80% / 20%);
+    background: hsl(var(--color-base-deg) 22% 80% / 30%);
   }
 
   /* ===== form-item ===== */
@@ -394,5 +396,10 @@
   /* helper text */
   .Mongsil-form_item-root .Mongsil-form_item-helper_text {
     @apply text-xs mt-1;
+  }
+  /* error message */
+  .Mongsil-form_item-root .Mongsil-form_item-error_message {
+    @apply text-xs mt-1;
+    color: var(--color-error);
   }
 }

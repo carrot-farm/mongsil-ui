@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { memo } from 'react';
 import { FaCheck } from 'react-icons/fa';
 
 import { CheckboxProps } from './checkbox.d';
@@ -9,7 +10,6 @@ const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
       className,
       children,
       variant = 'emboss-outline',
-      stateBind = 'both',
       label,
       name,
       checked,
@@ -25,35 +25,30 @@ const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
     );
 
     /** 클릭 이벤트 */
-    const handleClick = React.useCallback(
-      (_checked) => {
-        const newValue = !_checked;
+    const handleClick = React.useCallback(() => {
+      const newValue = !isChecked;
 
-        if (onClick) {
-          onClick(newValue, name);
-        }
+      if (onClick) {
+        onClick(newValue, name);
+      }
 
-        if (
-          (onChange && onChange(newValue, name) === false) ||
-          stateBind === 'stateOnly'
-        ) {
-          return;
-        }
+      if (onChange) {
+        onChange(newValue, name);
+      }
 
+      if (checked === undefined) {
+        // console.log('> ', name, checked);
         setIsChecked(newValue);
-      },
-      [name, onClick, onChange],
-    );
+      }
+    }, [name, checked, isChecked, onClick, onChange]);
 
     /** 체인지 이벤트 */
     const handleChange = React.useCallback(() => {}, []);
 
     /** 상태에 따라 변환 */
     React.useEffect(() => {
-      if ((checked === true || checked === false) && stateBind !== 'none') {
-        setIsChecked(checked);
-      }
-    }, [checked, stateBind]);
+      setIsChecked(!!checked);
+    }, [checked]);
 
     return (
       <span
@@ -61,7 +56,7 @@ const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
           className ? className : ''
         }`}
         ref={ref}
-        onClick={() => handleClick(isChecked)}
+        onClick={handleClick}
       >
         <input
           className={`Mongsil-checkbox-base`}
@@ -80,4 +75,6 @@ const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
   },
 );
 
-export default Checkbox;
+Checkbox.displayName = 'Checkbox';
+
+export default memo(Checkbox);

@@ -14,6 +14,12 @@ module.exports = {
         secondary: {
           DEFAULT: 'var(--color-secondary)',
         },
+        error: {
+          DEFAULT: 'var(--color-error)',
+        },
+        warning: {
+          DEFAULT: 'var(--color-warning)',
+        },
       },
       // # keyframes
       keyframes: {
@@ -69,11 +75,14 @@ module.exports = {
         },
       },
       animation: {
-        'visible-panel': 'visible-panel 200ms cubic-bezier(0.25, 1, 0.5, 1) forwards',
-        'press-300-0': 'press-300-0 200ms cubic-bezier(0.25, 1, 0.5, 1) forwards',
+        'visible-panel':
+          'visible-panel 200ms cubic-bezier(0.25, 1, 0.5, 1) forwards',
+        'press-300-0':
+          'press-300-0 200ms cubic-bezier(0.25, 1, 0.5, 1) forwards',
         'dent-0-100': 'dent-0-100 200ms cubic-bezier(0.25, 1, 0.5, 1) forwards',
         'scale-1-09': 'scale-1-09 200ms cubic-bezier(0.25, 1, 0.5, 1) forwards',
-        'input-focus': 'input-focus 500ms cubic-bezier(0.25, 1, 0.5, 1) forwards',
+        'input-focus':
+          'input-focus 500ms cubic-bezier(0.25, 1, 0.5, 1) forwards',
       },
     },
   },

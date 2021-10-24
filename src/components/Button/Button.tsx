@@ -63,4 +63,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
 let timerFunc: ReturnType<typeof setTimeout> | undefined;
 
+Button.displayName = 'Button';
+
 export default Button;

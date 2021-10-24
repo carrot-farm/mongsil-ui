@@ -10,6 +10,7 @@ interface CloneComponentProps extends FormItemChild {
 function CloneComponent({
   name,
   value,
+  checked,
   className,
   child,
   onChange,
@@ -20,11 +21,17 @@ function CloneComponent({
     onChange,
   };
 
-  if (value) {
+  if (value !== undefined) {
     props.value = value;
   }
-  // console.log('> render: ', name);
+
+  if (checked !== undefined) {
+    props.checked = checked;
+  }
+  // console.log('> render: ', name, checked);
   return cloneElement(child, props);
 }
+
+CloneComponent.displayName = 'CloneComponent';
 
 export default memo(CloneComponent);

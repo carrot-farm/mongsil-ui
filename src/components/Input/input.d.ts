@@ -1,10 +1,8 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, InputHTMLAttributes } from 'react';
 
 import { StateBind } from '../../types/components';
 
-type InputTypes = HTMLAttributes<HTMLInputElement>;
-
-export interface InputProps extends Omit<InputTypes, className | onChange> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   onChange?: (vlaue?: string, name?: name) => void | false;
 }

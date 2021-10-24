@@ -1,35 +1,52 @@
 import * as React from 'react';
+import { useEffect, useCallback, useState, forwardRef, memo } from 'react';
 
-interface CheckboxProps {
+import { InputChange } from '../../types/components';
+
+interface SwitchProps {
   className?: string;
   variant?: 'dent' | 'emboss';
   name?: string;
   checked?: boolean;
   defaultChecked?: boolean;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?: InputChange;
 }
 
-const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
+const Switch = forwardRef<HTMLSpanElement, SwitchProps>(
   (
-    { className, name, checked, defaultChecked = false, variant = 'emboss', onChange, ...args },
+    {
+      className,
+      name,
+      checked,
+      defaultChecked = false,
+      variant = 'emboss',
+      onChange,
+      ...args
+    },
     ref,
   ) => {
-    const [isChecked, setIsChecked] = React.useState<boolean>(() => defaultChecked);
+    const [isChecked, setIsChecked] = useState<boolean>(
+      () => defaultChecked ?? false,
+    );
 
-    const handleClick = React.useCallback(() => {
-      setIsChecked((c) => !c);
-    }, []);
+    // console.log('> switch: ', checked);
+    const handleClick = useCallback(() => {
+      const newChecked = !isChecked;
+      // console.log('> switch: ', newChecked, name);
 
-    const handleChange = React.useCallback((e) => {
       if (onChange) {
-        onChange(e);
+        onChange(newChecked, name);
       }
-    }, []);
 
-    React.useEffect(() => {
-      if (checked === true || checked === false) {
-        setIsChecked(checked);
+      if (checked === undefined) {
+        setIsChecked(newChecked);
       }
+    }, [isChecked, name, onChange]);
+
+    const handleChange = useCallback(() => {}, []);
+
+    useEffect(() => {
+      setIsChecked(!!checked);
     }, [checked]);
 
     return (
@@ -56,4 +73,6 @@ const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
   },
 );
 
-export default Checkbox;
+Switch.displayName = 'Switch';
+
+export default memo(Switch);

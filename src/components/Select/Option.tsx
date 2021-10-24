@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { useCallback, useEffect } from 'react';
 
-interface SelectProps {
+export interface OptionProps {
   children?: React.ReactNode;
   className?: string;
   label?: React.ReactNode;
@@ -19,8 +18,11 @@ interface ClickParams {
   event: React.MouseEvent<HTMLDivElement>;
 }
 
-const Option = React.forwardRef<HTMLDivElement, SelectProps>(
-  ({ className, value, selectedValue, children, onClick, onSelected, ...args }, ref) => {
+const Option = React.forwardRef<HTMLDivElement, OptionProps>(
+  (
+    { className, value, selectedValue, children, onClick, onSelected, ...args },
+    ref,
+  ) => {
     /** click */
     const handleClick = React.useCallback(
       (event) => {

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { memo } from 'react';
 import { useState, useEffect, useCallback } from 'react';
 
 import Checkbox from '../Checkbox';
@@ -7,70 +8,56 @@ import { CheckboxCreatorProps, HandleClick, Values } from './checkboxCreator.d';
 
 const CheckboxCreator = React.forwardRef<HTMLSpanElement, CheckboxCreatorProps>(
   (
-    {
-      name,
-      values: _values,
-      variant,
-      defaultValues,
-      stateBind = 'both',
-      model,
-      onChange,
-      onClick,
-    },
+    { name, value: _value, variant, defaultValue, model, onChange, onClick },
     ref,
   ) => {
-    const [values, setValues] = useState<Values>(
-      () => defaultValues || _values || [],
+    const [value, setValue] = useState<Values>(
+      () => defaultValue || _value || [],
     );
 
-    console.log('> outside : ', values);
+    // console.log('> outside : ', value);
 
     /** 클릭 이벤트 */
     const handleClick = useCallback<HandleClick>(
-      (value) => {
-        const idx = values.findIndex((a) => a === value);
-        const newValues =
-          idx >= 0
-            ? [...values.slice(0, idx), ...values.slice(idx + 1, values.length)]
-            : [...values, value];
+      (v) => {
+        const idx = value.findIndex((a) => a === v);
+        const newValue =
+          idx >= 0 ? value.filter((_, i) => i !== idx) : [...value, v];
+        // console.log('> click', idx >= 0, value, newValue);
 
         if (onClick) {
-          onClick(newValues, name);
+          onClick(newValue, name);
         }
 
-        console.log('> ', values, newValues);
-
-        if (
-          (onChange && onChange(newValues, name) === false) ||
-          stateBind === 'stateOnly'
-        ) {
-          return;
+        if (onChange) {
+          onChange(newValue, name);
         }
 
-        setValues([...newValues]);
+        if (_value === undefined) {
+          setValue([...newValue]);
+        }
       },
-      [name, values, stateBind, onChange, onClick],
+      [name, value, _value, onChange, onClick],
     );
 
-    /** 외부 values 변경 */
+    /** 외부 value 변경 */
     useEffect(() => {
-      if (_values === undefined || stateBind !== 'none') {
+      if (_value === undefined) {
         return;
       }
-      setValues(_values);
-    }, [_values, stateBind]);
+
+      setValue(_value);
+    }, [_value]);
 
     return (
       <span className="Mongsil-checkbox-creator-root" ref={ref}>
-        {/* <input type="hidden" name={name} value={values?.join(',')} /> */}
-        <input type="hidden" name={name} />
+        {/* <input type="hidden" name={name} value={value?.join(',')} /> */}
         {model?.map((a, i) => (
           <Checkbox
             label={a.label}
             variant={variant}
-            stateBind="stateOnly"
-            checked={values.includes(a.value)}
-            onClick={() => handleClick(a.value)}
+            checked={value.includes(a.value)}
+            onClick={useCallback(() => handleClick(a.value), [model, a, value])}
             key={`Mongsil-check-${name}-${i}`}
           />
         ))}
@@ -79,4 +66,6 @@ const CheckboxCreator = React.forwardRef<HTMLSpanElement, CheckboxCreatorProps>(
   },
 );
 
-export default CheckboxCreator;
+CheckboxCreator.displayName = 'CheckboxCreator';
+
+export default memo(CheckboxCreator);

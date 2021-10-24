@@ -53,9 +53,7 @@ describe('<Checkbox />', () => {
   });
 });
 
-/**
- * 헬퍼
- */
+/** 헬퍼 */
 function renderCheckbox(props?: Partial<CheckboxProps>) {
   const onClick = jest.fn();
   const onChange = jest.fn();
