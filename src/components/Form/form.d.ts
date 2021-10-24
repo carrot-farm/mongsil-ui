@@ -1,14 +1,16 @@
 import React, { FormHTMLAttributes, HTMLAttributes } from 'react';
 
 import { ValueTypes } from '../../types/components';
+import { FormRef } from '../../hooks/useForm';
 
 /** form의 기본 속성 타입 */
 type FormAttributeTypes = HTMLAttributes<HTMLFormElement>;
 
-/** <Form /> 컴포넌트의 props */
 export interface FormProps extends FormAttributeTypes {
+  /** form ref 객체 */
+  form?: Ref<FormRef>;
   /** components */
   children?: React.ReactNode;
   /** submit event */
-  onSubmit?: React.FormEventHandler<HTMLFormElement>;
+  onSubmit?: (values: Record<string, ValueTypes>) => void | false;
 }

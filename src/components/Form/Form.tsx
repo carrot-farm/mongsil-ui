@@ -1,64 +1,70 @@
 import * as React from 'react';
-import { forwardRef, useState, useCallback, useEffect, useMemo } from 'react';
+import {
+  forwardRef,
+  useState,
+  useCallback,
+  useEffect,
+  useMemo,
+  useContext,
+} from 'react';
 
 import FormProvider from './FormProvider';
+import { FormContext } from '../../contexts/formContext';
 
 import { FormProps } from './form.d';
-import { FormContext, FormContextProps } from '../../contexts/formContext';
-import { ValueTypes } from '../../types/components';
 
-function Form({ children, onSubmit, ...args }: FormProps): JSX.Element {
-  // const [values, setValues] = useState(() => ({}));
+/** ===== component ===== */
+const Form = forwardRef<HTMLFormElement, FormProps>(
+  ({ form, children, onSubmit, ...args }, ref) => {
+    const { values, setValue, setValues } = useContext(FormContext);
+    // console.log('> Form:', setValue);
 
-  // const hanelSetValue = useCallback<(name: string, value: ValueTypes) => void>(
-  //   (name, value) => {
-  //     console.log('> hanelSetValue:', name, value);
-  //     if (name === undefined) {
-  //       return;
-  //     }
+    /** event: submit */
+    const handleSubmit = useCallback<
+      (e: React.FormEvent<HTMLFormElement>) => void
+    >(
+      (e) => {
+        e.preventDefault();
+        // console.log('> submit: ', scheme);
 
-  //     setValues((v) => ({
-  //       ...v,
-  //       [name]: value,
-  //     }));
-  //   },
-  //   [],
-  // );
+        if (onSubmit) {
+          onSubmit(values);
+        }
+      },
+      [values, onSubmit],
+    );
 
-  // /** form context 정의 */
-  // const formContextValue = useMemo<FormContextProps>(
-  //   () => ({
-  //     values,
-  //     direction: 'y',
-  //     setValue: hanelSetValue,
-  //   }),
-  //   [values, hanelSetValue],
-  // );
+    /** form ref 가 있을 경우 전달 */
+    React.useImperativeHandle(form, () => ({
+      values,
+      setValue,
+      setValues,
+    }));
 
-  /** event: submit */
-  const handleSubmit = useCallback<
-    (e: React.FormEvent<HTMLFormElement>) => void
-  >(
-    (e) => {
-      e.preventDefault();
-
-      if (onSubmit) {
-        onSubmit(e);
-      }
-    },
-    [onSubmit],
-  );
-
-  /** render */
-  return (
-    <FormProvider>
-      {/* <FormContext.Provider value={formContextValue}> */}
-      <form onSubmit={handleSubmit} {...args}>
+    /** render */
+    return (
+      <form onSubmit={handleSubmit} {...args} ref={ref}>
         {children}
       </form>
-      {/* </FormContext.Provider> */}
-    </FormProvider>
-  );
-}
+    );
+  },
+);
 
-export default React.memo(Form);
+/** ===== HOC: Form Provider 적용 ===== */
+const withFormProvider = (
+  WrappedComponent: React.ForwardRefExoticComponent<
+    FormProps & React.RefAttributes<HTMLFormElement>
+  >,
+) => {
+  const Component = (props: any) => {
+    return (
+      <FormProvider>
+        <WrappedComponent {...props} />
+      </FormProvider>
+    );
+  };
+
+  return Component;
+};
+
+export default React.memo(withFormProvider(Form));

@@ -1,42 +1,51 @@
 import * as React from 'react';
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useRef } from 'react';
 
-import { ValueTypes } from '../../types/components';
+import { ValueTypes, Values } from '../../types/components';
 import { FormContext, FormContextProps } from '../../contexts/formContext';
 
 /** ===== type ===== */
-interface FormProvider {
+
+interface FormProviderProps {
   children?: React.ReactNode;
 }
 
 /** ===== component ===== */
-function FormProvider({ children }: FormProvider): JSX.Element {
+function FormProvider({ children }: FormProviderProps): JSX.Element {
   const [values, setValues] = useState(() => ({}));
+  const schemeRef = useRef({
+    ...schemeState,
+  });
 
-  /** 값을 셋 */
-  const hanelSetValue = useCallback<(name: string, value: ValueTypes) => void>(
-    (name, value) => {
-      // console.log('> hanelSetValue:', name, value);
-      if (name === undefined) {
-        return;
-      }
+  const handleSetValue = useCallback((name: string, value: ValueTypes) => {
+    // console.log('> handleSetValue:', name, value);
+    if (name === undefined) {
+      return;
+    }
 
-      setValues((v) => ({
-        ...v,
-        [name]: value,
-      }));
-    },
-    [],
-  );
+    setValues((v) => ({
+      ...v,
+      [name]: value,
+    }));
+  }, []);
+
+  const handleSetValues = useCallback((_values: Values) => {
+    setValues((v) => ({
+      ...v,
+      ..._values,
+    }));
+  }, []);
 
   /** form context 정의 */
   const formContextValue = useMemo<FormContextProps>(
     () => ({
       values,
+      schemeRef,
       direction: 'y',
-      setValue: hanelSetValue,
+      setValue: handleSetValue,
+      setValues: handleSetValues,
     }),
-    [values, hanelSetValue],
+    [values, handleSetValue],
   );
 
   return (
@@ -45,5 +54,11 @@ function FormProvider({ children }: FormProvider): JSX.Element {
     </FormContext.Provider>
   );
 }
+
+const schemeState = {
+  idMap: {},
+  nameMap: {},
+  model: [],
+};
 
 export default React.memo(FormProvider);

@@ -7,9 +7,8 @@ type eventFunc = (values: Values, name?: string) => void | false;
 
 export interface CheckboxCreatorProps
   extends Pick<CheckboxProps, 'variant' | 'name'> {
-  values?: Values;
-  defaultValues?: Values;
-  stateBind?: StateBind;
+  value?: Values;
+  defaultValue?: Values;
   model?: CheckboxCreatorModel[];
   children?: React.ReactChildren;
   onChange?: eventFunc;

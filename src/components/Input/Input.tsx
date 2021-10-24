@@ -33,6 +33,8 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
       [onChange],
     );
 
+    // console.log('> input: ', JSON.stringify(args.value));
+
     return (
       <div
         className={`Mongsil-input-root ${isFocused ? 'focused' : ''} ${

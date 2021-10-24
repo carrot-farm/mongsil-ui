@@ -5,13 +5,19 @@ import Input from './components/Input';
 import Checkbox from './components/Checkbox';
 import CheckboxCreator from './components/CheckboxCreator';
 import Radio from './components/Radio';
+import RadioCreator from './components/RadioCreator/RadioCreator';
 import Switch from './components/Switch';
 import Select, { Option } from './components/Select';
+import SelectCreator from './components/SelectCreator';
 import FormItem from './components/FormItem';
 import Form from './components/Form';
 
+import useForm from './hooks/useForm';
+
 function App(): any {
-  const radioChange = () => console.log('> chagne');
+  const { form, setValue } = useForm();
+  // console.log('> app: ', setValue);
+
   return (
     <div className="app bg-base">
       <div className="p-5 flex">
@@ -35,26 +41,40 @@ function App(): any {
       <div className="p-5 flex space-x-4">
         <Input />
       </div>
-      <div className="p-5 flex space-x-4">
+      {/* <div className="p-5 flex space-x-4">
         <Select name="select" value={'a'}>
           <Option value="a">option 1</Option>
           <Option value="b">option 2</Option>
           <Option value="c">option 3</Option>
         </Select>
-      </div>
+      </div> */}
       <div className="p-5 flex space-x-4">
+        <SelectCreator
+          name="select_creator"
+          // value="b"
+          defaultValue="b"
+          model={[
+            { label: 'a', value: 'a' },
+            { label: 'b', value: 'b' },
+            { label: 'c', value: 'c' },
+          ]}
+          onChange={(v, n) => console.log('> ', v, n)}
+        />
+      </div>
+
+      {/* <div className="p-5 flex space-x-4">
         <Checkbox label="emboss" variant="emboss" />
         <Checkbox label="emboss-outline " variant="emboss-outline" />
         <Checkbox label="emboss-fill" variant="emboss-fill" />
-      </div>
-      <div className="p-5 flex space-x-4">
+      </div> */}
+      {/* <div className="p-5 flex space-x-4">
         <Checkbox label="dent" variant="dent" />
         <Checkbox label="dent-outline " variant="dent-outline" />
-      </div>
+      </div> */}
       <div className="p-5 flex space-x-4">
         <CheckboxCreator
           name="state_both"
-          values={['a', 'c']}
+          // value={['a', 'c']}
           model={[
             { label: 'a', value: 'a' },
             { label: 'b', value: 'b' },
@@ -68,19 +88,19 @@ function App(): any {
           name="emboss-radio"
           label="emboss-a"
           value="a"
-          onChange={radioChange}
+          onChange={(v, n) => console.log(v, n)}
         />
         <Radio
           name="emboss-radio"
           label="emboss-b"
           value="b"
-          onChange={radioChange}
+          onChange={(v, n) => console.log(v, n)}
         />
         <Radio
           name="emboss-radio"
           label="emboss-c"
           value="c"
-          onChange={radioChange}
+          onChange={(v, n) => console.log(v, n)}
         />
       </div>
       <div className="p-5 flex space-x-4">
@@ -95,10 +115,25 @@ function App(): any {
         />
       </div>
       <div className="p-5 flex space-x-4">
+        <RadioCreator
+          name="radio-creator-1"
+          // value="b"
+          defaultValue="b"
+          model={[
+            { label: 'radio-a', value: 'a' },
+            { label: 'radio-b', value: 'b' },
+            { label: 'radio-c', value: 'c' },
+          ]}
+          onChange={(value, name) => console.log(name, value)}
+        />
+      </div>
+
+      <div className="p-5 flex space-x-4">
         <Switch name="switch-dent" variant="dent" />
         <Switch name="switch-emboss" variant="emboss" />
       </div>
-      <div className="p-5 flex space-x-4">
+
+      {/* <div className="p-5 flex space-x-4">
         <FormItem
           label="label"
           helper="helperText"
@@ -115,23 +150,101 @@ function App(): any {
         >
           <Input />
         </FormItem>
-      </div>
+      </div> */}
+
+      <h5 className="pb-2 border-b border-gray-500 text-xl">Form & FormItem</h5>
       <div className="p-5 flex space-x-4">
-        <Form onSubmit={console.log}>
-          <FormItem
-            label="label"
-            helper="helperText"
-            name="test-input-1"
-            value="test"
-            onChange={(value) => console.log(value)}
+        <Form form={form}>
+          <FormItem label="label" name="input-1">
+            <Input />
+          </FormItem>
+          <FormItem label="label-2" name="input-2">
+            <Input />
+          </FormItem>
+          <FormItem label="label-2" name="input-3">
+            <Input />
+          </FormItem>
+          <FormItem label="label-2" name="input-4">
+            <Input />
+          </FormItem>
+
+          <Button type="button" onClick={() => setValue('input-1', 'test')}>
+            submit
+          </Button>
+
+          {/* <FormItem
+            label="select-1"
+            name="select"
+            value="b"
+            // onChange={() => false}
+            onChange={(value, name) => console.log('> select: ', name, value)}
           >
-            <Input />
+            <Select>
+              <Option value="a">option 1</Option>
+              <Option value="b">option 2</Option>
+              <Option value="c">option 3</Option>
+            </Select>
+          </FormItem> */}
+
+          {/* <FormItem
+            label="checkbox"
+            name="chekcbox-1"
+            // value={true}
+            // onChange={() => false}
+            onChange={(value, name) => console.log('> checkbox :', name, value)}
+          >
+            <Checkbox label="a" />
+          </FormItem> */}
+
+          {/* <FormItem
+            label="checkbox-creator"
+            name="checkbox-creator-1"
+            value={['a', 'c']}
+            onChange={() => false}
+            // onChange={(value, name) =>
+            //   console.log('> checkbox-creator :', name, value)
+            // }
+          >
+            <CheckboxCreator
+              model={[
+                { label: 'a', value: 'a' },
+                { label: 'b', value: 'b' },
+                { label: 'c', value: 'c' },
+              ]}
+            />
+          </FormItem> */}
+
+          {/* <FormItem
+            label="radio"
+            name="radio"
+            value="a"
+            // stateBind="stateOnly"
+            onChange={(v, n) => console.log(v, n)}
+            // onChange={() => false}
+          >
+            <RadioCreator
+              model={[
+                { label: 'a', value: 'a' },
+                { label: 'b', value: 'b' },
+                { label: 'c', value: 'c' },
+              ]}
+            />
           </FormItem>
-          <FormItem label="label-2" name="test-input-2">
-            <Input />
-          </FormItem>
+            */}
+
+          {/* <FormItem
+            label="switch"
+            name="switch"
+            value={true}
+            // stateBind="stateOnly"
+            // onChange={() => false}
+            // onChange={(value, name) => console.log('> switch: ', value, name)}
+          >
+            <Switch variant="dent" />
+          </FormItem> */}
         </Form>
       </div>
+      <div className="h-80"></div>
     </div>
   );
 }
