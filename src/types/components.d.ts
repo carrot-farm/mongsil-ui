@@ -1,7 +1,67 @@
+/** ===== form 요소의 속성 ===== */
 export type StateBind = 'none' | 'stateOnly' | 'both';
-
 export type ValueTypes = string | string[] | boolean | number | undefined;
-
 export type Values = Record<string, ValueTypes>;
-
 export type InputChange = (value?: ValueTypes, name) => void | false;
+export type Direction = 'x' | 'y';
+
+/** ===== rule  ===== */
+export type RuleRequired = ['required'];
+export type RuleLength = ['length', minLength: number, maxLength?: number];
+export type RuleMin = ['min', min: number];
+export type RuleMax = ['max', max: number];
+export type Rule = RuleRequired | RuleLength | RuleMin | RuleMax;
+export type RuleType = 'required' | 'length' | 'min' | 'max';
+export type RuleOptions = [] | [number] | [number, (number | undefined)?];
+export type MessageFn = (validateFailed: ValidateFailed) => string;
+interface ValidationResult {
+  /** true일 경우 유효성 검증 통과 */
+  pass: boolean;
+  /** 에러 메시지 */
+  message?: string;
+}
+/** 유효성 검사 실패시 반환 객체 */
+export interface ValidateFailed {
+  /** 값 */
+  value: ValueTypes;
+  /** 룰 */
+  rule: Rule;
+}
+export interface RulesItem {
+  rule: Rule;
+  message?: string;
+}
+export type Rules = RulesItem[];
+
+/** ===== form scheme 객체 ===== */
+export interface FormModelItem {
+  /** 폼요소의 아이디 */
+  id: string;
+  /** FormItem의 className 속성 */
+  className?: string;
+  /** 폼 요소의 name 속성 */
+  name?: string;
+  /** 레이블 */
+  label?: string;
+  /** 헬퍼 텍스트 */
+  helper?: string;
+  /** value의 연결 형식  */
+  stateBind?: StateBind;
+  /** 라벨의 x or y 정렬 */
+  direction: Direction;
+  /** true이 경우 필수값 */
+  required?: boolean;
+  /** validation rules */
+  ruels?: Rules;
+}
+
+export type FormModel = ModelItem[];
+
+export interface FormScheme {
+  /** 모델의 id값을 key로 가지고 index를 value로 가지는 객체 */
+  idMap: Record<string, number>;
+  /** 모델의 name을 key로 가지고 index를 value로 가지는 객체 */
+  nameMap: Record<string, number>;
+  /** form model */
+  model: FormModel;
+}
