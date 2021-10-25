@@ -4,10 +4,7 @@ import { ValueTypes, Values } from '../types/components';
 import { FormContextProps } from '../contexts/formContext';
 
 export interface FormRef
-  extends Pick<
-    FormContextProps,
-    'values' | 'rules' | 'setValue' | 'setValues'
-  > {}
+  extends Pick<FormContextProps, 'values' | 'setValue' | 'setValues'> {}
 
 interface UseForm {
   /** form 핸들러 등을 가져올 ref */
@@ -21,9 +18,9 @@ interface UseForm {
   /** 값을 가져옴 */
   getValues: () => ValueTypes | Values;
   /** validation trigger */
-  validate: (name: string | string[]) => void;
-  /** 모델을 업데이트 */
-  updateModel?: () => void;
+  // validate: (name: string | string[]) => void;
+  /** 모델을 업데이트(model을 사용하는 <FormCreator />에서만 사용) */
+  // updateModel?: () => void;
 }
 
 /** ===== Hook ===== */

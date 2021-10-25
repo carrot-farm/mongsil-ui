@@ -35,17 +35,16 @@ function FormItem({
   const {
     values,
     scheme,
-    schemeRef,
     setValue: setFormValue,
+    setModel,
   } = useContext(FormContext);
   // console.log('> FormItem', children);
 
   const [id] = useState(
     () => itemId ?? (name ?? '') + Math.random().toString(32).substr(2),
   );
-  // const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>('');
-  const [required, setRequired] = useState(() => _required);
+  const [required, setRequired] = useState<boolean>(() => !!_required);
 
   /** 값 변경 */
   const handleChange = useCallback(
@@ -91,65 +90,42 @@ function FormItem({
     }
   }, [value, checked, stateBind, setFormValue]);
 
-  /** 스키마 셋 */
+  /** rules에 `required` 가 있을 경우 처리 */
   useEffect(() => {
-    const { idMap, model } = schemeRef.current;
-
-    if (idMap[id] !== undefined) {
-      return;
-    }
-
-    // console.log(id, schemeRef.current);
-    const newModel = {
-      ...model,
-      [id]: {
-        label,
-        helper,
-        name,
-        rules,
-        required,
-        stateBind,
-        direction,
-        className,
-      },
-    };
-    const index = schemeRef.current.model.push(newModel) - 1; // 인덱스
-
-    // # set id map
-    schemeRef.current.idMap = {
-      ...schemeRef.current.idMap,
-      [id]: index,
-    };
-
-    // # set name map
-    if (name) {
-      schemeRef.current.nameMap = {
-        ...schemeRef.current.nameMap,
-        [id]: index,
-      };
-    }
-  }, [
-    label,
-    helper,
-    name,
-    rules,
-    required,
-    stateBind,
-    direction,
-    className,
-    id,
-  ]);
-
-  useEffect(() => {
-    const isRequired = !!rules?.some(
-      ({ rule }) => (console.log(rule), rule[0] === 'required'),
-    );
+    const isRequired = !!rules?.some(({ rule }) => rule[0] === 'required');
 
     if (isRequired === true) {
       setRequired(isRequired);
-      console.log('> ', isRequired);
     }
   }, [rules]);
+
+  /** 모델 셋 */
+  useEffect(() => {
+    const model = {
+      id,
+      className,
+      name,
+      label,
+      helper,
+      stateBind,
+      direction,
+      required,
+      rules,
+    };
+
+    setModel(model);
+  }, [
+    id,
+    className,
+    name,
+    label,
+    helper,
+    stateBind,
+    direction,
+    required,
+    rules,
+    setModel,
+  ]);
 
   /** 랜더링 */
   return (

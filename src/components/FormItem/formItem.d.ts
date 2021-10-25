@@ -1,6 +1,12 @@
 import React from 'react';
 
-import { ValueTypes, StateBind, InputChange } from '../../types/components';
+import {
+  ValueTypes,
+  StateBind,
+  InputChange,
+  Rules,
+  Direction,
+} from '../../types/components';
 
 export interface FormItemProps {
   /** formItem을 구분짓기 위한 id. 지정안할시 자동 생성됨 */
@@ -12,10 +18,10 @@ export interface FormItemProps {
   value?: ValueTypes;
   checked?: ValueTypes;
   defaultValue?: ValueTypes;
-  rules?: string;
+  rules?: Rules;
   required?: boolean;
   stateBind?: StateBind;
-  direction?: 'x' | 'y';
+  direction?: Direction;
   children?: React.ReactNode;
   onChange?: InputChange;
 }
