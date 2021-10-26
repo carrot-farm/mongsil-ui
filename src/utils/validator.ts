@@ -5,15 +5,17 @@ import {
   Rules,
   RuleOptions,
   ValidationResult,
+  ValidateFailedModel,
+  FormModel,
 } from '../types/components';
 
-export const validate = (rules: Rules, value: ValueTypes) => {
-  // console.log(rules);
+export const validate = (rules: Rules, value: ValueTypes): ValidationResult => {
   const result: ValidationResult = {
     pass: true,
     message: undefined,
   };
 
+  // # 검사
   rules.forEach(({ rule, message }) => {
     if (result.pass === false) {
       return;
@@ -28,13 +30,43 @@ export const validate = (rules: Rules, value: ValueTypes) => {
     // console.log('> pass: ', checked);
   });
 
-  // console.log(result);
+  return result;
+};
+
+/** model전체를 검사한다 */
+export const validateModel = (
+  model: FormModel,
+  values: Values,
+): ValidateFailedModel[] => {
+  const result: ValidateFailedModel[] = [];
+
+  model.forEach((a) => {
+    const newRules = a.rules ? [...a.rules] : [];
+    const curValue = values[a.name || ''];
+
+    if (a.required === true) {
+      newRules.push({ rule: ['required'], message: '' });
+    }
+    const { pass, message } = validate(newRules, curValue);
+
+    if (pass === false) {
+      result.push({
+        ...a,
+        error: {
+          pass,
+          message,
+        },
+      });
+    }
+  });
+
   return result;
 };
 
 /** `true`리턴 시 통과, false 리턴 시 실패 */
 const pass = {
-  required: (value: ValueTypes) => !!value,
+  required: (value: ValueTypes) =>
+    Array.isArray(value) ? value.length > 0 : !!value,
   length: (
     value: ValueTypes,
     [min, max]: [min?: number, max?: number] = [],
@@ -44,7 +76,10 @@ const pass = {
     }
 
     // console.log('> length: ', value, value.length, min, max);
-    if (typeof value === 'string' && min && value.length >= min) {
+    if (
+      typeof value === 'string' ||
+      (Array.isArray(value) && min && value.length >= min)
+    ) {
       if (max) {
         if (value.length <= max) {
           return true;

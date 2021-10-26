@@ -16,8 +16,8 @@ export interface FormItemProps {
   helper?: string;
   name?: string;
   value?: ValueTypes;
-  checked?: ValueTypes;
   defaultValue?: ValueTypes;
+  checked?: ValueTypes;
   rules?: Rules;
   required?: boolean;
   stateBind?: StateBind;
@@ -35,4 +35,10 @@ export interface FormItemChild
   children?: React.ReactNode;
 }
 
-export type DisplayName = 'Input' | 'Checkbox' | 'CheckboxCreator' | 'Switch';
+export type DisplayName =
+  | 'Input'
+  | 'Checkbox'
+  | 'CheckboxCreator'
+  | 'Switch'
+  | 'Select'
+  | 'SelectCreator';
