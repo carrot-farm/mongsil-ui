@@ -10,13 +10,15 @@ import {
 
 import FormProvider from './FormProvider';
 import { FormContext } from '../../contexts/formContext';
+import { validateModel } from '../../utils/validator';
 
 import { FormProps } from './form.d';
 
 /** ===== component ===== */
 const Form = forwardRef<HTMLFormElement, FormProps>(
   ({ form, children, onSubmit, ...args }, ref) => {
-    const { values, setValue, setValues } = useContext(FormContext);
+    const { values, scheme, setValue, setValues, setErrors } =
+      useContext(FormContext);
     // console.log('> Form:', setValue);
 
     /** event: submit */
@@ -25,13 +27,29 @@ const Form = forwardRef<HTMLFormElement, FormProps>(
     >(
       (e) => {
         e.preventDefault();
-        // console.log('> submit: ', scheme);
+        // # 유효성 검사
+        const validateFailed = validateModel(scheme.model, values);
+        if (validateFailed.length > 0) {
+          setErrors(() => {
+            const result = validateFailed
+              .filter((a) => a.error)
+              .reduce((acc, cur) => {
+                return {
+                  ...acc,
+                  [cur.id]: cur.error?.message,
+                };
+              }, {});
+            return result;
+          });
+          return;
+        }
 
-        if (onSubmit) {
+        // # call onSubmit
+        if (typeof onSubmit === 'function') {
           onSubmit(values);
         }
       },
-      [values, onSubmit],
+      [values, scheme, onSubmit, setErrors],
     );
 
     /** form ref 가 있을 경우 전달 */

@@ -6,6 +6,8 @@ import {
   Values,
   FormModelItem,
   FormScheme,
+  ErrorType,
+  Errors,
 } from '../../types/components';
 import { FormContext, FormContextProps } from '../../contexts/formContext';
 
@@ -18,11 +20,11 @@ interface FormProviderProps {
 /** ===== component ===== */
 function FormProvider({ children }: FormProviderProps): JSX.Element {
   const [values, setValues] = useState<Record<string, ValueTypes>>(() => ({}));
+  const [errors, setErrors] = useState<Errors>(() => ({}));
   const [scheme, setScheme] = useState<FormScheme>(() => ({ ...schemeState }));
 
   /** 단일 값을 변경 */
   const handleSetValue = useCallback((name: string, value: ValueTypes) => {
-    // console.log('> handleSetValue:', name, value);
     if (name === undefined) {
       return;
     }
@@ -42,18 +44,17 @@ function FormProvider({ children }: FormProviderProps): JSX.Element {
   }, []);
 
   /** 모델을 추가 하거나 수정 */
-  const setModel = useCallback((model: FormModelItem) => {
+  const handleModel = useCallback((model: FormModelItem) => {
     if (typeof model.id !== 'string') {
       throw new Error('invalid id: ' + model.id);
     }
 
     setScheme((a) => {
       // # 이미 존재할 경우 모델 업데이트
-      if (a.idMap[model.id]) {
+      if (a.idMap[model.id] !== undefined) {
         const newModel = a.model.map((m) => {
           return m.id === model.id ? model : m;
         });
-        console.log('> update');
 
         return {
           ...a,
@@ -80,18 +81,58 @@ function FormProvider({ children }: FormProviderProps): JSX.Element {
     });
   }, []);
 
+  /** 에러 정보 수정 */
+  const setError = useCallback(
+    (id, message) => {
+      setErrors((_errors) => {
+        return { ..._errors, [id]: message };
+      });
+    },
+    [setErrors],
+  );
+
+  /** 에러 필드 추가 */
+  const addError = useCallback(
+    (id) => {
+      setErrors((a) => {
+        if (a[id] !== undefined) {
+          return a;
+        }
+
+        return { ...a, [id]: null };
+      });
+    },
+    [setErrors],
+  );
+
   /** form context 정의 */
   const formContextValue = useMemo<FormContextProps>(
     () => ({
       values,
+      errors,
       scheme,
       direction: 'y',
       setValue: handleSetValue,
       setValues: handleSetValues,
-      setModel,
+      setModel: handleModel,
+      addError,
+      setError,
+      setErrors,
     }),
-    [values, scheme, handleSetValue, handleSetValues, setModel],
+    [
+      values,
+      errors,
+      scheme,
+      handleSetValue,
+      handleSetValues,
+      handleModel,
+      setError,
+      addError,
+      setErrors,
+    ],
   );
+
+  // console.log('> ', errors);
 
   return (
     <FormContext.Provider value={formContextValue}>

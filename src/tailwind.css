@@ -157,7 +157,7 @@
     @apply border-transparent dent-100;
   }
   .Mongsil-input-root > .Mongsil-input-base {
-    @apply appearance-none bg-transparent px-4 py-2 text-gray-700 leading-tight focus:outline-none focus:bg-transparent;
+    @apply appearance-none bg-transparent px-4 py-2 text-gray-700 focus:outline-none focus:bg-transparent;
   }
 
   /* ===== checkbox ===== */

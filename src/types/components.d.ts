@@ -22,16 +22,24 @@ interface ValidationResult {
 }
 /** 유효성 검사 실패시 반환 객체 */
 export interface ValidateFailed {
-  /** 값 */
   value: ValueTypes;
-  /** 룰 */
   rule: Rule;
+}
+export interface ValidateFailedModel extends FormModelItem {
+  error: {
+    pass: boolean;
+    message: null | string | undefined;
+  };
 }
 export interface RulesItem {
   rule: Rule;
   message?: string;
 }
 export type Rules = RulesItem[];
+
+/** ===== errors ===== */
+export type ErrorType = string | null | undefined;
+export type Errors = Record<string, ErrorType>;
 
 /** ===== form scheme 객체 ===== */
 export interface FormModelItem {
@@ -52,10 +60,10 @@ export interface FormModelItem {
   /** true이 경우 필수값 */
   required?: boolean;
   /** validation rules */
-  ruels?: Rules;
+  rules?: Rules;
 }
 
-export type FormModel = ModelItem[];
+export type FormModel = FormModelItem[];
 
 export interface FormScheme {
   /** 모델의 id값을 key로 가지고 index를 value로 가지는 객체 */

@@ -22,6 +22,7 @@ function FormItem({
   label,
   helper,
   name,
+  defaultValue,
   value,
   checked,
   rules,
@@ -34,16 +35,17 @@ function FormItem({
 }: FormItemProps): JSX.Element {
   const {
     values,
-    scheme,
+    errors,
     setValue: setFormValue,
     setModel,
+    addError,
+    setError,
   } = useContext(FormContext);
   // console.log('> FormItem', children);
 
   const [id] = useState(
     () => itemId ?? (name ?? '') + Math.random().toString(32).substr(2),
   );
-  const [errorMessage, setErrorMessage] = useState<string | null>('');
   const [required, setRequired] = useState<boolean>(() => !!_required);
 
   /** 값 변경 */
@@ -55,12 +57,12 @@ function FormItem({
           const result = validate(rules, newValue);
 
           if (result.pass === false && result.message) {
-            setErrorMessage(result.message);
+            setError(id, result.message);
           } else {
-            setErrorMessage(null);
+            setError(id, null);
           }
         } else {
-          setErrorMessage(null);
+          setError(id, null);
         }
       }
 
@@ -78,10 +80,23 @@ function FormItem({
         setFormValue(name, newValue);
       }
     },
-    [stateBind, id, rules, onChange, setFormValue],
+    [stateBind, id, rules, onChange, setFormValue, setError],
   );
 
   // console.log('> Fo: ', values);
+
+  /** 기본 값 */
+  useEffect(() => {
+    if (
+      name === undefined ||
+      defaultValue === undefined ||
+      values[name] !== undefined
+    ) {
+      return;
+    }
+
+    setFormValue(name, defaultValue);
+  }, [name, values, defaultValue, setFormValue]);
 
   /** 상태에 따라 변환 */
   useEffect(() => {
@@ -127,6 +142,13 @@ function FormItem({
     setModel,
   ]);
 
+  /** 에러 추가 */
+  useEffect(() => {
+    addError(id);
+  }, [id, addError]);
+
+  // console.log('> ', errors);
+
   /** 랜더링 */
   return (
     <div
@@ -156,7 +178,6 @@ function FormItem({
                 newValue = initialValues.route(displayName);
               }
             }
-            // console.log('> ', displayName, JSON.stringify(newValue));
 
             return (
               <CloneComponent
@@ -173,12 +194,12 @@ function FormItem({
           }
         })}
 
-        {!errorMessage && helper && (
+        {!errors[id] && helper && (
           <div className="Mongsil-form_item-helper_text">{helper}</div>
         )}
 
-        {errorMessage && (
-          <div className="Mongsil-form_item-error_message">{errorMessage}</div>
+        {errors[id] && (
+          <div className="Mongsil-form_item-error_message">{errors[id]}</div>
         )}
       </div>
     </div>
@@ -187,10 +208,13 @@ function FormItem({
 
 /** 컴포넌트별 초기값 */
 const initialValues = {
+  Input: () => '',
   Checkbox: () => false,
   CheckboxCreator: (): string[] => [],
   Switch: () => false,
-  Input: () => '',
+  Select: () => '',
+  SelectCreator: () => '',
+  RadioCreator: () => '',
   route(displayName: DisplayName): ValueTypes {
     return this[displayName]();
   },

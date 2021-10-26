@@ -154,23 +154,45 @@ function App(): any {
 
       <h5 className="pb-2 border-b border-gray-500 text-xl">Form & FormItem</h5>
       <div className="p-5 flex space-x-4">
-        <Form form={form}>
-          <FormItem label="label" name="input-1">
+        <Form form={form} onSubmit={(values) => console.log(values)}>
+          {/* <FormItem
+            label="label"
+            name="input-1"
+            rules={[{ rule: ['required'], message: '값을 입력하십시요' }]}
+          >
             <Input />
+          </FormItem> */}
+          <FormItem
+            label="select"
+            name="test"
+            value="b"
+            // rules={[{ rule: ['required'], message: '에러' }]}
+          >
+            <RadioCreator
+              model={[
+                { label: 'radio-a', value: 'a' },
+                { label: 'radio-b', value: 'b' },
+                { label: 'radio-c', value: 'c' },
+              ]}
+            />
           </FormItem>
-          <FormItem label="label-2" name="input-2">
+          {/* <FormItem
+            label="label-2"
+            name="input-2"
+            rules={[{ rule: ['length', 3, 5], message: '3글자 이상 5자 이하' }]}
+          >
             <Input />
-          </FormItem>
+          </FormItem> */}
+          {/*
           <FormItem label="label-2" name="input-3">
             <Input />
           </FormItem>
           <FormItem label="label-2" name="input-4">
             <Input />
-          </FormItem>
+          </FormItem> */}
 
-          <Button type="button" onClick={() => setValue('input-1', 'test')}>
-            submit
-          </Button>
+          {/* <Button type="submit" onClick={() => setValue('input-1', 'test')}> */}
+          <Button type="submit">submit</Button>
 
           {/* <FormItem
             label="select-1"

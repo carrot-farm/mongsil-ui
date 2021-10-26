@@ -28,4 +28,6 @@ const SelectCreator = forwardRef<HTMLSpanElement, SelectCreatorProps>(
   },
 );
 
+SelectCreator.displayName = 'SelectCreator';
+
 export default memo(SelectCreator);
