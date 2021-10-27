@@ -5,5 +5,7 @@ export interface ButtonProps
   children?: React.ReactNode;
   className?: string;
   variant?: 'emboss' | 'dent';
+  /** true 일 경우 비활성화 */
+  disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }

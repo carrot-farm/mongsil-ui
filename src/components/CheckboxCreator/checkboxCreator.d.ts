@@ -9,6 +9,7 @@ export interface CheckboxCreatorProps
   extends Pick<CheckboxProps, 'variant' | 'name'> {
   value?: Values;
   defaultValue?: Values;
+  disabled?: boolean;
   model?: CheckboxCreatorModel[];
   children?: React.ReactChildren;
   onChange?: eventFunc;

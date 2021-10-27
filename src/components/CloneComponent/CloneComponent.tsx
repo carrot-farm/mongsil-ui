@@ -13,11 +13,13 @@ function CloneComponent({
   checked,
   className,
   child,
+  disabled,
   onChange,
 }: CloneComponentProps): ReturnType<typeof cloneElement> {
   const props: Omit<CloneComponentProps, 'child'> = {
     name,
     className,
+    disabled,
     onChange,
   };
 

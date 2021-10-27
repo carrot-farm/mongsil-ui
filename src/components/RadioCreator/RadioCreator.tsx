@@ -15,6 +15,7 @@ const RadioCreator = forwardRef<HTMLDivElement, RadioCreatorProps>(
       model,
       className,
       onChange,
+      ...args
     },
     ref,
   ) => {
@@ -63,6 +64,7 @@ const RadioCreator = forwardRef<HTMLDivElement, RadioCreatorProps>(
               () => handleChange(a.value, name),
               [a, name, _value],
             )}
+            {...args}
           />
         ))}
       </div>

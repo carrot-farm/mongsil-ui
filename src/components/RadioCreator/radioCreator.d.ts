@@ -8,7 +8,13 @@ interface RaioModelItem {
 export interface RadioCreatorProps
   extends Pick<
     RadioProps,
-    'variant' | 'name' | 'value' | 'defaultValue' | 'className' | 'onChange'
+    | 'variant'
+    | 'name'
+    | 'value'
+    | 'defaultValue'
+    | 'className'
+    | 'onChange'
+    | 'disabled'
   > {
   model?: RaioModelItem[];
 }

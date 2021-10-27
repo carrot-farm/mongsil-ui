@@ -12,6 +12,7 @@ import FormProvider from './FormProvider';
 import { FormContext } from '../../contexts/formContext';
 import { validateModel } from '../../utils/validator';
 
+import { Values } from '../../types/components';
 import { FormProps } from './form.d';
 
 /** ===== component ===== */
@@ -27,12 +28,23 @@ const Form = forwardRef<HTMLFormElement, FormProps>(
     >(
       (e) => {
         e.preventDefault();
+        const filteredValues: Values = {};
+        const filteredModel = scheme.model.filter(
+          (a) => a.name && a.disabled !== true,
+        );
+        filteredModel.forEach((a) => {
+          if (a.name) {
+            filteredValues[a.name] = values[a.name];
+          }
+        });
+        // console.log('> ', validateFailed);
+
         // # 유효성 검사
-        const validateFailed = validateModel(scheme.model, values);
+        const validateFailed = validateModel(filteredModel, filteredValues);
         if (validateFailed.length > 0) {
           setErrors(() => {
             const result = validateFailed
-              .filter((a) => a.error)
+              .filter((a) => !!a.error)
               .reduce((acc, cur) => {
                 return {
                   ...acc,
@@ -46,7 +58,7 @@ const Form = forwardRef<HTMLFormElement, FormProps>(
 
         // # call onSubmit
         if (typeof onSubmit === 'function') {
-          onSubmit(values);
+          onSubmit(filteredValues);
         }
       },
       [values, scheme, onSubmit, setErrors],

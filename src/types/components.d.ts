@@ -57,8 +57,10 @@ export interface FormModelItem {
   stateBind?: StateBind;
   /** 라벨의 x or y 정렬 */
   direction: Direction;
-  /** true이 경우 필수값 */
+  /** true 일 경우 필수값 */
   required?: boolean;
+  /** true 일 경우 비활성화 */
+  disabled?: boolean;
   /** validation rules */
   rules?: Rules;
 }

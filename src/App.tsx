@@ -35,24 +35,29 @@ function App(): any {
         <div className="w-20 h-20 bg-base dent-500 ml-10"></div>
       </div>
       <div className="p-5 flex space-x-4">
-        <Button variant="emboss">emboss</Button>
-        <Button variant="dent">dent</Button>
+        <Button variant="emboss" disabled>
+          emboss
+        </Button>
+        <Button variant="dent" disabled>
+          dent
+        </Button>
       </div>
       <div className="p-5 flex space-x-4">
-        <Input />
+        <Input value="test" disabled />
       </div>
-      {/* <div className="p-5 flex space-x-4">
-        <Select name="select" value={'a'}>
+      <div className="p-5 flex space-x-4">
+        <Select name="select" value={'a'} disabled>
           <Option value="a">option 1</Option>
           <Option value="b">option 2</Option>
           <Option value="c">option 3</Option>
         </Select>
-      </div> */}
+      </div>
       <div className="p-5 flex space-x-4">
         <SelectCreator
           name="select_creator"
           // value="b"
           defaultValue="b"
+          disabled
           model={[
             { label: 'a', value: 'a' },
             { label: 'b', value: 'b' },
@@ -62,11 +67,16 @@ function App(): any {
         />
       </div>
 
-      {/* <div className="p-5 flex space-x-4">
-        <Checkbox label="emboss" variant="emboss" />
-        <Checkbox label="emboss-outline " variant="emboss-outline" />
-        <Checkbox label="emboss-fill" variant="emboss-fill" />
-      </div> */}
+      <div className="p-5 flex space-x-4">
+        <Checkbox label="emboss" variant="emboss" disabled />
+        <Checkbox
+          label="emboss-outline "
+          variant="emboss-outline"
+          disabled
+          checked
+        />
+        <Checkbox label="emboss-fill" variant="emboss-fill" disabled />
+      </div>
       {/* <div className="p-5 flex space-x-4">
         <Checkbox label="dent" variant="dent" />
         <Checkbox label="dent-outline " variant="dent-outline" />
@@ -74,7 +84,8 @@ function App(): any {
       <div className="p-5 flex space-x-4">
         <CheckboxCreator
           name="state_both"
-          // value={['a', 'c']}
+          value={['a', 'c']}
+          disabled
           model={[
             { label: 'a', value: 'a' },
             { label: 'b', value: 'b' },
@@ -88,29 +99,47 @@ function App(): any {
           name="emboss-radio"
           label="emboss-a"
           value="a"
+          checked
+          disabled
           onChange={(v, n) => console.log(v, n)}
         />
         <Radio
           name="emboss-radio"
           label="emboss-b"
           value="b"
+          disabled
           onChange={(v, n) => console.log(v, n)}
         />
         <Radio
           name="emboss-radio"
           label="emboss-c"
           value="c"
+          disabled
           onChange={(v, n) => console.log(v, n)}
         />
       </div>
       <div className="p-5 flex space-x-4">
-        <Radio name="dent-radio" label="dent-a" value="a" variant="dent" />
-        <Radio name="dent-radio" label="dent-b" value="b" variant="dent" />
+        <Radio
+          name="dent-radio"
+          label="dent-a"
+          value="a"
+          variant="dent"
+          disabled
+        />
+        <Radio
+          name="dent-radio"
+          label="dent-b"
+          value="b"
+          variant="dent"
+          disabled
+        />
         <Radio
           name="dent-radio"
           label="dent-c"
           value="c"
           variant="dent"
+          disabled
+          checked
           onChange={() => false}
         />
       </div>
@@ -119,6 +148,7 @@ function App(): any {
           name="radio-creator-1"
           // value="b"
           defaultValue="b"
+          disabled
           model={[
             { label: 'radio-a', value: 'a' },
             { label: 'radio-b', value: 'b' },
@@ -129,8 +159,10 @@ function App(): any {
       </div>
 
       <div className="p-5 flex space-x-4">
-        <Switch name="switch-dent" variant="dent" />
-        <Switch name="switch-emboss" variant="emboss" />
+        <Switch name="switch-dent" variant="dent" disabled />
+        <Switch name="switch-emboss" variant="emboss" disabled />
+        <Switch name="switch-dent" variant="dent" disabled checked />
+        <Switch name="switch-emboss" variant="emboss" disabled checked />
       </div>
 
       {/* <div className="p-5 flex space-x-4">
@@ -155,14 +187,16 @@ function App(): any {
       <h5 className="pb-2 border-b border-gray-500 text-xl">Form & FormItem</h5>
       <div className="p-5 flex space-x-4">
         <Form form={form} onSubmit={(values) => console.log(values)}>
-          {/* <FormItem
+          <FormItem
             label="label"
             name="input-1"
+            value="test"
+            disabled
             rules={[{ rule: ['required'], message: '값을 입력하십시요' }]}
           >
             <Input />
-          </FormItem> */}
-          <FormItem
+          </FormItem>
+          {/* <FormItem
             label="select"
             name="test"
             value="b"
@@ -175,14 +209,15 @@ function App(): any {
                 { label: 'radio-c', value: 'c' },
               ]}
             />
-          </FormItem>
-          {/* <FormItem
+          </FormItem> */}
+          <FormItem
             label="label-2"
             name="input-2"
-            rules={[{ rule: ['length', 3, 5], message: '3글자 이상 5자 이하' }]}
+            rules={[{ rule: ['required'], message: '에러' }]}
+            // rules={[{ rule: ['length', 3, 5], message: '3글자 이상 5자 이하' }]}
           >
             <Input />
-          </FormItem> */}
+          </FormItem>
           {/*
           <FormItem label="label-2" name="input-3">
             <Input />

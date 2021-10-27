@@ -10,6 +10,7 @@ export interface SelectProps {
   name?: string;
   value?: string;
   defaultValue?: string;
+  disabled?: boolean;
   onChange?: InputChange;
 }
 
@@ -21,6 +22,7 @@ const Select = forwardRef<HTMLSpanElement, SelectProps>(
       value: _value,
       defaultValue,
       children,
+      disabled,
       onChange,
       ...args
     },
@@ -35,24 +37,34 @@ const Select = forwardRef<HTMLSpanElement, SelectProps>(
     const [label, setLabel] = useState<React.ReactNode>(null);
 
     /** visible 클릭 */
-    const handleVisibleClick = useCallback((event) => {
-      setVisible((v) => {
-        if (!containerRef.current) {
-          return v;
+    const handleVisibleClick = useCallback(
+      (event) => {
+        if (disabled === true) {
+          return;
         }
 
-        if (containerRef.current.contains(event.target)) {
-          return !v;
-        } else {
-          return false;
-        }
-      });
-    }, []);
+        setVisible((v) => {
+          if (!containerRef.current) {
+            return v;
+          }
+
+          if (containerRef.current.contains(event.target)) {
+            return !v;
+          } else {
+            return false;
+          }
+        });
+      },
+      [disabled],
+    );
 
     /** 옵션 클릭 */
     const handleOptionClick = useCallback(
       (v) => {
         // console.log('> option click : ', name, v);
+        if (disabled === true) {
+          return;
+        }
 
         if (onChange && onChange(v, name) === false) {
           return;
@@ -64,7 +76,7 @@ const Select = forwardRef<HTMLSpanElement, SelectProps>(
           setValue(v);
         }
       },
-      [name, _value, onChange],
+      [name, disabled, _value, onChange],
     );
 
     /** input 요소의 값 변경  */
@@ -95,7 +107,9 @@ const Select = forwardRef<HTMLSpanElement, SelectProps>(
 
     return (
       <span
-        className={`Mongsil-select-root  ${className ? className : ''}`}
+        className={`Mongsil-select-root ${
+          disabled === true ? 'disabled' : ''
+        }  ${className ? className : ''}`}
         ref={ref}
       >
         <div className="Mongsil-select-value-container" ref={containerRef}>

@@ -14,6 +14,7 @@ const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
       name,
       checked,
       defaultChecked,
+      disabled,
       onChange,
       onClick,
       ...args
@@ -26,6 +27,10 @@ const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
 
     /** 클릭 이벤트 */
     const handleClick = React.useCallback(() => {
+      if (disabled === true) {
+        return;
+      }
+
       const newValue = !isChecked;
 
       if (onClick) {
@@ -40,7 +45,7 @@ const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
         // console.log('> ', name, checked);
         setIsChecked(newValue);
       }
-    }, [name, checked, isChecked, onClick, onChange]);
+    }, [name, checked, isChecked, disabled, onClick, onChange]);
 
     /** 체인지 이벤트 */
     const handleChange = React.useCallback(() => {}, []);
@@ -53,8 +58,8 @@ const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
     return (
       <span
         className={`Mongsil-checkbox-root ${isChecked ? 'checked' : ''} ${
-          className ? className : ''
-        }`}
+          disabled === true ? 'disabled' : ''
+        } ${className ? className : ''}`}
         ref={ref}
         onClick={handleClick}
       >

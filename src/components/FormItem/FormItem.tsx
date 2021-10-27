@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  useCallback,
-  useEffect,
-  useContext,
-  useState,
-  memo,
-  useLayoutEffect,
-} from 'react';
-import { forwardRef } from 'react';
+import { useCallback, useEffect, useContext, useState, memo } from 'react';
 
 import FormItemLabel from '../FormItemLabel';
 import CloneComponent from '../CloneComponent/CloneComponent';
@@ -18,6 +10,7 @@ import { FormContext } from '../../contexts/formContext';
 import { validate } from '../../utils/validator';
 
 function FormItem({
+  className,
   itemId,
   label,
   helper,
@@ -25,12 +18,12 @@ function FormItem({
   defaultValue,
   value,
   checked,
-  rules,
-  required: _required,
   stateBind = 'both',
   direction = 'y',
+  required: _required,
+  disabled,
   children,
-  className,
+  rules,
   onChange,
 }: FormItemProps): JSX.Element {
   const {
@@ -125,6 +118,7 @@ function FormItem({
       stateBind,
       direction,
       required,
+      disabled,
       rules,
     };
 
@@ -138,6 +132,7 @@ function FormItem({
     stateBind,
     direction,
     required,
+    disabled,
     rules,
     setModel,
   ]);
@@ -154,10 +149,11 @@ function FormItem({
     <div
       className={`Mongsil-form_item-root ${
         direction === 'y' ? 'flex-col' : 'flex-row'
-      } ${className ?? ''}`}
+      } ${disabled === true ? 'disabled' : ''} ${className ?? ''}`}
     >
-      {label && <FormItemLabel label={label} required={required} />}
-
+      {label && (
+        <FormItemLabel disabled={disabled} label={label} required={required} />
+      )}
       <div className="Mongsil-form_item-container">
         {React.Children.map(children, (child) => {
           if (React.isValidElement<FormItemChild>(child)) {
@@ -186,6 +182,7 @@ function FormItem({
                 checked={_checked}
                 className={className}
                 child={child}
+                disabled={disabled}
                 onChange={handleChange}
               />
             );

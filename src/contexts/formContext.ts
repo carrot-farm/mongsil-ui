@@ -3,7 +3,6 @@ import * as React from 'react';
 import {
   ValueTypes,
   Values,
-  Rules,
   FormScheme,
   FormModelItem,
   Errors,
@@ -12,14 +11,14 @@ import {
 
 /** FormContext의 타입 */
 export interface FormContextProps {
+  /** 정렬방향 */
+  direction: 'x' | 'y';
   /** schem */
   scheme: FormScheme;
   /** 폼의 값들 */
   values: Values;
   /** 아이디별 에러 객체 */
   errors: Errors;
-  /** label 정렬방향 */
-  direction: 'x' | 'y';
   /** 값 입력 */
   setValue: (name: string, value: ValueTypes) => void;
   /** 여러개의 값 입력 */

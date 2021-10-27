@@ -737,6 +737,13 @@ video {
     padding-bottom: 0.5rem;
     font-weight: 600;
   }
+.Mongsil-button-root.disabled {
+  cursor: not-allowed;
+  --tw-bg-opacity: 1;
+  background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(156, 163, 175, var(--tw-text-opacity));
+}
 .Mongsil-button-root.emboss {
     box-shadow: var(--emboss-300);
   }
@@ -794,6 +801,13 @@ video {
   background-color: transparent;
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+.Mongsil-input-root.disabled, .Mongsil-input-root.disabled > .Mongsil-input-base {
+  cursor: not-allowed;
+  --tw-bg-opacity: 1;
+  background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(156, 163, 175, var(--tw-text-opacity));
 }
 /* ===== checkbox ===== */
 .Mongsil-checkbox-root {
@@ -880,6 +894,26 @@ video {
 .Mongsil-checkbox-root > label {
   margin-left: 0.75rem;
   cursor: pointer;
+}
+.Mongsil-checkbox-root.disabled {
+  cursor: not-allowed !important;
+}
+.Mongsil-checkbox-root.disabled > .Mongsil-checkbox-checker {
+  cursor: not-allowed !important;
+  --tw-bg-opacity: 1 !important;
+  background-color: rgba(229, 231, 235, var(--tw-bg-opacity)) !important;
+  --tw-text-opacity: 1 !important;
+  color: rgba(156, 163, 175, var(--tw-text-opacity)) !important;
+}
+.Mongsil-checkbox-root.disabled .Mongsil-checkbox-icon {
+  cursor: not-allowed !important;
+  --tw-text-opacity: 1 !important;
+  color: rgba(209, 213, 219, var(--tw-text-opacity)) !important;
+}
+.Mongsil-checkbox-root.disabled .Mongsil-checkbox-label {
+  cursor: not-allowed !important;
+  --tw-text-opacity: 1 !important;
+  color: rgba(156, 163, 175, var(--tw-text-opacity)) !important;
 }
 /* ===== radio ===== */
 .Mongsil-radio-root {
@@ -993,6 +1027,29 @@ video {
   -webkit-transform: var(--tw-transform);
           transform: var(--tw-transform);
 }
+.Mongsil-radio-root.disabled, .Mongsil-radio-root.disabled .Mongsil-radio-label {
+  cursor: not-allowed !important;
+  --tw-text-opacity: 1 !important;
+  color: rgba(156, 163, 175, var(--tw-text-opacity)) !important;
+}
+.Mongsil-radio-root.disabled .Mongsil-radio-checker {
+  cursor: not-allowed !important;
+  --tw-bg-opacity: 1 !important;
+  background-color: rgba(229, 231, 235, var(--tw-bg-opacity)) !important;
+  --tw-text-opacity: 1 !important;
+  color: rgba(156, 163, 175, var(--tw-text-opacity)) !important;
+}
+.Mongsil-radio-root.disabled .Mongsil-radio-checker-inner {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgba(209, 213, 219, var(--tw-bg-opacity)) !important;
+}
+.Mongsil-radio-root.disabled, .Mongsil-radio-checker > .Mongsil-radio-checker-outer, .Mongsil-radio-root.disabled
+    .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker
+    > .Mongsil-radio-checker-outer {
+  --tw-border-opacity: 1;
+  border-color: rgba(209, 213, 219, var(--tw-border-opacity));
+}
 /* ===== switch ===== */
 .Mongsil-switch-root {
   position: relative;
@@ -1046,6 +1103,18 @@ video {
   background-color: var(--color-primary);
     -webkit-transform: translateX(20px);
             transform: translateX(20px);
+}
+.Mongsil-switch-root.disabled .Mongsil-switch-bg {
+  cursor: not-allowed !important;
+  --tw-bg-opacity: 1 !important;
+  background-color: rgba(229, 231, 235, var(--tw-bg-opacity)) !important;
+}
+.Mongsil-switch-root.disabled
+    .Mongsil-switch-base:checked
+    + .Mongsil-switch-bg
+    .Mongsil-switch-checker {
+  --tw-bg-opacity: 1;
+  background-color: rgba(209, 213, 219, var(--tw-bg-opacity));
 }
 /* ===== select ===== */
 .Mongsil-select-root {
@@ -1110,6 +1179,19 @@ video {
 .Mongsil-select-root .Mongsil-select-float-panel.animate-visible-panel {
     display: block;
   }
+.Mongsil-select-root.disabled {
+  --tw-bg-opacity: 1;
+  background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(156, 163, 175, var(--tw-text-opacity));
+}
+.Mongsil-select-root.disabled > .Mongsil-select-value-container, .Mongsil-select-root.disabled button {
+  cursor: not-allowed;
+}
+.Mongsil-select-root.disabled .Mongsil-select-icon svg {
+  --tw-text-opacity: 1;
+  color: rgba(156, 163, 175, var(--tw-text-opacity));
+}
 /* ===== select.option ===== */
 .Mongsil-option-root {
   padding-left: 1rem;
@@ -1156,6 +1238,11 @@ video {
   font-size: 0.75rem;
   line-height: 1rem;
     color: var(--color-error);
+}
+.Mongsil-form_item-root.disabled .Mongsil-form_item-label, .Mongsil-form_item-root.disabled .Mongsil-form_item-helper_text, .Mongsil-form_item-root.disabled .Mongsil-form_item-error_message {
+  cursor: not-allowed !important;
+  --tw-text-opacity: 1 !important;
+  color: rgba(156, 163, 175, var(--tw-text-opacity)) !important;
 }
 .visible {
   visibility: visible;
@@ -1256,6 +1343,10 @@ video {
 }
 .font-bold {
   font-weight: 700;
+}
+.text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgba(156, 163, 175, var(--tw-text-opacity));
 }
 .text-error {
   color: var(--color-error);
