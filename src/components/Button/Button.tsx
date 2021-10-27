@@ -4,18 +4,28 @@ import { useEffect, useState, useCallback } from 'react';
 import { ButtonProps } from './button.d';
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, children, ...args }, ref) => {
+  ({ className, variant, disabled, children, ...args }, ref) => {
     const [isPressed, setIsPressed] = useState<boolean>(false);
     const [isAnimationEnd, setIsAnimationEnd] = useState<boolean>(true);
     const [ing, setIng] = useState<boolean>(false);
 
+    /** 눌렀을 경우 */
     const pressed = useCallback(() => {
+      if (disabled === true) {
+        return;
+      }
+
       setIsPressed(true);
       setIsAnimationEnd(false);
       setIng(true);
-    }, []);
+    }, [disabled]);
 
+    /** 뗏을 경우 */
     const unPressed = useCallback(() => {
+      if (disabled === true) {
+        return;
+      }
+
       setIsPressed(false);
 
       /** 꼬여서 안나올 경우를 대비한 코드.(나중에 제대로 로직을 수정하자) */
@@ -26,7 +36,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       timerFunc = setTimeout(() => {
         setIng(false);
       }, 200);
-    }, []);
+    }, [disabled]);
 
     const handleTransitionEnd = useCallback(() => {
       setIsAnimationEnd(true);
@@ -45,7 +55,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         className={`Mongsil-button-root ${ing ? 'pressed' : ''} ${
           variant ?? 'emboss'
-        } ${className ?? ''}`}
+        } ${disabled === true ? 'disabled' : ''} ${className ?? ''}`}
         onMouseDown={pressed}
         onMouseUp={unPressed}
         onMouseLeave={unPressed}

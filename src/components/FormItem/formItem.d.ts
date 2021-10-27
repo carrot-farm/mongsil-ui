@@ -17,11 +17,12 @@ export interface FormItemProps {
   name?: string;
   value?: ValueTypes;
   defaultValue?: ValueTypes;
+  stateBind?: StateBind;
+  direction?: Direction;
   checked?: ValueTypes;
   rules?: Rules;
   required?: boolean;
-  stateBind?: StateBind;
-  direction?: Direction;
+  disabled?: boolean;
   children?: React.ReactNode;
   onChange?: InputChange;
 }
@@ -30,7 +31,13 @@ export interface FormItemProps {
 export interface FormItemChild
   extends Pick<
     FormItemProps,
-    'name' | 'value' | 'checked' | 'className' | 'stateBind' | 'onChange'
+    | 'name'
+    | 'value'
+    | 'checked'
+    | 'className'
+    | 'stateBind'
+    | 'disabled'
+    | 'onChange'
   > {
   children?: React.ReactNode;
 }

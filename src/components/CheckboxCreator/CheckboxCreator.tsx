@@ -8,7 +8,16 @@ import { CheckboxCreatorProps, HandleClick, Values } from './checkboxCreator.d';
 
 const CheckboxCreator = React.forwardRef<HTMLSpanElement, CheckboxCreatorProps>(
   (
-    { name, value: _value, variant, defaultValue, model, onChange, onClick },
+    {
+      name,
+      value: _value,
+      variant,
+      defaultValue,
+      model,
+      onChange,
+      onClick,
+      ...args
+    },
     ref,
   ) => {
     const [value, setValue] = useState<Values>(
@@ -59,6 +68,7 @@ const CheckboxCreator = React.forwardRef<HTMLSpanElement, CheckboxCreatorProps>(
             checked={value.includes(a.value)}
             onClick={useCallback(() => handleClick(a.value), [model, a, value])}
             key={`Mongsil-check-${name}-${i}`}
+            {...args}
           />
         ))}
       </span>

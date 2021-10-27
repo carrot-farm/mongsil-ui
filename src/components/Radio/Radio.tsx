@@ -12,6 +12,7 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>(
       defaultChecked,
       label,
       variant = 'emboss',
+      disabled,
       onChange,
       ...args
     },
@@ -20,6 +21,9 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>(
     /** 라디오 변경 이벤트 */
     const handleChange = useCallback(
       (e) => {
+        if (disabled === true) {
+          return;
+        }
         const { name, checked: newChecked } = e.target;
 
         // console.log('> ', name, checked, newChecked);
@@ -27,17 +31,23 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>(
           onChange(newChecked, name);
         }
       },
-      [onChange],
+      [disabled, onChange],
     );
 
     // console.log('> ', label);
 
     return (
-      <label className={`Mongsil-radio-root ${className ?? ''}`} ref={ref}>
+      <label
+        className={`Mongsil-radio-root ${disabled === true ? 'disabled' : ''} ${
+          className ?? ''
+        }`}
+        ref={ref}
+      >
         <input
           className="Mongsil-radio-base"
           type="radio"
           checked={checked}
+          disabled={disabled}
           onChange={handleChange}
           {...args}
         />

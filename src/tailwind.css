@@ -129,6 +129,9 @@
   .Mongsil-button-root {
     @apply font-semibold px-4 py-2 rounded m-transition-shadow;
   }
+  .Mongsil-button-root.disabled {
+    @apply bg-gray-200 text-gray-400 cursor-not-allowed;
+  }
   .Mongsil-button-root.emboss {
     @apply emboss-300;
   }
@@ -158,6 +161,10 @@
   }
   .Mongsil-input-root > .Mongsil-input-base {
     @apply appearance-none bg-transparent px-4 py-2 text-gray-700 focus:outline-none focus:bg-transparent;
+  }
+  .Mongsil-input-root.disabled,
+  .Mongsil-input-root.disabled > .Mongsil-input-base {
+    @apply bg-gray-200 text-gray-400 cursor-not-allowed;
   }
 
   /* ===== checkbox ===== */
@@ -225,6 +232,18 @@
   }
   .Mongsil-checkbox-root > label {
     @apply ml-3 cursor-pointer;
+  }
+  .Mongsil-checkbox-root.disabled {
+    @apply cursor-not-allowed !important;
+  }
+  .Mongsil-checkbox-root.disabled > .Mongsil-checkbox-checker {
+    @apply bg-gray-200  text-gray-400 cursor-not-allowed !important;
+  }
+  .Mongsil-checkbox-root.disabled .Mongsil-checkbox-icon {
+    @apply text-gray-300 cursor-not-allowed !important;
+  }
+  .Mongsil-checkbox-root.disabled .Mongsil-checkbox-label {
+    @apply text-gray-400 cursor-not-allowed !important;
   }
 
   /* ===== radio ===== */
@@ -299,6 +318,24 @@
     .Mongsil-radio-checker-inner {
     @apply scale-150;
   }
+  .Mongsil-radio-root.disabled,
+  .Mongsil-radio-root.disabled .Mongsil-radio-label {
+    @apply text-gray-400 cursor-not-allowed !important;
+  }
+  .Mongsil-radio-root.disabled .Mongsil-radio-checker {
+    @apply bg-gray-200 text-gray-400 cursor-not-allowed !important;
+  }
+  .Mongsil-radio-root.disabled .Mongsil-radio-checker-inner {
+    @apply bg-gray-300 !important;
+  }
+  .Mongsil-radio-root.disabled,
+  .Mongsil-radio-checker > .Mongsil-radio-checker-outer,
+  .Mongsil-radio-root.disabled
+    .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker
+    > .Mongsil-radio-checker-outer {
+    @apply border-gray-300;
+  }
 
   /* ===== switch ===== */
   .Mongsil-switch-root {
@@ -333,6 +370,15 @@
     @apply bg-primary;
     transform: translateX(20px);
   }
+  .Mongsil-switch-root.disabled .Mongsil-switch-bg {
+    @apply bg-gray-200 cursor-not-allowed !important;
+  }
+  .Mongsil-switch-root.disabled
+    .Mongsil-switch-base:checked
+    + .Mongsil-switch-bg
+    .Mongsil-switch-checker {
+    @apply bg-gray-300;
+  }
 
   /* ===== select ===== */
   .Mongsil-select-root {
@@ -364,6 +410,16 @@
   }
   .Mongsil-select-root .Mongsil-select-float-panel.animate-visible-panel {
     display: block;
+  }
+  .Mongsil-select-root.disabled {
+    @apply bg-gray-200 text-gray-400;
+  }
+  .Mongsil-select-root.disabled > .Mongsil-select-value-container,
+  .Mongsil-select-root.disabled button {
+    @apply cursor-not-allowed;
+  }
+  .Mongsil-select-root.disabled .Mongsil-select-icon svg {
+    @apply text-gray-400;
   }
 
   /* ===== select.option ===== */
@@ -401,5 +457,10 @@
   .Mongsil-form_item-root .Mongsil-form_item-error_message {
     @apply text-xs mt-1;
     color: var(--color-error);
+  }
+  .Mongsil-form_item-root.disabled .Mongsil-form_item-label,
+  .Mongsil-form_item-root.disabled .Mongsil-form_item-helper_text,
+  .Mongsil-form_item-root.disabled .Mongsil-form_item-error_message {
+    @apply text-gray-400 cursor-not-allowed !important;
   }
 }

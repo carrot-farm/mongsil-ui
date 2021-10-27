@@ -4,15 +4,18 @@ import { useState, forwardRef, useCallback } from 'react';
 import { InputProps } from './input.d';
 
 const Input = forwardRef<HTMLDivElement, InputProps>(
-  ({ className, onChange, ...args }, ref) => {
+  ({ className, disabled, onChange, ...args }, ref) => {
     const [isFocused, setIsFocused] = useState<boolean>(false);
 
     // console.log('> input render: ', args.value);
 
     /** event: focus in */
     const handleFocus = useCallback(() => {
+      if (disabled === true) {
+        return;
+      }
       setIsFocused(true);
-    }, []);
+    }, [disabled]);
 
     /** event: focus out */
     const handleBlur = useCallback(() => {
@@ -38,14 +41,15 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
     return (
       <div
         className={`Mongsil-input-root ${isFocused ? 'focused' : ''} ${
-          className ?? ''
-        }`}
+          disabled === true ? 'disabled' : ''
+        } ${className ?? ''}`}
         ref={ref}
         onFocus={handleFocus}
         onBlur={handleBlur}
       >
         <input
           className="Mongsil-input-base"
+          disabled={disabled}
           onChange={handleChange}
           {...args}
         />

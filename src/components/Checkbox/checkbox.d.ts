@@ -15,6 +15,7 @@ export interface CheckboxProps {
   name?: string;
   checked?: boolean;
   defaultChecked?: boolean;
+  disabled?: boolean;
   onChange?: (checked: boolean, name?: string) => void | false;
   onClick?: (checked: boolean, name?: string) => void;
 }

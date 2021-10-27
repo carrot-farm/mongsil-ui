@@ -13,5 +13,6 @@ export interface RadioProps
   checked?: boolean;
   label?: React.ReactNode;
   variant?: 'emboss' | 'dent';
+  disabled?: boolean;
   onChange?: (value: boolean, name?: string) => void;
 }

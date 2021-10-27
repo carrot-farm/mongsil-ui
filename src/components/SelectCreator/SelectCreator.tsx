@@ -5,7 +5,10 @@ import Select, { Option } from '../Select';
 import { SelectCreatorProps } from './selectCreator.d';
 
 const SelectCreator = forwardRef<HTMLSpanElement, SelectCreatorProps>(
-  ({ className, name, value: _value, defaultValue, model, onChange }, ref) => {
+  (
+    { className, name, value: _value, defaultValue, model, onChange, ...args },
+    ref,
+  ) => {
     return (
       <Select
         className={`Mongsil-select_creator ${className ?? ''}`}
@@ -14,6 +17,7 @@ const SelectCreator = forwardRef<HTMLSpanElement, SelectCreatorProps>(
         defaultValue={defaultValue}
         ref={ref}
         onChange={onChange}
+        {...args}
       >
         {model?.map((a, i) => (
           <Option
