@@ -34,7 +34,7 @@ function FormItem({
     addError,
     setError,
   } = useContext(FormContext);
-  // console.log('> FormItem', children);
+  // console.log('> FormItem', name);
 
   const [id] = useState(
     () => itemId ?? (name ?? '') + Math.random().toString(32).substr(2),

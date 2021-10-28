@@ -1,17 +1,7 @@
 import * as React from 'react';
 import { useEffect, useCallback, useState, forwardRef, memo } from 'react';
 
-import { InputChange } from '../../types/components';
-
-interface SwitchProps {
-  className?: string;
-  variant?: 'dent' | 'emboss';
-  name?: string;
-  checked?: boolean;
-  defaultChecked?: boolean;
-  disabled?: boolean;
-  onChange?: InputChange;
-}
+import { SwitchProps } from './switch.d';
 
 const Switch = forwardRef<HTMLSpanElement, SwitchProps>(
   (

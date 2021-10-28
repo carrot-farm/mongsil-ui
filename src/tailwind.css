@@ -359,7 +359,7 @@
     @apply appearance-none;
   }
   .Mongsil-switch-root > .Mongsil-switch-bg {
-    @apply relative w-11 h-6  rounded-full;
+    @apply relative w-11 h-6  rounded-full flex items-center;
   }
   .Mongsil-switch-root > .Mongsil-switch-bg.dent {
     @apply dent-100;
@@ -371,7 +371,6 @@
     @apply w-4 h-4 inline-flex items-center justify-center rounded-full;
     @apply absolute bg-gray-300;
     left: 4px;
-    top: 4px;
     transition: transform 200ms ease-in-out, background-color 200ms ease-in-out;
   }
   .Mongsil-switch-root .Mongsil-switch-bg.emboss .Mongsil-switch-checker {
@@ -416,14 +415,12 @@
     @apply absolute left-0  shadow-xl w-full cursor-pointer z-10 rounded-b;
     top: 0;
     backdrop-filter: blur(2px);
-    /* background: hsl(var(--color-base-deg) 22% 98% / 50%); */
     background: hsl(var(--color-base-deg) 22% 95% / 70%);
-    /* background: hsl(var(--color-base)); */
-    /* border-left: 2px solid hsl(var(--color-base-deg) 22% 98%); */
     box-sizing: border-box;
     transform-origin: top;
     display: none;
-    height: 150px;
+    min-height: 40px;
+    max-height: 160px;
     overflow-y: auto;
     overflow-x: hidden;
   }
