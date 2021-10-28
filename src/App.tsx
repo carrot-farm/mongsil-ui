@@ -11,11 +11,13 @@ import Select, { Option } from './components/Select';
 import SelectCreator from './components/SelectCreator';
 import FormItem from './components/FormItem';
 import Form from './components/Form';
+import FormCreator from './components/FormCreator';
 
 import useForm from './hooks/useForm';
 
 function App(): any {
   const { form, setValue } = useForm();
+  const { form: form2, setValue: setValue2 } = useForm();
   // console.log('> app: ', setValue);
 
   return (
@@ -308,6 +310,65 @@ function App(): any {
             <Switch variant="dent" />
           </FormItem> */}
         </Form>
+      </div>
+      <div className="p-5 flex space-x-4">
+        <FormCreator
+          form={form2}
+          model={[
+            {
+              component: 'input',
+              name: 'input-name',
+            },
+            {
+              component: 'select',
+              name: 'select-name',
+              defaultValue: 'b',
+              props: {
+                model: [
+                  { label: 'a', value: 'a' },
+                  { label: 'b', value: 'b' },
+                  { label: 'c', value: 'c' },
+                ],
+              },
+            },
+            {
+              component: 'checkbox',
+              name: 'checkbox-name',
+              props: {
+                model: [
+                  { label: 'a', value: 'a' },
+                  { label: 'b', value: 'b' },
+                  { label: 'c', value: 'c' },
+                ],
+              },
+            },
+            {
+              component: 'radio',
+              name: 'radio-name',
+              props: {
+                model: [
+                  { label: 'a', value: 'a' },
+                  { label: 'b', value: 'b' },
+                  { label: 'c', value: 'c' },
+                ],
+              },
+            },
+            {
+              component: 'switch',
+              name: 'switch',
+              props: {
+                variant: 'dent',
+              },
+            },
+            {
+              component: 'button',
+              type: 'submit',
+              children: 'submit',
+            },
+          ]}
+          onSubmit={(values) => console.log('> ', values)}
+          onChange={(v, name) => console.log(v, name)}
+        />
       </div>
       <div className="h-80"></div>
     </div>

@@ -36,7 +36,7 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
       [onChange],
     );
 
-    // console.log('> input: ', JSON.stringify(args.value));
+    // console.log('> input: ');
 
     return (
       <div
