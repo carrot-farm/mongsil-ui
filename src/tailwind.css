@@ -1,7 +1,8 @@
 :root {
   --color-base-deg: 216;
+  --color-primary-deg: 216;
   --color-base: hsl(var(--color-base-deg) 22% 95%);
-  --color-primary: hsl(216deg 100% 72%);
+  --color-primary: hsl(var(--color-primary-deg) 100% 72%);
   --color-secondary: hsl(360deg 100% 72%);
   --color-error: hsl(0deg 84% 60%);
   --color-warning: hsl(38deg 92% 50%);
@@ -121,6 +122,19 @@
     transition-property: background-color;
     transition-timing-function: ease-in-out;
     transition-duration: 200ms;
+  }
+
+  /* ===== scroll bar ===== */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--color-primary-deg) 100% 72% / 50%);
+    border-radius: 10px;
+    padding: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: hsl(var(--color-base-deg) 22% 93%);
   }
 }
 
@@ -402,11 +416,16 @@
     @apply absolute left-0  shadow-xl w-full cursor-pointer z-10 rounded-b;
     top: 0;
     backdrop-filter: blur(2px);
-    background: hsl(var(--color-base-deg) 22% 98% / 50%);
-    border: 1px solid hsl(var(--color-base-deg) 22% 98%);
+    /* background: hsl(var(--color-base-deg) 22% 98% / 50%); */
+    background: hsl(var(--color-base-deg) 22% 95% / 70%);
+    /* background: hsl(var(--color-base)); */
+    /* border-left: 2px solid hsl(var(--color-base-deg) 22% 98%); */
     box-sizing: border-box;
     transform-origin: top;
     display: none;
+    height: 150px;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
   .Mongsil-select-root .Mongsil-select-float-panel.animate-visible-panel {
     display: block;
@@ -428,8 +447,10 @@
   }
   .Mongsil-option-root:hover,
   .Mongsil-option-root.selected {
-    backdrop-filter: blur(2px);
-    background: hsl(var(--color-base-deg) 22% 80% / 30%);
+    background: hsl(var(--color-primary-deg) 100% 72% / 10%);
+  }
+  .Mongsil-option-root.selected {
+    @apply font-bold;
   }
 
   /* ===== form-item ===== */

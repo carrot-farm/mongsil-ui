@@ -46,10 +46,15 @@ function App(): any {
         <Input value="test" disabled />
       </div>
       <div className="p-5 flex space-x-4">
-        <Select name="select" value={'a'} disabled>
+        <Select name="select" value={'a'}>
           <Option value="a">option 1</Option>
           <Option value="b">option 2</Option>
           <Option value="c">option 3</Option>
+          <Option value="d">option 4</Option>
+          <Option value="e">option 5</Option>
+          <Option value="f">option 6</Option>
+          <Option value="f">option 7</Option>
+          <Option value="h">option 8</Option>
         </Select>
       </div>
       <div className="p-5 flex space-x-4">
@@ -57,10 +62,13 @@ function App(): any {
           name="select_creator"
           // value="b"
           defaultValue="b"
-          disabled
           model={[
             { label: 'a', value: 'a' },
             { label: 'b', value: 'b' },
+            { label: 'c', value: 'c' },
+            { label: 'c', value: 'c' },
+            { label: 'c', value: 'c' },
+            { label: 'c', value: 'c' },
             { label: 'c', value: 'c' },
           ]}
           onChange={(v, n) => console.log('> ', v, n)}
@@ -210,14 +218,14 @@ function App(): any {
               ]}
             />
           </FormItem> */}
-          <FormItem
+          {/* <FormItem
             label="label-2"
             name="input-2"
             rules={[{ rule: ['required'], message: '에러' }]}
             // rules={[{ rule: ['length', 3, 5], message: '3글자 이상 5자 이하' }]}
           >
             <Input />
-          </FormItem>
+          </FormItem> */}
           {/*
           <FormItem label="label-2" name="input-3">
             <Input />

@@ -86,7 +86,7 @@ const withFormProvider = (
     FormProps & React.RefAttributes<HTMLFormElement>
   >,
 ) => {
-  const Component = (props: any) => {
+  const Component = (props: FormProps) => {
     return (
       <FormProvider>
         <WrappedComponent {...props} />
