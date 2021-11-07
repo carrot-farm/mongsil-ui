@@ -10,6 +10,7 @@ import RadioCreator from '../RadioCreator';
 import Switch from '../Switch';
 import Button from '../Button';
 
+import { InputChange } from '../../types/components';
 import { FormCreatorProps } from './formCreator.d';
 import { InputProps } from '../Input/input.d';
 import { SelectCreatorProps } from '../SelectCreator/selectCreator.d';
@@ -24,7 +25,7 @@ function FormCreator({
   ...args
 }: FormCreatorProps): JSX.Element {
   /** 전체 체인지 이벤트 */
-  const handleChange = useCallback(
+  const handleChange = useCallback<InputChange>(
     (value, name) => {
       if (onChange && onChange(value, name) === false) {
         return false;

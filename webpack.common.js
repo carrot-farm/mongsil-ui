@@ -13,7 +13,7 @@ module.exports = {
   // # 최적화 옵션
   optimization: {
     minimize: true, // 최적화 활성화
-    // 최정화 플러그인 설정
+    // 최적화 플러그인 설정
     minimizer: [new ESBuildMinifyPlugin()],
   },
   // # 모듈
