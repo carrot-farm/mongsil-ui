@@ -1,6 +1,4 @@
-import React, { HTMLAttributes, InputHTMLAttributes } from 'react';
-
-import { StateBind } from '../../types/components';
+import { InputHTMLAttributes } from 'react';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;

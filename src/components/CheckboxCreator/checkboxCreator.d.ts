@@ -1,4 +1,3 @@
-import type { StateBind } from '../../types/components.d';
 import type { CheckboxProps } from '../Checkbox';
 
 export type Values = (string | undefined)[];
@@ -10,7 +9,7 @@ export interface CheckboxCreatorProps
   value?: Values;
   defaultValue?: Values;
   disabled?: boolean;
-  model?: CheckboxCreatorModel[];
+  model: CheckboxCreatorModel[];
   children?: React.ReactChildren;
   onChange?: eventFunc;
   onClick?: eventFunc;

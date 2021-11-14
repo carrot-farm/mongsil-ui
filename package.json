@@ -13,8 +13,8 @@
     "test:watch": "jest --config=jest.config.js --watch",
     "tw:watch": "TAILWIND_MODE=watch NODE_ENV=development postcss ./src/tailwind.css -o ./src/tailwind_out.css -w",
     "tw:build": "NODE_ENV=production postcss ./src/tailwind.css -o ./src/tailwind_out.css/",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "sb": "concurrently \"yarn tw:watch\" \"yarn start-storybook -p 6006\"",
+    "sb:build": "build-storybook"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [

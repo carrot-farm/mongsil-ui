@@ -72,22 +72,20 @@ const pass = {
     [min, max]: [min?: number, max?: number] = [],
   ) => {
     if (!min) {
-      throw new Error('not defined min: ' + min);
+      throw new Error(`not defined min: ${min ? min : ''}`);
     }
 
     // console.log('> length: ', value, value.length, min, max);
-    if (
-      typeof value === 'string' ||
-      (Array.isArray(value) && min && value.length >= min)
-    ) {
-      if (max) {
-        if (value.length <= max) {
+    if (typeof value === 'string' || Array.isArray(value)) {
+      if (min) {
+        if (value.length >= min) {
+          if (max) {
+            return value.length <= max;
+          }
           return true;
         } else {
           return false;
         }
-      } else {
-        return true;
       }
     } else {
       return false;

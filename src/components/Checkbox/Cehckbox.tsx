@@ -8,7 +8,6 @@ const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
   (
     {
       className,
-      children,
       variant = 'emboss-outline',
       label,
       name,
@@ -64,7 +63,7 @@ const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
         onClick={handleClick}
       >
         <input
-          className={`Mongsil-checkbox-base`}
+          className="Mongsil-checkbox-base"
           type="checkbox"
           name={name}
           checked={isChecked}
