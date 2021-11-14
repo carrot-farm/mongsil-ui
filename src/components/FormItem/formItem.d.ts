@@ -21,7 +21,6 @@ export interface FormItemProps {
   direction?: Direction;
   checked?: ValueTypes;
   rules?: Rules;
-  required?: boolean;
   disabled?: boolean;
   children?: React.ReactNode;
   onChange?: InputChange;

@@ -174,7 +174,7 @@
     @apply border-transparent dent-100;
   }
   .Mongsil-input-root > .Mongsil-input-base {
-    @apply appearance-none bg-transparent px-4 py-2 text-gray-700 focus:outline-none focus:bg-transparent;
+    @apply appearance-none bg-transparent w-full px-4 py-2 text-gray-700 focus:outline-none focus:bg-transparent;
   }
   .Mongsil-input-root.disabled,
   .Mongsil-input-root.disabled > .Mongsil-input-base {
@@ -480,5 +480,10 @@
   .Mongsil-form_item-root.disabled .Mongsil-form_item-helper_text,
   .Mongsil-form_item-root.disabled .Mongsil-form_item-error_message {
     @apply text-gray-400 cursor-not-allowed !important;
+  }
+
+  /* ===== Layout ===== */
+  .Mongsil-layout-root {
+    @apply relative grid;
   }
 }

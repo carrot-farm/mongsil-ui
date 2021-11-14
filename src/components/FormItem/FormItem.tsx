@@ -20,7 +20,6 @@ function FormItem({
   checked,
   stateBind = 'both',
   direction = 'y',
-  required: _required,
   disabled,
   children,
   rules,
@@ -39,7 +38,7 @@ function FormItem({
   const [id] = useState(
     () => itemId ?? (name ?? '') + Math.random().toString(32).substr(2),
   );
-  const [required, setRequired] = useState<boolean>(() => !!_required);
+  const [required, setRequired] = useState<boolean>(false);
 
   /** 값 변경 */
   const handleChange = useCallback(
@@ -96,7 +95,7 @@ function FormItem({
     if (stateBind !== 'none' && name) {
       setFormValue(name, value ?? checked);
     }
-  }, [value, checked, stateBind, setFormValue]);
+  }, [name, value, checked, stateBind, setFormValue]);
 
   /** rules에 `required` 가 있을 경우 처리 */
   useEffect(() => {
@@ -154,7 +153,11 @@ function FormItem({
       {label && (
         <FormItemLabel disabled={disabled} label={label} required={required} />
       )}
-      <div className="Mongsil-form_item-container">
+      <div
+        className={`Mongsil-form_item-container ${
+          direction === 'x' ? 'flex-grow' : ''
+        }`}
+      >
         {React.Children.map(children, (child) => {
           if (React.isValidElement<FormItemChild>(child)) {
             const _type = child.type as any;

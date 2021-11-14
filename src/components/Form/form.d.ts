@@ -1,6 +1,6 @@
-import React, { FormHTMLAttributes, HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 
-import { ValueTypes, Values } from '../../types/components';
+import { Values } from '../../types/components';
 import { FormRef } from '../../hooks/useForm';
 
 /** form의 기본 속성 타입 */

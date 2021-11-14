@@ -81,6 +81,7 @@ Use a more readable tab size (opinionated).
 */
 
 html {
+	-moz-tab-size: 4;
 	tab-size: 4;
 }
 
@@ -149,7 +150,8 @@ Add the correct text decoration in Chrome, Edge, and Safari.
 */
 
 abbr[title] {
-	text-decoration: underline dotted;
+	-webkit-text-decoration: underline dotted;
+	        text-decoration: underline dotted;
 }
 
 /**
@@ -487,6 +489,11 @@ textarea {
   resize: vertical;
 }
 
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  opacity: 1;
+  color: #9ca3af;
+}
+
 input::placeholder,
 textarea::placeholder {
   opacity: 1;
@@ -789,6 +796,7 @@ video {
     border-color: transparent;
   }
 .Mongsil-input-root > .Mongsil-input-base {
+  width: 100%;
   -webkit-appearance: none;
           appearance: none;
   background-color: transparent;
@@ -1242,6 +1250,11 @@ video {
   --tw-text-opacity: 1 !important;
   color: rgba(156, 163, 175, var(--tw-text-opacity)) !important;
 }
+/* ===== Layout ===== */
+.Mongsil-layout-root {
+  position: relative;
+  display: grid;
+}
 .visible {
   visibility: visible;
 }
@@ -1269,6 +1282,9 @@ video {
 .w-20 {
   width: 5rem;
 }
+.flex-grow {
+  flex-grow: 1;
+}
 @keyframes visible-panel {
 
   0% {
@@ -1295,10 +1311,19 @@ video {
 .flex-col {
   flex-direction: column;
 }
+.gap-x-2 {
+  column-gap: 0.5rem;
+}
+.gap-y-4 {
+  row-gap: 1rem;
+}
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.border {
+  border-width: 1px;
 }
 .border-b {
   border-bottom-width: 1px;

@@ -8,4 +8,13 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  backgrounds: {
+    default: 'base',
+    values: [
+      {
+        name: 'base',
+        value: 'hsl(216deg 22% 95%)',
+      },
+    ],
+  },
 };

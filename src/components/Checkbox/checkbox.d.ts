@@ -1,7 +1,4 @@
-import type { StateBind } from '../../types/components.d';
-
 export interface CheckboxProps {
-  children?: React.ReactNode;
   className?: string;
   variant?:
     | 'emboss'
@@ -9,8 +6,6 @@ export interface CheckboxProps {
     | 'emboss-fill'
     | 'dent'
     | 'dent-outline';
-  fill?: boolean;
-  stateBind?: StateBind;
   label?: React.ReactNode;
   name?: string;
   checked?: boolean;
