@@ -11,7 +11,7 @@ const Switch = forwardRef<HTMLSpanElement, SwitchProps>(
       variant = 'emboss',
       checked,
       defaultChecked = false,
-      disabled,
+      disabled = false,
       onChange,
       ...args
     },
@@ -21,7 +21,7 @@ const Switch = forwardRef<HTMLSpanElement, SwitchProps>(
       () => defaultChecked ?? false,
     );
 
-    // console.log('> switch: ', checked);
+    /** 클릭 이벤트 */
     const handleClick = useCallback(() => {
       if (disabled === true) {
         return;
@@ -36,9 +36,9 @@ const Switch = forwardRef<HTMLSpanElement, SwitchProps>(
       if (checked === undefined) {
         setIsChecked(newChecked);
       }
-    }, [isChecked, disabled, name, onChange]);
+    }, [name, disabled, isChecked, checked, onChange]);
 
-    const handleChange = useCallback(() => {}, []);
+    // const handleChange = useCallback(() => {}, []);
 
     useEffect(() => {
       setIsChecked(!!checked);
@@ -53,16 +53,16 @@ const Switch = forwardRef<HTMLSpanElement, SwitchProps>(
         onClick={handleClick}
       >
         <input
-          className={`Mongsil-switch-base`}
+          className="Mongsil-switch-base"
           name={name}
           type="checkbox"
           checked={isChecked}
           disabled={disabled}
-          onChange={handleChange}
+          // onChange={handleChange}
           {...args}
         />
         <span className={`Mongsil-switch-bg ${variant ? variant : ''}`}>
-          <span className={`Mongsil-switch-checker `} />
+          <span className="Mongsil-switch-checker" />
         </span>
       </span>
     );

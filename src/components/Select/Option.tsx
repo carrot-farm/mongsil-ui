@@ -38,7 +38,7 @@ const Option = React.forwardRef<HTMLDivElement, OptionProps>(
       if (value === selectedValue && onSelected) {
         onSelected(children);
       }
-    }, [value, selectedValue]);
+    }, [value, selectedValue, children, onSelected]);
 
     return (
       <div
