@@ -5,12 +5,19 @@ import { FaCaretDown, FaCaretUp } from 'react-icons/fa';
 import { InputChange } from '../../types/components';
 
 export interface SelectProps {
+  /** <Option /> 컴포넌트 */
   children?: React.ReactNode[];
+  /** className */
   className?: string;
+  /** name 속성 */
   name?: string;
+  /** 값 */
   value?: string;
+  /** 기본값 */
   defaultValue?: string;
+  /** true 일 경우 비활성화 */
   disabled?: boolean;
+  /** 변경 시 이벤트 */
   onChange?: InputChange;
 }
 
@@ -48,6 +55,7 @@ const Select = forwardRef<HTMLSpanElement, SelectProps>(
             return v;
           }
 
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
           if (containerRef.current.contains(event.target)) {
             return !v;
           } else {
@@ -95,7 +103,7 @@ const Select = forwardRef<HTMLSpanElement, SelectProps>(
       return () => {
         document.removeEventListener('click', handleVisibleClick);
       };
-    }, []);
+    }, [handleVisibleClick]);
 
     useEffect(() => {
       if (_value === undefined) {
@@ -118,7 +126,7 @@ const Select = forwardRef<HTMLSpanElement, SelectProps>(
             type="hidden"
             name={name}
             value={value ?? ''}
-            // onChange={handleChange}
+            onChange={handleChange}
             {...args}
           />
           <button className="Mongsil-select-icon" type="button">

@@ -22,7 +22,7 @@ const SelectCreator = forwardRef<HTMLSpanElement, SelectCreatorProps>(
         {model?.map((a, i) => (
           <Option
             value={a.value}
-            key={`Mongsil-select_creator-option-${name}-${i}`}
+            key={`Mongsil-select_creator-option-${name || ''}-${i}`}
           >
             {a.label}
           </Option>

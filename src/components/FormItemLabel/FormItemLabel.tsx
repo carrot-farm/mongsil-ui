@@ -1,15 +1,18 @@
 import * as React from 'react';
 
-interface FormItemLabelProps {
+export interface FormItemLabelProps {
+  /** 레이블 */
   label?: string;
+  /** true일 경우 필수 표시 */
   required?: boolean;
+  /** true일 경우 필수표시 비활성화 색상으로 변경 */
   disabled?: boolean;
 }
 
 function FormItemLabel({
   label,
-  required,
-  disabled,
+  required = false,
+  disabled = false,
 }: FormItemLabelProps): JSX.Element {
   return (
     <div

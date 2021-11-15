@@ -4,7 +4,7 @@ import { ComponentMeta } from '@storybook/react';
 import Layout, { LayoutProps } from './Layout';
 
 export default {
-  title: 'utis/Layout',
+  title: 'components/Layout',
   component: Layout,
 } as ComponentMeta<typeof Layout>;
 
