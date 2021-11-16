@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { TRemUnit } from '../../types/components';
+
 type Element = Record<string, React.ReactElement>;
 
 export interface LayoutProps {
@@ -9,8 +11,12 @@ export interface LayoutProps {
   columns?: React.CSSProperties['gridTemplateColumns'];
   /** grid-template-rows 속성. 요소의 높이를 정의 */
   rows?: React.CSSProperties['gridTemplateRows'];
-  /** tailwincss의 gap 속성 */
-  gap?: string;
+  /** x, y 사이간격 */
+  gap?: TRemUnit;
+  /** 세로 간격. column-gap */
+  gapX?: TRemUnit;
+  /** 가로 간격. row-gap */
+  gapY?: TRemUnit;
   /** 최상위 컴포넌트의 클래스명 */
   className?: string;
   /** 내부요소 엘리먼트 */
@@ -22,13 +28,17 @@ function Layout({
   columns,
   rows,
   gap,
+  gapX,
+  gapY,
   className,
   elements,
   ...args
 }: LayoutProps): JSX.Element {
   return (
     <div
-      className={`Mongsil-layout-root ${className ?? ''} ${gap ?? ''}`}
+      className={`Mongsil-layout-root ${className ?? ''} ${
+        gap ? `gap-${gap}` : ''
+      } ${gapX ? `gap-x-${gapX}` : ''} ${gapY ? `gap-y-${gapY}` : ''} `}
       style={{
         gridTemplateAreas: areas,
         gridTemplateColumns: columns,
