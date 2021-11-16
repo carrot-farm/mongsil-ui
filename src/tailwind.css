@@ -389,8 +389,12 @@
   .Mongsil-switch-root.disabled
     .Mongsil-switch-base:checked
     + .Mongsil-switch-bg
+    .Mongsil-switch-checker,
+  .Mongsil-switch-root.disabled
+    .Mongsil-switch-base
+    + .Mongsil-switch-bg
     .Mongsil-switch-checker {
-    @apply bg-gray-300;
+    @apply bg-gray-300 shadow-none;
   }
 
   /* ===== select ===== */

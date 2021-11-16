@@ -1115,9 +1115,14 @@ video {
 .Mongsil-switch-root.disabled
     .Mongsil-switch-base:checked
     + .Mongsil-switch-bg
+    .Mongsil-switch-checker, .Mongsil-switch-root.disabled
+    .Mongsil-switch-base
+    + .Mongsil-switch-bg
     .Mongsil-switch-checker {
   --tw-bg-opacity: 1;
   background-color: rgba(209, 213, 219, var(--tw-bg-opacity));
+  --tw-shadow: 0 0 #0000;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 /* ===== select ===== */
 .Mongsil-select-root {
@@ -1310,12 +1315,6 @@ video {
 }
 .flex-col {
   flex-direction: column;
-}
-.gap-x-2 {
-  column-gap: 0.5rem;
-}
-.gap-y-4 {
-  row-gap: 1rem;
 }
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
