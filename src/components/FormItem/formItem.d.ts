@@ -20,9 +20,11 @@ export interface FormItemProps {
   stateBind?: StateBind;
   direction?: Direction;
   checked?: ValueTypes;
-  rules?: Rules;
+  /** grid를 이용한 레이아웃을 위한 명칭 */
+  gridArea?: React.CSSProperties['gridArea'];
   disabled?: boolean;
   children?: React.ReactNode;
+  rules?: Rules;
   onChange?: InputChange;
 }
 

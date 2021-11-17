@@ -286,15 +286,16 @@
     @apply border-primary;
   }
   .Mongsil-radio-root > .Mongsil-radio-checker .Mongsil-radio-checker-inner {
-    @apply bg-primary rounded-full scale-0 transition-transform;
+    @apply bg-primary rounded-full m-transition-transform;
     width: 6px;
     height: 6px;
+    transform: scale(0);
   }
   .Mongsil-radio-root
     > .Mongsil-radio-base:checked
     + .Mongsil-radio-checker
     .Mongsil-radio-checker-inner {
-    @apply scale-100;
+    transform: scale(1);
   }
   .Mongsil-radio-root > .Mongsil-radio-label {
     @apply ml-3 cursor-pointer;

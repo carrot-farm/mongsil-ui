@@ -7,22 +7,26 @@ import { CheckboxCreatorProps } from '../CheckboxCreator/checkboxCreator.d';
 import { RadioCreatorProps } from '../RadioCreator/radioCreator.d';
 import { SwitchProps } from '../Switch/switch.d';
 import { ButtonProps } from '../Button/button.d';
+import { LayoutProps } from '../Layout';
 
 export interface FormCreatorProps extends Omit<FormProps, 'children'> {
-  model?: FormCreatorModel[];
+  model: FormCreatorModel[];
+  layout?: Pick<
+    LayoutProps,
+    'areas' | 'columns' | 'rows' | 'gap' | 'gapX' | 'gapY'
+  >;
   onChange?: InputChange;
 }
 
 interface FormCreatorModel extends FormItemProps, ButtonProps {
+  itemId: FormItemProps['itemId'];
   component: Component;
-  props?: any;
-  // props?: InputProps | SelectCreatorProps | CheckboxCreatorProps;
-  // props?:
-  //   | InputProps
-  //   | SelectCreatorProps
-  //   | CheckboxCreatorProps
-  //   | RadioCreatorProps
-  //   | SwitchProps;
+  props?:
+    | InputProps
+    | SelectCreatorProps
+    | CheckboxCreatorProps
+    | RadioCreatorProps
+    | SwitchProps;
 }
 
 type Component =

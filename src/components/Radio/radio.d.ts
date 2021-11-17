@@ -1,7 +1,5 @@
 import { InputHTMLAttributes } from 'react';
 
-import { StateBind } from '../../types/components';
-
 export interface RadioProps
   extends Omit<
     InputHTMLAttributes<HTMLInputElement>,
@@ -9,7 +7,6 @@ export interface RadioProps
   > {
   className?: string;
   value?: string;
-  defaultValue?: string;
   checked?: boolean;
   label?: React.ReactNode;
   variant?: 'emboss' | 'dent';
