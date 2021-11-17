@@ -14,6 +14,7 @@ const RadioCreator = forwardRef<HTMLDivElement, RadioCreatorProps>(
       defaultValue,
       model,
       className,
+      disabled,
       onChange,
       ...args
     },
@@ -52,19 +53,17 @@ const RadioCreator = forwardRef<HTMLDivElement, RadioCreatorProps>(
       <div
         className={`Mongsil-radio_creator-root ${className ?? ''}`}
         ref={ref}
+        {...args}
       >
         {model?.map((a, i) => (
           <Radio
-            key={`Monsil-radio_creator-item-${name}-${i}`}
+            key={`Monsil-radio_creator-item-${name || ''}-${i}`}
             label={a.label}
             name={name}
             checked={a.value === value}
             variant={variant}
-            onChange={useCallback(
-              () => handleChange(a.value, name),
-              [a, name, _value],
-            )}
-            {...args}
+            disabled={disabled}
+            onChange={() => handleChange(a.value, name)}
           />
         ))}
       </div>

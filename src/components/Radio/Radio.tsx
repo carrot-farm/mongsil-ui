@@ -7,9 +7,7 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>(
   (
     {
       className,
-      value,
       checked,
-      defaultChecked,
       label,
       variant = 'emboss',
       disabled,
@@ -19,7 +17,9 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>(
     ref,
   ) => {
     /** 라디오 변경 이벤트 */
-    const handleChange = useCallback(
+    const handleChange = useCallback<
+      React.ChangeEventHandler<HTMLInputElement>
+    >(
       (e) => {
         if (disabled === true) {
           return;
@@ -33,8 +33,6 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>(
       },
       [disabled, onChange],
     );
-
-    // console.log('> ', label);
 
     return (
       <label

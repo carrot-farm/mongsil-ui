@@ -2,9 +2,7 @@ import * as React from 'react';
 
 import { TRemUnit } from '../../types/components';
 
-type Element = Record<string, React.ReactElement>;
-
-export interface LayoutProps {
+export interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
   /** grid-template-areas 속성. 요소의 배치 정의. 백틱사용. */
   areas: React.CSSProperties['gridTemplateAreas'];
   /** grid-template-columns 속성. 요소의 넓이를 정의 */
@@ -17,10 +15,6 @@ export interface LayoutProps {
   gapX?: TRemUnit;
   /** 가로 간격. row-gap */
   gapY?: TRemUnit;
-  /** 최상위 컴포넌트의 클래스명 */
-  className?: string;
-  /** 내부요소 엘리먼트 */
-  elements: Element;
 }
 
 function Layout({
@@ -31,7 +25,7 @@ function Layout({
   gapX,
   gapY,
   className,
-  elements,
+  children,
   ...args
 }: LayoutProps): JSX.Element {
   return (
@@ -46,11 +40,7 @@ function Layout({
       }}
       {...args}
     >
-      {Object.entries(elements).map(([area, el], i) => (
-        <React.Fragment key={`Mongsil-layout-item-${area}_${i}`}>
-          {React.cloneElement(el, { style: { gridArea: area } })}
-        </React.Fragment>
-      ))}
+      {children}
     </div>
   );
 }

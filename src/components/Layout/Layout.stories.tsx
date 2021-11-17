@@ -2,9 +2,10 @@ import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
 import Layout, { LayoutProps } from './Layout';
+import LayoutItem from '../LayoutItem';
 
 export default {
-  title: 'components/Layout',
+  title: 'component/Layout',
   component: Layout,
   args: {
     areas: `
@@ -12,19 +13,25 @@ export default {
       'strawberry mangon fig'
       'melon peach bluberry'
     `,
-    elements: {
-      apple: <div className="border border-gray-500">apple</div>,
-      banana: <div className="border border-gray-500">banana</div>,
-      lemon: <div className="border border-gray-500">lemon</div>,
-      strawberry: <div className="border border-gray-500">strawberry</div>,
-      mangon: <div className="border border-gray-500">mangon</div>,
-      fig: <div className="border border-gray-500">fig</div>,
-      melon: <div className="border border-gray-500">melon</div>,
-      peach: <div className="border border-gray-500">peach</div>,
-      bluberry: <div className="border border-gray-500">bluberry</div>,
-    },
-    columns: 'repeat(3, 100px)',
-    rows: 'repeat(3, 80px)',
+    children: (
+      <React.Fragment>
+        {[
+          'apple',
+          'banana',
+          'lemon',
+          'strawberry',
+          'mangon',
+          'fig',
+          'melon',
+          'peach',
+          'bluberry',
+        ].map((name) => (
+          <LayoutItem gridArea={name} key={name}>
+            <div className="border border-gray-500">{name}</div>
+          </LayoutItem>
+        ))}
+      </React.Fragment>
+    ),
   },
 } as ComponentMeta<typeof Layout>;
 
@@ -37,12 +44,22 @@ Default.args = {
   `,
   columns: '100px repeat(2, 200px)',
   rows: 'repeat(3, 80px)',
-  elements: {
-    aside: <div className="border border-gray-500">aside</div>,
-    header: <div className="border border-gray-500">header</div>,
-    main: <div className="border border-gray-500">main</div>,
-    footer: <div className="border border-gray-500">footer</div>,
-  },
+  children: (
+    <React.Fragment>
+      <LayoutItem gridArea="aside">
+        <div className="border border-gray-500">aside</div>
+      </LayoutItem>
+      <LayoutItem gridArea="header">
+        <div className="border border-gray-500">header</div>
+      </LayoutItem>
+      <LayoutItem gridArea="main">
+        <div className="border border-gray-500">main</div>
+      </LayoutItem>
+      <LayoutItem gridArea="footer">
+        <div className="border border-gray-500">footer</div>
+      </LayoutItem>
+    </React.Fragment>
+  ),
 };
 
 export const GapX = (args: LayoutProps): JSX.Element => <Layout {...args} />;
