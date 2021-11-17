@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { TRemUnit } from '../../types/components';
+import { unitToRem } from '../../utils/style';
 
 export interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
   /** grid-template-areas 속성. 요소의 배치 정의. 백틱사용. */
@@ -30,13 +31,13 @@ function Layout({
 }: LayoutProps): JSX.Element {
   return (
     <div
-      className={`Mongsil-layout-root ${className ?? ''} ${
-        gap ? `gap-${gap}` : ''
-      } ${gapX ? `gap-x-${gapX}` : ''} ${gapY ? `gap-y-${gapY}` : ''} `}
+      className={`Mongsil-layout-root ${className ?? ''} `}
       style={{
         gridTemplateAreas: areas,
         gridTemplateColumns: columns,
         gridTemplateRows: rows,
+        columnGap: unitToRem(gapX ?? gap ?? 0),
+        rowGap: unitToRem(gapY ?? gap ?? 0),
       }}
       {...args}
     >
