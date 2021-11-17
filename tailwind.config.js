@@ -1,5 +1,5 @@
 module.exports = {
-  mode: 'all',
+  mode: 'jit',
   darkMode: false,
   theme: {
     extend: {

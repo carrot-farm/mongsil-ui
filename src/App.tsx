@@ -12,6 +12,8 @@ import SelectCreator from './components/SelectCreator';
 import FormItem from './components/FormItem';
 import Form from './components/Form';
 import FormCreator from './components/FormCreator';
+import Layout from './components/Layout';
+import LayoutItem from './components/LayoutItem';
 
 import useForm from './hooks/useForm';
 
@@ -316,10 +318,12 @@ function App(): any {
           form={form2}
           model={[
             {
+              itemId: 'input',
               component: 'input',
               name: 'input-name',
             },
             {
+              itemId: 'select',
               component: 'select',
               name: 'select-name',
               defaultValue: 'b',
@@ -332,6 +336,7 @@ function App(): any {
               },
             },
             {
+              itemId: 'checkbox',
               component: 'checkbox',
               name: 'checkbox-name',
               props: {
@@ -343,6 +348,7 @@ function App(): any {
               },
             },
             {
+              itemId: 'radio',
               component: 'radio',
               name: 'radio-name',
               props: {
@@ -354,6 +360,7 @@ function App(): any {
               },
             },
             {
+              itemId: 'switch',
               component: 'switch',
               name: 'switch',
               props: {
@@ -361,6 +368,7 @@ function App(): any {
               },
             },
             {
+              itemId: 'button',
               component: 'button',
               type: 'submit',
               children: 'submit',
@@ -369,6 +377,32 @@ function App(): any {
           onSubmit={(values) => console.log('> ', values)}
           onChange={(v, name) => console.log(v, name)}
         />
+      </div>
+      <div className="p-5 flex space-x-4">
+        <Layout
+          areas={`
+          'apple banana lemon'
+          'strawberry mangon fig'
+          'melon peach bluberry'
+        `}
+          gap={2}
+        >
+          {[
+            'apple',
+            'banana',
+            'lemon',
+            'strawberry',
+            'mangon',
+            'fig',
+            'melon',
+            'peach',
+            'bluberry',
+          ].map((name) => (
+            <LayoutItem gridArea={name} key={name}>
+              <div className="border border-gray-500">{name}</div>
+            </LayoutItem>
+          ))}
+        </Layout>
       </div>
       <div className="h-80"></div>
     </div>

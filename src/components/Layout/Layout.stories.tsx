@@ -62,6 +62,11 @@ Default.args = {
   ),
 };
 
+export const Gap = (args: LayoutProps): JSX.Element => <Layout {...args} />;
+Gap.args = {
+  gap: 2,
+};
+
 export const GapX = (args: LayoutProps): JSX.Element => <Layout {...args} />;
 GapX.args = {
   gapX: 2,
