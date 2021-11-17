@@ -55,6 +55,9 @@
     inset 7px 7px 20px hsl(var(--color-base-deg) 3% 5% / 10%),
     inset -5px -5px 5px hsl(var(--color-base-deg) 3% 100% / 80%),
     inset -7px -7px 20px hsl(var(--color-base-deg) 5% 100% / 80%);
+
+  /** 하이라이드 비활성화 */
+  -webkit-tap-highlight-color: transparent;
 }
 
 @tailwind base;
