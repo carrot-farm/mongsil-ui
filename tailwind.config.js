@@ -46,7 +46,5 @@ module.exports = {
   },
   variants: {},
   plugins: [],
-  purge: {
-    content: ['./src/**/*.tsx', './src/**/*.ts'],
-  },
+  purge: ['./src/**/*.{ts,tsx}'],
 };
