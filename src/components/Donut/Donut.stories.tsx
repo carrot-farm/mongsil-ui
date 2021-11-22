@@ -11,9 +11,10 @@ export default {
     strokeWidth: 20,
     percent: 65,
     lineCap: 'round',
-    borderThikness: 3,
+    borderThikness: 4,
     innerShadow: true,
     animateColor: true,
+    animateRotateColor: true,
     colors: ['#42abff', '#ff4f8b', '#ffeb3b'],
   },
   argTypes: {

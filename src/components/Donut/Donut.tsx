@@ -16,6 +16,8 @@ interface DonutProps {
   innerShadow: boolean;
   /** true일 경우 내부 생상을 애니메이션 한다  */
   animateColor: boolean;
+  /** true일 경우 내부 색상을 rotate 애니메이션 한다  */
+  animateRotateColor: boolean;
   /** 색상 */
   colors: React.CSSProperties['backgroundColor'][];
   /** 정의시 내부 랜더링 */
@@ -30,9 +32,10 @@ export default function Donut({
   strokeWidth = 20,
   percent = 65,
   lineCap = 'round',
-  borderThikness = 3,
+  borderThikness = 4,
   innerShadow = true,
   animateColor = true,
+  animateRotateColor = true,
   colors = ['#42abff', '#ff4f8b', '#ffeb3b'],
   renderInner,
 }: Partial<DonutProps>): JSX.Element {
@@ -102,21 +105,25 @@ export default function Donut({
   return (
     <>
       <div
-        className="relative rounded-full emboss-500 flex items-center justify-center bg-base"
+        className="relative rounded-full emboss-500 flex items-center justify-center bg-base border-2 border-gray-500"
         style={style.root}
       >
-        <svg className="relative -rotate-90" style={style.svg}>
-          <rect
-            id="suf"
+        <svg className="relative -rotate-90 " style={style.svg}>
+          <circle
             width={width}
             height={width}
-            x="0"
-            y="0"
-            fill="url(#gradient)"
-            mask="url(#mask)"
-          ></rect>
+            cx={width / 2}
+            cy={width / 2}
+            r={circleCalc.radius}
+            fill="none"
+            stroke="url(#gradient)"
+            strokeWidth={strokeWidth}
+            strokeDasharray={circleCalc.circumference}
+            strokeDashoffset={circleCalc.dashOffset}
+            strokeLinecap={lineCap}
+          />
           <defs>
-            <linearGradient id="gradient">
+            <linearGradient id="gradient" gradientTransform="rotate(90)">
               {colors.map((a, i) => (
                 <React.Fragment key={`Mongsil-circle__progress-${a ?? ''}-i`}>
                   <stop stopColor={a} offset={`${(100 / colors.length) * i}%`}>
@@ -125,28 +132,24 @@ export default function Donut({
                         attributeName="stop-color"
                         values={colorValues[i]}
                         repeatCount="indefinite"
-                        dur="3s"
+                        dur="10s"
                       />
                     )}
                   </stop>
+                  {animateRotateColor === true && (
+                    <animateTransform
+                      attributeName="gradientTransform"
+                      attributeType="XML"
+                      type="rotate"
+                      from="0 0.5 0.5"
+                      to="360 0.5 0.5"
+                      dur="5s"
+                      repeatCount="indefinite"
+                    />
+                  )}
                 </React.Fragment>
               ))}
             </linearGradient>
-            <mask id="mask">
-              <circle
-                cx={width / 2}
-                cy={width / 2}
-                r={circleCalc.radius}
-                width={width}
-                height={width}
-                fill="none"
-                stroke="#fff"
-                strokeWidth={strokeWidth}
-                strokeDasharray={circleCalc.circumference}
-                strokeDashoffset={circleCalc.dashOffset}
-                strokeLinecap={lineCap}
-              ></circle>
-            </mask>
           </defs>
         </svg>
         <div
