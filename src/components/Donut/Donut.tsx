@@ -50,15 +50,17 @@ export default function Donut({
       root: {
         width: _width,
         height: _width,
-        border: innerShadow
-          ? `${borderThikness}px solid hsl(var(--color-base-deg) 22% 98%)`
-          : 'none',
+        border: `${borderThikness}px solid  hsl(var(--color-base-deg) 22% 98%)`,
       },
       svg: {
         width,
         height: width,
       },
+      font: {
+        fontSize: `clamp(0.8rem, ${_width}%, 2rem)`,
+      },
       innerCircle: {
+        overflow: 'hidden',
         width: innerCircleWidth,
         height: innerCircleWidth,
         top: strokeWidth + innerCirclePosition,
@@ -159,7 +161,10 @@ export default function Donut({
           {typeof renderInner === 'function' ? (
             renderInner(percent, colors)
           ) : (
-            <span className="text-3xl font-bold text-gray-700 ">{`${percent}%`}</span>
+            <span
+              className="font-bold text-gray-700 "
+              style={style.font}
+            >{`${percent}%`}</span>
           )}
         </div>
       </div>
