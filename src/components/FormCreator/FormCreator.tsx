@@ -4,6 +4,7 @@ import { useCallback, useState, useEffect } from 'react';
 import Form from '../Form';
 import FormItem from '../FormItem';
 import Input from '../Input';
+import TextArea from '../TextArea';
 import SelectCreator from '../SelectCreator';
 import CheckboxCreator from '../CheckboxCreator';
 import RadioCreator from '../RadioCreator';
@@ -16,6 +17,7 @@ import { FormCreatorProps } from './formCreator.d';
 import { FormItemProps } from '../FormItem/formItem.d';
 import { InputChange } from '../../types/components';
 import { InputProps } from '../Input/input.d';
+import { TextAreaProps } from '../TextArea/TextArea';
 import { SelectCreatorProps } from '../SelectCreator/selectCreator.d';
 import { CheckboxCreatorProps } from '../CheckboxCreator/checkboxCreator.d';
 import { RadioCreatorProps } from '../RadioCreator/radioCreator.d';
@@ -73,6 +75,14 @@ function FormCreator({
                 onChange={handleChange}
               >
                 <Input {...(props as InputProps)} />
+              </ItemWrapper>
+            ) : component === 'textArea' ? (
+              <ItemWrapper
+                gridArea={itemId}
+                modelArgs={modelArgs}
+                onChange={handleChange}
+              >
+                <TextArea {...(props as TextAreaProps)} />
               </ItemWrapper>
             ) : component === 'select' ? (
               <ItemWrapper

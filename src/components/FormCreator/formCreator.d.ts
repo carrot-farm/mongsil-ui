@@ -31,6 +31,7 @@ interface FormCreatorModel extends FormItemProps, ButtonProps {
 
 type Component =
   | 'input'
+  | 'textArea'
   | 'select'
   | 'checkbox'
   | 'radio'
