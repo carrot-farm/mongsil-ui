@@ -5,6 +5,7 @@ import Form from './Form';
 import { FormProps } from './form.d';
 import FormItem from '../FormItem';
 import Input from '../Input';
+import TextArea from '../TextArea';
 import CheckboxCreator from '../CheckboxCreator';
 import RadioCreator from '../RadioCreator';
 import Switch from '../Switch';
@@ -32,6 +33,9 @@ export const Default = (args: FormProps): JSX.Element => (
     <Form {...args}>
       <FormItem name="input" defaultValue="input">
         <Input />
+      </FormItem>
+      <FormItem name="textarea" defaultValue="textarea">
+        <TextArea />
       </FormItem>
       <FormItem name="checkbox" defaultValue={['a', 'c']}>
         <CheckboxCreator model={model} />

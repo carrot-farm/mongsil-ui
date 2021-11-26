@@ -45,6 +45,7 @@ export interface FormItemChild
 
 export type DisplayName =
   | 'Input'
+  | 'TextArea'
   | 'Checkbox'
   | 'CheckboxCreator'
   | 'Switch'

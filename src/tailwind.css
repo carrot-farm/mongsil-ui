@@ -168,19 +168,24 @@
     transform: scale(0.95);
   }
 
-  /* ===== input ===== */
-  .Mongsil-input-root {
+  /* ===== input, textarea ===== */
+  .Mongsil-input-root,
+  .Mongsil-textarea-root {
     @apply bg-transparent rounded border;
     @apply border-gray-300 dent-0 m-transition-shadow m-transition-border;
   }
-  .Mongsil-input-root.focused {
+  .Mongsil-input-root.focused,
+  .Mongsil-textarea-root.focused {
     @apply border-transparent dent-100;
   }
-  .Mongsil-input-root > .Mongsil-input-base {
+  .Mongsil-input-root > .Mongsil-input-base,
+  .Mongsil-textarea-root > .Mongsil-textarea-base {
     @apply appearance-none bg-transparent w-full px-4 py-2 text-gray-700 focus:outline-none focus:bg-transparent;
   }
   .Mongsil-input-root.disabled,
-  .Mongsil-input-root.disabled > .Mongsil-input-base {
+  .Mongsil-input-root.disabled > .Mongsil-input-base,
+  .Mongsil-textarea-root.disabled,
+  .Mongsil-textarea-root.disabled > .Mongsil-textarea-base {
     @apply bg-gray-200 text-gray-400 cursor-not-allowed;
   }
 

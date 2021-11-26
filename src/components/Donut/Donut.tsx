@@ -123,7 +123,7 @@ export default function Donut({
             strokeLinecap={lineCap}
           />
           <defs>
-            <linearGradient id="gradient" gradientTransform="rotate(90)">
+            <linearGradient id="gradient" gradientTransform="rotate(0)">
               {colors.map((a, i) => (
                 <React.Fragment key={`Mongsil-circle__progress-${a ?? ''}-i`}>
                   <stop stopColor={a} offset={`${(100 / colors.length) * i}%`}>

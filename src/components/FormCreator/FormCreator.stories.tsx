@@ -15,6 +15,11 @@ export default {
         name: 'input-name',
       },
       {
+        component: 'textarea',
+        itemId: 'textarea',
+        name: 'textarea-name',
+      },
+      {
         component: 'select',
         itemId: 'select',
         name: 'select-name',
@@ -79,11 +84,11 @@ export const Layout = Template.bind({});
 Layout.args = {
   layout: {
     areas: `
-      'input select'
-      'checkbox radio'
-      'switch switch'
-      'submit submit'
+      'input select .'
+      'checkbox . radio '
+      'submit switch switch'
     `,
     gap: 2,
+    columns: '100px 100px 80px',
   },
 };

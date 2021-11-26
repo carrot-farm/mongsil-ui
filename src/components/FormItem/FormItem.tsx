@@ -209,6 +209,7 @@ function FormItem({
 /** 컴포넌트별 초기값 */
 const initialValues = {
   Input: () => '',
+  TextArea: () => '',
   Checkbox: () => false,
   CheckboxCreator: (): string[] => [],
   Switch: () => false,
