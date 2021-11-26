@@ -57,7 +57,9 @@ export default function Donut({
         height: width,
       },
       font: {
-        fontSize: `clamp(0.8rem, ${_width}%, 2rem)`,
+        fontSize: `clamp(0.8rem, ${
+          ((_width / 100 - 0.8) * 200) / (1.4 - 0.8)
+        }%, 1.8rem)`,
       },
       innerCircle: {
         overflow: 'hidden',
