@@ -58,7 +58,7 @@ export default function Donut({
       },
       font: {
         fontSize: `clamp(0.8rem, ${
-          ((_width / 100 - 0.8) * 200) / (1.4 - 0.8)
+          ((_width / 100 - 0.8) * 200) / (1.5 - 0.8)
         }%, 1.8rem)`,
       },
       innerCircle: {

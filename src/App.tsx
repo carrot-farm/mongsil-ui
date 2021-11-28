@@ -381,9 +381,11 @@ function App(): any {
       <div className="p-5 flex space-x-4">
         <Layout
           areas={`
-          'apple banana lemon'
-          'strawberry mangon fig'
-          'melon peach bluberry'
+          apple banana lemon
+          strawberry mangon fig
+          peach . .
+          repeat(3, "bluberry")
+          repeat(2, melon) .
         `}
           gap={2}
         >

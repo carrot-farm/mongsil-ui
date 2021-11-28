@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { TRemUnit } from '../../types/components';
 import { unitToRem } from '../../utils/style';
+import { areasConvert } from '../../utils/grid';
 
 export interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
   /** grid-template-areas 속성. 요소의 배치 정의. 백틱사용. */
@@ -29,11 +30,12 @@ function Layout({
   children,
   ...args
 }: LayoutProps): JSX.Element {
+  // console.log('> ', areasConvert(areas));
   return (
     <div
       className={`Mongsil-layout-root ${className ?? ''} `}
       style={{
-        gridTemplateAreas: areas,
+        gridTemplateAreas: areas ? areasConvert(areas) : '',
         gridTemplateColumns: columns,
         gridTemplateRows: rows,
         columnGap: unitToRem(gapX ?? gap ?? 0),

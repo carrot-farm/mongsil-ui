@@ -1,5 +1,6 @@
 import { TRemUnit } from '../types/components';
 
+/** 유닛을 지정된 rem단위의 값으로 반환한다 */
 export const unitToRem = (unit: TRemUnit): string => {
   return remTable[unit];
 };
