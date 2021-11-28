@@ -37,11 +37,9 @@ export default {
 
 export const Default = (args: LayoutProps): JSX.Element => <Layout {...args} />;
 Default.args = {
-  areas: `
-    'header header header'
-    'aside main main'
-    'footer footer footer'
-  `,
+  areas: `header header header
+    aside main main
+    repeat(3, 'footer')`,
   columns: '100px repeat(2, 200px)',
   rows: 'repeat(3, 80px)',
   children: (
