@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
 import Layout, { LayoutProps } from './Layout';
-import LayoutItem from '../LayoutItem';
+import LayoutItem, { LayoutItemProps } from '../LayoutItem';
 
 export default {
   title: 'component/Layout',
