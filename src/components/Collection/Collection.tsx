@@ -34,7 +34,7 @@ const Collection = forwardRef<HTMLUListElement, CollectionProps>(
       };
     }, [gap, breakPoints, defaultColumn]);
 
-    return <ul style={{ ...ulStyle, ...style }} {...args} ref={ref} />;
+    return <ul style={{ ...style, ...ulStyle }} {...args} ref={ref} />;
   },
 );
 

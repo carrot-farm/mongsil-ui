@@ -2,10 +2,10 @@ import { TRemUnit } from '../types/components';
 
 /** 유닛을 지정된 rem단위의 값으로 반환한다 */
 export const unitToRem = (unit: TRemUnit): string => {
-  return remTable[unit];
+  return unitTable[unit];
 };
 
-const remTable: Record<TRemUnit, string> = {
+export const unitTable: Record<TRemUnit, string> = {
   0: '0rem',
   ['0.5']: '0.125rem',
   ['1']: '0.25rem',

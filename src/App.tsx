@@ -14,6 +14,7 @@ import Form from './components/Form';
 import FormCreator from './components/FormCreator';
 import Layout from './components/Layout';
 import LayoutItem from './components/LayoutItem';
+import Collection from './components/Collection';
 
 import useForm from './hooks/useForm';
 
@@ -378,7 +379,7 @@ function App(): any {
           onChange={(v, name) => console.log(v, name)}
         />
       </div>
-      <div className="p-5 flex space-x-4">
+      {/* <div className="p-5 flex space-x-4">
         <Layout
           areas={`
           apple banana lemon
@@ -405,6 +406,15 @@ function App(): any {
             </LayoutItem>
           ))}
         </Layout>
+      </div> */}
+      <div className="p-5 flex space-x-4">
+        <Collection gap={10} defaultColumn={5}>
+          {new Array(9).fill('').map((_, i) => (
+            <li className="border border-gray-500 mb-0" key={`item-${i}`}>
+              {i + 1}
+            </li>
+          ))}
+        </Collection>
       </div>
       <div className="h-80"></div>
     </div>

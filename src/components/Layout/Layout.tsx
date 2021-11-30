@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { TRemUnit } from '../../types/components';
-import { unitToRem } from '../../utils/style';
+import { unitToRem } from '../../utils/theme';
 import { areasConvert } from '../../utils/grid';
 
 export interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
