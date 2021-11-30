@@ -9,7 +9,7 @@ import Input from '../Input';
 import Button from '../Button';
 
 export default {
-  title: 'component/FormItem',
+  title: 'form/FormItem',
   component: FormItem,
   argTypes: {
     onSubmit: {

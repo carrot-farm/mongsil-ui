@@ -13,7 +13,7 @@ import SelectCreator from '../SelectCreator';
 import Button from '../Button';
 
 export default {
-  title: 'component/Form',
+  title: 'form/Form',
   component: Form,
   argTypes: {
     onSubmit: {

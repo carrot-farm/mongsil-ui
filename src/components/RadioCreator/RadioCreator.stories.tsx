@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import RadioCreator from './RadioCreator';
 
 export default {
-  title: 'component/RadioCreator',
+  title: 'form/RadioCreator',
   component: RadioCreator,
   args: {
     variant: 'emboss',

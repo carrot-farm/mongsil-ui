@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Radio from './Radio';
 
 export default {
-  title: 'component/Radio',
+  title: 'form/Radio',
   component: Radio,
   args: {
     variant: 'emboss',

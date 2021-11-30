@@ -5,7 +5,7 @@ import Layout from '../Layout';
 import LayoutItem, { LayoutItemProps } from './LayoutItem';
 
 export default {
-  title: 'component/LayoutItem',
+  title: 'layout/LayoutItem',
   component: LayoutItem,
 } as ComponentMeta<typeof LayoutItem>;
 

@@ -1,0 +1,74 @@
+.container {
+  --w: 600px;
+  --n: 3;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(
+      clamp(100%/ (var(--n) + 1) + 0.1%, (var(--w) - 100vw) * 1000, 100%),
+      1fr
+    )
+  ); /*this */
+  gap: 10px;
+}
+
+.container {
+  --w: 600px;
+  --n: 3;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(
+      clamp(
+        clamp(100% / 5 + 0.1%, (1000px - 100vw) * 1000, 100% / 4 + 0.1%),
+        (600px - 100vw) * 1000,
+        100%
+      ),
+      1fr
+    )
+  ); /*this */
+  gap: 10px;
+}
+
+.container {
+  /* first breakpoint*/
+  --w1: 1200px;
+  --n: 6;
+  /* second breakpoint*/
+  --w2: 800px;
+  --m: 4;
+  /* third breakpoint*/
+  --w3: 400px;
+  --p: 2;
+
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(
+      /* clamp(
+        clamp(
+          clamp(
+            100% / (var(--n) + 1) + 0.1%,
+            (var(--w1) - 100vw) * 1000,
+            100% / (var(--m) + 1) + 0.1%
+          ),
+          (var(--w2) - 100vw) * 1000,
+          100% / (var(--p) + 1) + 0.1%
+        ),
+        (var(--w3) - 100vw) * 1000,
+        100%
+      ), */
+        clamp(
+          clamp(
+            clamp(100% / 7 + 0.1%, (1200px - 100vw) * 1000, 100% / 5 + 0.1%),
+            (800px - 100vw) * 1000,
+            100% / 3 + 0.1%
+          ),
+          (400px - 100vw) * 1000,
+          100%
+        ),
+      1fr
+    )
+  );
+  gap: 10px;
+}

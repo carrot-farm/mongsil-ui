@@ -65,3 +65,44 @@ export const areasConvert = (areas: string): string => {
 
   return parse(areas.trim()?.split('\n') ?? [], 0, '');
 };
+
+/**  */
+export interface breakPointsStringifyParam {
+  column: number;
+  width: number;
+}
+export const breakPointsStringify = (
+  arr: breakPointsStringifyParam[],
+  defaultColumn?: number,
+): string => {
+  const recursive = (
+    arr: breakPointsStringifyParam[],
+    i: number,
+    acc: string,
+  ): string => {
+    // console.log('> ', arr);
+    if (i < arr.length) {
+      const { width, column } = arr[i];
+      const st = 'clamp(';
+      const c = `100% / ${column + 1} + 0.1%`;
+      const w = `(${width}px - 100vw) * 1000`;
+      let str = '';
+
+      if (i === 0) {
+        str += `${c}, ${w}, `;
+      } else {
+        str += `${c}), ${w}, `;
+      }
+
+      return recursive(arr, i + 1, st + acc + str);
+    } else {
+      return acc + `100% / ${defaultColumn ? defaultColumn + 1 : 2} + 0.1%)`;
+    }
+  };
+
+  return recursive(
+    arr.sort((a, b) => (a.width > b.width ? -1 : 1)),
+    0,
+    '',
+  );
+};

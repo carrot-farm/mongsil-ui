@@ -5,7 +5,7 @@ import SelectCreator from './SelectCreator';
 import { SelectCreatorProps } from './selectCreator.d';
 
 export default {
-  title: 'component/SelectCreator',
+  title: 'form/SelectCreator',
   component: SelectCreator,
   args: {
     defaultValue: 'a',

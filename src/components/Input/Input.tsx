@@ -23,10 +23,8 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
     }, []);
 
     /** 값 변경 */
-    const handleChange = useCallback<
-      (e: React.ChangeEvent<HTMLInputElement>) => void
-    >(
-      (e) => {
+    const handleChange = useCallback(
+      (e: React.ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = e.target;
 
         if (onChange) {
