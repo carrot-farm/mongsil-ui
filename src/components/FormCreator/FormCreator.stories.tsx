@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import FormCreator from './FormCreator';
 
 export default {
-  title: 'component/FormCreator',
+  title: 'form/FormCreator',
   component: FormCreator,
   args: {
     variant: 'emboss',

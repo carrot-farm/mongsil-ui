@@ -2,10 +2,10 @@ import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
 import Layout, { LayoutProps } from './Layout';
-import LayoutItem, { LayoutItemProps } from '../LayoutItem';
+import LayoutItem from '../LayoutItem';
 
 export default {
-  title: 'component/Layout',
+  title: 'layout/Layout',
   component: Layout,
   args: {
     areas: `

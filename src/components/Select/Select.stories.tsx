@@ -5,7 +5,7 @@ import Select, { SelectProps } from './Select';
 import Option from './Option';
 
 export default {
-  title: 'component/Select',
+  title: 'form/Select',
   component: Select,
   argTypes: {
     onChange: {

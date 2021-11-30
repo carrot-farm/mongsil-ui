@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import CheckboxCreator from './CheckboxCreator';
 
 export default {
-  title: 'component/CheckboxCreator',
+  title: 'form/CheckboxCreator',
   component: CheckboxCreator,
 } as ComponentMeta<typeof CheckboxCreator>;
 

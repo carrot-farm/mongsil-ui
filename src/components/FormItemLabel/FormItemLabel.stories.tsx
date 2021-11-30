@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import FormItemLabel from './FormItemLabel';
 
 export default {
-  title: 'component/FormItemLabel',
+  title: 'form/FormItemLabel',
   component: FormItemLabel,
 } as ComponentMeta<typeof FormItemLabel>;
 
