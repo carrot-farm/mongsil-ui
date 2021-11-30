@@ -1,7 +1,10 @@
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
   mode: 'jit',
   darkMode: false,
   theme: {
+    // # layout
     extend: {
       // # color
       colors: {

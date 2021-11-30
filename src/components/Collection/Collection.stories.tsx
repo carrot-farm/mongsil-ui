@@ -29,7 +29,7 @@ export const DefaultColumn = Template.bind({});
 DefaultColumn.args = { defaultColumn: 4 };
 
 export const Gap = Template.bind({});
-Gap.args = { gap: 8, defaultColumn: 4 };
+Gap.args = { gap: '8', defaultColumn: 4 };
 
 export const BreakPoints = Template.bind({});
 BreakPoints.args = {

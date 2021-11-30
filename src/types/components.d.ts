@@ -112,3 +112,5 @@ export type TRemUnit =
   | 72
   | 80
   | 96;
+
+export type TPrefixRemUnit<T extends string> = `${T}${TRemUnit}`;

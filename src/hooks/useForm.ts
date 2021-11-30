@@ -3,8 +3,10 @@ import { useRef, useCallback, MutableRefObject } from 'react';
 import { ValueTypes, Values } from '../types/components';
 import { FormContextProps } from '../contexts/formContext';
 
-export interface FormRef
-  extends Pick<FormContextProps, 'values' | 'setValue' | 'setValues'> {}
+export type FormRef = Pick<
+  FormContextProps,
+  'values' | 'setValue' | 'setValues'
+>;
 
 interface UseForm {
   /** form 핸들러 등을 가져올 ref */
