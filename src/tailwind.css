@@ -1,0 +1,367 @@
+@import './styles/base.css';
+@import './components/components.css';
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import 'tailwindcss/variants';
+
+@layer components {
+  /* ===== button ===== */
+  .Mongsil-button-root {
+    @apply font-semibold px-4 py-2 rounded m-transition-shadow;
+  }
+  .Mongsil-button-root.disabled {
+    @apply bg-gray-200 text-gray-400 cursor-not-allowed;
+  }
+  .Mongsil-button-root.emboss {
+    @apply emboss-300;
+  }
+  .Mongsil-button-root.emboss.pressed {
+    @apply emboss-0;
+  }
+  .Mongsil-button-root.dent {
+    @apply dent-0;
+  }
+  .Mongsil-button-root.dent.pressed {
+    @apply dent-200;
+  }
+  .Mongsil-button-root > .Mongsil-button-label {
+    @apply m-transition-transform;
+  }
+  .Mongsil-button-root.pressed > .Mongsil-button-label {
+    transform: scale(0.95);
+  }
+
+  /* ===== input, textarea ===== */
+  .Mongsil-input-root,
+  .Mongsil-textarea-root {
+    @apply bg-transparent rounded border;
+    @apply border-gray-300 dent-0 m-transition-shadow m-transition-border;
+  }
+  .Mongsil-input-root.focused,
+  .Mongsil-textarea-root.focused {
+    @apply border-transparent dent-100;
+  }
+  .Mongsil-input-root > .Mongsil-input-base,
+  .Mongsil-textarea-root > .Mongsil-textarea-base {
+    @apply appearance-none bg-transparent w-full px-4 py-2 text-gray-700 focus:outline-none focus:bg-transparent;
+  }
+  .Mongsil-input-root.disabled,
+  .Mongsil-input-root.disabled > .Mongsil-input-base,
+  .Mongsil-textarea-root.disabled,
+  .Mongsil-textarea-root.disabled > .Mongsil-textarea-base {
+    @apply bg-gray-200 text-gray-400 cursor-not-allowed;
+  }
+
+  /* ===== checkbox ===== */
+  .Mongsil-checkbox-root {
+    @apply relative inline-flex items-center justify-center cursor-pointer p-2;
+  }
+  .Mongsil-checkbox-root > .Mongsil-checkbox-base {
+    @apply appearance-none;
+  }
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker {
+    @apply inline-flex items-center justify-center rounded w-5 h-5  text-gray-300 bg-transparent;
+    transition: box-shadow var(--easing), color var(--easing);
+  }
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.emboss,
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.emboss-outline,
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.emboss-fill {
+    @apply emboss-200;
+  }
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.emboss-outline {
+    @apply border border-transparent;
+    transition: border var(--easing), color 200ms var(--easing),
+      box-shadow var(--easing);
+  }
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.emboss-fill {
+    transition: background-color 200ms ease-in-out, color 200ms ease-in-out,
+      box-shadow 200ms ease-in-out;
+  }
+  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker {
+    @apply emboss-0;
+  }
+  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.emboss {
+    @apply text-primary;
+  }
+  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.emboss-fill {
+    @apply bg-primary text-base;
+  }
+  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.emboss-outline {
+    @apply border-gray-300 text-primary;
+  }
+  /* dent */
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.dent,
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.dent-outline {
+    @apply dent-0;
+  }
+  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.dent,
+  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.dent-outline {
+    @apply dent-100;
+  }
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.dent {
+    transition: color var(--easing);
+  }
+  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.dent {
+    @apply text-primary;
+  }
+  .Mongsil-checkbox-root > .Mongsil-checkbox-checker.dent-outline {
+    @apply border border-gray-300;
+    transition: border var(--easing), color 200ms var(--easing),
+      box-shadow var(--easing);
+  }
+  .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.dent-outline {
+    @apply border-transparent text-primary;
+  }
+  .Mongsil-checkbox-root .Mongsil-checkbox-icon {
+    @apply w-3;
+  }
+  .Mongsil-checkbox-root > label {
+    @apply ml-3 cursor-pointer;
+  }
+  .Mongsil-checkbox-root.disabled {
+    @apply cursor-not-allowed !important;
+  }
+  .Mongsil-checkbox-root.disabled > .Mongsil-checkbox-checker {
+    @apply bg-gray-200  text-gray-400 cursor-not-allowed !important;
+  }
+  .Mongsil-checkbox-root.disabled .Mongsil-checkbox-icon {
+    @apply text-gray-300 cursor-not-allowed !important;
+  }
+  .Mongsil-checkbox-root.disabled .Mongsil-checkbox-label {
+    @apply text-gray-400 cursor-not-allowed !important;
+  }
+
+  /* ===== radio ===== */
+  .Mongsil-radio-root {
+    @apply relative inline-flex items-center justify-center cursor-pointer p-2;
+  }
+  .Mongsil-radio-root > .Mongsil-radio-base {
+    @apply appearance-none;
+  }
+  .Mongsil-radio-root > .Mongsil-radio-checker {
+    @apply relative inline-flex items-center justify-center rounded-full w-5 h-5  text-gray-300 bg-base;
+  }
+  .Mongsil-radio-root > .Mongsil-radio-checker > .Mongsil-radio-checker-outer {
+    @apply relative inline-flex items-center justify-center rounded-full border-2 border-gray-300;
+    width: 14px;
+    height: 14px;
+    transition: border-color var(--easing);
+  }
+  .Mongsil-radio-root
+    .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker
+    > .Mongsil-radio-checker-outer {
+    @apply border-primary;
+  }
+  .Mongsil-radio-root > .Mongsil-radio-checker .Mongsil-radio-checker-inner {
+    @apply bg-primary rounded-full m-transition-transform;
+    width: 6px;
+    height: 6px;
+    transform: scale(0);
+  }
+  .Mongsil-radio-root
+    > .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker
+    .Mongsil-radio-checker-inner {
+    transform: scale(1);
+  }
+  .Mongsil-radio-root > .Mongsil-radio-label {
+    @apply ml-3 cursor-pointer;
+  }
+
+  /* emboss */
+  .Mongsil-radio-root > .Mongsil-radio-checker.emboss {
+    @apply emboss-200;
+  }
+  .Mongsil-radio-root
+    .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker.emboss {
+    @apply emboss-0;
+  }
+
+  /* dent */
+  .Mongsil-radio-root > .Mongsil-radio-checker.dent {
+    @apply dent-0 border border-gray-300;
+    transition: box-shadow var(--easing), border-color var(--easing);
+  }
+  .Mongsil-radio-root
+    .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker.dent {
+    @apply dent-100 border-transparent;
+  }
+  .Mongsil-radio-root
+    > .Mongsil-radio-checker.dent
+    .Mongsil-radio-checker-outer,
+  .Mongsil-radio-root
+    > .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker.dent
+    .Mongsil-radio-checker-outer {
+    @apply border-none;
+  }
+  .Mongsil-radio-root
+    > .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker.dent
+    .Mongsil-radio-checker-inner {
+    @apply scale-150;
+  }
+  .Mongsil-radio-root.disabled,
+  .Mongsil-radio-root.disabled .Mongsil-radio-label {
+    @apply text-gray-400 cursor-not-allowed !important;
+  }
+  .Mongsil-radio-root.disabled .Mongsil-radio-checker {
+    @apply bg-gray-200 text-gray-400 cursor-not-allowed !important;
+  }
+  .Mongsil-radio-root.disabled .Mongsil-radio-checker-inner {
+    @apply bg-gray-300 !important;
+  }
+  .Mongsil-radio-root.disabled,
+  .Mongsil-radio-checker > .Mongsil-radio-checker-outer,
+  .Mongsil-radio-root.disabled
+    .Mongsil-radio-base:checked
+    + .Mongsil-radio-checker
+    > .Mongsil-radio-checker-outer {
+    @apply border-gray-300;
+  }
+
+  /* ===== switch ===== */
+  .Mongsil-switch-root {
+    @apply relative inline-flex items-center justify-center cursor-pointer p-2;
+  }
+  .Mongsil-switch-root > .Mongsil-switch-base {
+    @apply appearance-none;
+  }
+  .Mongsil-switch-root > .Mongsil-switch-bg {
+    @apply relative w-11 h-6  rounded-full flex items-center;
+  }
+  .Mongsil-switch-root > .Mongsil-switch-bg.dent {
+    @apply dent-100;
+  }
+  .Mongsil-switch-root > .Mongsil-switch-bg.emboss {
+    @apply border border-gray-300;
+  }
+  .Mongsil-switch-root .Mongsil-switch-checker {
+    @apply w-4 h-4 inline-flex items-center justify-center rounded-full;
+    @apply absolute bg-gray-300;
+    left: 4px;
+    transition: transform 200ms ease-in-out, background-color 200ms ease-in-out;
+  }
+  .Mongsil-switch-root .Mongsil-switch-bg.emboss .Mongsil-switch-checker {
+    @apply emboss-200;
+  }
+  .Mongsil-switch-root
+    .Mongsil-switch-base:checked
+    + .Mongsil-switch-bg
+    .Mongsil-switch-checker {
+    @apply bg-primary;
+    transform: translateX(20px);
+  }
+  .Mongsil-switch-root.disabled .Mongsil-switch-bg {
+    @apply bg-gray-200 cursor-not-allowed !important;
+  }
+  .Mongsil-switch-root.disabled
+    .Mongsil-switch-base:checked
+    + .Mongsil-switch-bg
+    .Mongsil-switch-checker,
+  .Mongsil-switch-root.disabled
+    .Mongsil-switch-base
+    + .Mongsil-switch-bg
+    .Mongsil-switch-checker {
+    @apply bg-gray-300 shadow-none;
+  }
+
+  /* ===== select ===== */
+  .Mongsil-select-root {
+    @apply relative inline-flex flex-col items-center justify-center;
+  }
+  .Mongsil-select-root > .Mongsil-select-value-container {
+    @apply flex items-center justify-between border border-gray-300 rounded px-4 py-2 cursor-pointer;
+  }
+  .Mongsil-select-root .Mongsil-select-value {
+    @apply inline-flex leading-normal;
+    height: 1.5rem;
+    min-width: 3rem;
+  }
+  .Mongsil-select-root .Mongsil-select-icon {
+    @apply appearance-none ml-2;
+  }
+  .Mongsil-select-root .Mongsil-select-float-container {
+    @apply relative w-full;
+  }
+  .Mongsil-select-root .Mongsil-select-float-panel {
+    @apply absolute left-0 shadow-xl w-full cursor-pointer z-10 rounded-b;
+    top: 0;
+    backdrop-filter: blur(2px);
+    background: hsl(var(--color-base-deg) 22% 95% / 70%);
+    box-sizing: border-box;
+    transform-origin: top;
+    display: none;
+    min-height: 40px;
+    max-height: 160px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .Mongsil-select-root .Mongsil-select-float-panel.animate-visible-panel {
+    display: block;
+  }
+  .Mongsil-select-root.disabled {
+    @apply bg-gray-200 text-gray-400;
+  }
+  .Mongsil-select-root.disabled > .Mongsil-select-value-container,
+  .Mongsil-select-root.disabled button {
+    @apply cursor-not-allowed;
+  }
+  .Mongsil-select-root.disabled .Mongsil-select-icon svg {
+    @apply text-gray-400;
+  }
+
+  /* ===== select.option ===== */
+  .Mongsil-option-root {
+    @apply px-4 py-2;
+  }
+  .Mongsil-option-root:hover,
+  .Mongsil-option-root.selected {
+    background: hsl(var(--color-primary-deg) 100% 72% / 10%);
+  }
+  .Mongsil-option-root.selected {
+    @apply font-bold;
+  }
+
+  /* ===== form-item ===== */
+  .Mongsil-form_item-root {
+    @apply relative flex;
+  }
+  .Mongsil-form_item-root .Mongsil-form_item-container {
+    @apply relative;
+  }
+  /* label */
+  .Mongsil-form_item-root .Mongsil-form_item-label {
+    @apply text-sm;
+  }
+  .Mongsil-form_item-root.flex-col .Mongsil-form_item-label {
+    @apply pb-2;
+  }
+  .Mongsil-form_item-root.flex-row .Mongsil-form_item-label > span {
+    @apply inline-block pr-2 pt-2;
+  }
+  /* helper text */
+  .Mongsil-form_item-root .Mongsil-form_item-helper_text {
+    @apply text-xs mt-1;
+  }
+  /* error message */
+  .Mongsil-form_item-root .Mongsil-form_item-error_message {
+    @apply text-xs mt-1;
+    color: var(--color-error);
+  }
+  .Mongsil-form_item-root.disabled .Mongsil-form_item-label,
+  .Mongsil-form_item-root.disabled .Mongsil-form_item-helper_text,
+  .Mongsil-form_item-root.disabled .Mongsil-form_item-error_message {
+    @apply text-gray-400 cursor-not-allowed !important;
+  }
+
+  /* ===== Layout ===== */
+  .Mongsil-layout-root {
+    @apply relative grid;
+  }
+}
