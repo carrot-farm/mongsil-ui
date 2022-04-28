@@ -1,4 +1,5 @@
-const plugin = require('tailwindcss/plugin');
+const utilities = require('./src/styles/utilities');
+const components = require('./src/components/tailwind.config');
 
 module.exports = {
   mode: 'jit',
@@ -48,6 +49,7 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [],
+  content: ['./src/components/**/*.{html,js}'],
+  plugins: [utilities, components],
   purge: ['./src/**/*.{ts,tsx}'],
 };
