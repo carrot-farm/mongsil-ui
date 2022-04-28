@@ -1,0 +1,19 @@
+#Mongsil-modal-root {
+  @apply fixed inset-0;
+  z-index: 1000;
+  .Mongsil-modal-backdrop {
+    @apply fixed inset-0 bg-red-500 opacity-80;
+    @apply invisible opacity-0;
+    &.show {
+      @apply visible opacity-100;
+      transition: opacity 0.2s linear;
+    }
+  }
+  .Mongsil-modal-container {
+    @apply fixed inset-0 w-full flex justify-center items-center;
+    &.body-scroll {
+      @apply overflow-y-auto;
+    }
+    z-index: 1;
+  }
+}

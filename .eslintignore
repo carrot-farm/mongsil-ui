@@ -9,3 +9,5 @@ src/tailwind.css
 webpack.*.js
 
 storybook-static
+
+./**/*.js
