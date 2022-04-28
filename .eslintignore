@@ -1,0 +1,11 @@
+.yarn
+
+node_modules
+
+dist
+
+src/tailwind.css
+
+webpack.*.js
+
+storybook-static
