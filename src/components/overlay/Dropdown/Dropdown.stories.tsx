@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Dropdown from './Dropdown';
 
 export default {
-  title: 'actions/Dropdown',
+  title: 'overlay/Dropdown',
   component: Dropdown,
   args: {
     data: [
