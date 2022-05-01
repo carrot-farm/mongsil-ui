@@ -2,24 +2,28 @@ import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-interface ModalProps {
+export interface ModalProps {
+  className?: string;
   bosyScroll?: boolean;
   visible?: boolean;
   children?: React.ReactNode;
-  onVisible(ref: React.MutableRefObject<HTMLElement | undefined>): void;
-  onHidden(ref: React.MutableRefObject<HTMLElement | undefined>): void;
+  onVisible?(ref: React.MutableRefObject<HTMLElement | undefined>): void;
+  onHidden?(ref: React.MutableRefObject<HTMLElement | undefined>): void;
+  onBackdropClick?(): void;
 }
 
 function Modal({
+  className,
   bosyScroll = true,
   visible = false,
   children,
   onVisible,
   onHidden,
+  onBackdropClick,
 }: ModalProps): JSX.Element | null {
   const ref = useRef<HTMLElement>();
-  const [isMounted, setIsMounted] = useState(false);
-  const [show, setShow] = useState(false);
+  const [isMounted, setIsMounted] = useState<boolean | null>(false);
+  const [show, setShow] = useState<boolean | null>(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -37,6 +41,8 @@ function Modal({
       if (rootEl && !rootEl?.innerHTML) {
         document.body.removeChild(rootEl);
       }
+      ref.current = undefined;
+      setIsMounted(null);
     };
   }, []);
 
@@ -45,21 +51,28 @@ function Modal({
       return;
     }
     if (visible) {
-      onVisible(ref);
+      onVisible && onVisible(ref);
       document.body.classList.add('overflow-hidden');
     } else {
-      onHidden(ref);
+      onHidden && onHidden(ref);
     }
-    setShow(!!visible);
+    setTimeout(() => {
+      setShow(!!visible);
+    });
+
     return () => {
       document.body.classList.remove('overflow-hidden');
+      setShow(null);
     };
   }, [isMounted, visible, onVisible, onHidden]);
 
   if (ref.current && visible === true && isMounted === true) {
     return createPortal(
-      <div className="Mongsil-modal">
-        <div className={`Mongsil-modal-backdrop ${show ? 'show' : ''}`} />
+      <div className={`Mongsil-modal ${className ?? ''}`}>
+        <div
+          className={`Mongsil-modal-backdrop ${show ? 'show' : ''}`}
+          onClick={() => onBackdropClick && onBackdropClick()}
+        />
         <div
           className={`Mongsil-modal-container ${
             bosyScroll ? 'body-scroll' : ''
