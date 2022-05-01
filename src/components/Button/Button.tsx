@@ -4,7 +4,17 @@ import { useEffect, useState, useCallback } from 'react';
 import { ButtonProps } from './button.d';
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = 'emboss', disabled, children, ...args }, ref) => {
+  (
+    {
+      className,
+      labelClassName,
+      variant = 'emboss',
+      disabled,
+      children,
+      ...args
+    },
+    ref,
+  ) => {
     const [isPressed, setIsPressed] = useState<boolean>(false);
     const [isAnimationEnd, setIsAnimationEnd] = useState<boolean>(true);
     const [ing, setIng] = useState<boolean>(false);
@@ -62,10 +72,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         onTouchStart={pressed}
         onTouchEnd={unPressed}
         onTransitionEnd={handleTransitionEnd}
-        {...args}
         ref={ref}
+        {...args}
       >
-        <div className="Mongsil-button-label">{children}</div>
+        <div className={`Mongsil-button-label ${labelClassName ?? ''}`}>
+          {children}
+        </div>
       </button>
     );
   },

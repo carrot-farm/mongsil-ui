@@ -17,46 +17,6 @@ const Some = () => {
       a<br />
       a<br />
       a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
-      a<br />
     </div>
   );
 };
