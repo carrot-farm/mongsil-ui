@@ -1,11 +1,2 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import App from './App';
-import './tailwind_out.css';
-
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+export type { ButtonProps } from './components/Button';
+export { default as Button } from './components/Button';

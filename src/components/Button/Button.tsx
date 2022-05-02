@@ -1,7 +1,17 @@
 import * as React from 'react';
+import { ButtonHTMLAttributes } from 'react';
 import { useEffect, useState, useCallback } from 'react';
 
-import { ButtonProps } from './button.d';
+export interface ButtonProps
+  extends Partial<Pick<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>> {
+  children?: React.ReactNode;
+  className?: string;
+  labelClassName?: string;
+  variant?: 'emboss' | 'dent';
+  /** true 일 경우 비활성화 */
+  disabled?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+}
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (

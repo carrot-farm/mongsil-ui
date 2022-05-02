@@ -1,8 +1,9 @@
 {
-  "name": "mongsil-ui",
+  "name": "@carrot-farm/mongsil-ui",
   "version": "0.0.1",
   "description": "react ui library",
-  "main": "dist/*.bundle.ts",
+  "license": "MIT",
+  "author": "chohoki@gmail.com",
   "scripts": {
     "dev": "webpack serve --open --config webpack.dev.js",
     "start": "concurrently \"yarn tw:watch\" \"yarn dev\"",
@@ -33,6 +34,9 @@
     "type": "git",
     "url": "git+https://github.com/carrot-farm/mongsil-ui.git"
   },
+  "publishConfig": {
+    "@carrot-farm:registry": "https://npm.pkg.github.com"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -49,8 +53,6 @@
     "react",
     "ui"
   ],
-  "author": "chohoki@gmail.com",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/carrot-farm/mongsil-ui/issues"
   },
