@@ -6,7 +6,7 @@ import { SelectCreatorProps } from '../SelectCreator/selectCreator.d';
 import { CheckboxCreatorProps } from '../CheckboxCreator/checkboxCreator.d';
 import { RadioCreatorProps } from '../RadioCreator/radioCreator.d';
 import { SwitchProps } from '../Switch/switch.d';
-import { ButtonProps } from '../Button/button.d';
+import { ButtonProps } from '../Button';
 import { LayoutProps } from '../Layout';
 
 export interface FormCreatorProps extends Omit<FormProps, 'children'> {
