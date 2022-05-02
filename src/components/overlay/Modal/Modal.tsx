@@ -8,7 +8,7 @@ export interface ModalProps {
   visible?: boolean;
   children?: React.ReactNode;
   onVisible?(ref: React.MutableRefObject<HTMLElement | undefined>): void;
-  onHidden?(ref: React.MutableRefObject<HTMLElement | undefined>): void;
+  onHidden?(): void;
   onBackdropClick?(): void;
 }
 
@@ -54,7 +54,7 @@ function Modal({
       onVisible && onVisible(ref);
       document.body.classList.add('overflow-hidden');
     } else {
-      onHidden && onHidden(ref);
+      onHidden && onHidden();
     }
     setTimeout(() => {
       setShow(!!visible);

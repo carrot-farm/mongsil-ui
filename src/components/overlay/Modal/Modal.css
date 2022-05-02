@@ -3,9 +3,6 @@
   .Mongsil-modal-backdrop {
     backdrop-filter: blur(0px);
     background-color: hsla(var(--color-base-deg) 22% 95% / 0);
-    /*
-    transition: backgroun-color 0.2s linear, backdrop-filter 0.2s linear;
-    */
     @apply fixed inset-0;
     &.show {
       background-color: hsla(var(--color-base-deg) 22% 95% / 0.5);

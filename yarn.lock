@@ -12330,6 +12330,7 @@ fsevents@^1.2.7:
     postcss-nested: ^5.0.6
     postcss-nesting: ^10.1.4
     puppeteer: ^10.2.0
+    rc-util: ^5.21.2
     react: ^17.0.2
     react-dom: ^17.0.2
     react-icons: ^4.2.0
@@ -14259,6 +14260,20 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"rc-util@npm:^5.21.2":
+  version: 5.21.2
+  resolution: "rc-util@npm:5.21.2"
+  dependencies:
+    "@babel/runtime": ^7.12.5
+    react-is: ^16.12.0
+    shallowequal: ^1.1.0
+  peerDependencies:
+    react: ">=16.9.0"
+    react-dom: ">=16.9.0"
+  checksum: 24d96b91a8343c07a35a3abc03e605203401f612d9b4d9d180e664fd7f75e7c6daeeda268f7492a19662e45d5ac191e2ac6862a603c3b41f3dabd8afdd2211e5
+  languageName: node
+  linkType: hard
+
 "react-colorful@npm:^5.1.2":
   version: 5.5.0
   resolution: "react-colorful@npm:5.5.0"
@@ -14429,7 +14444,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-is@npm:^16.7.0, react-is@npm:^16.8.1":
+"react-is@npm:^16.12.0, react-is@npm:^16.7.0, react-is@npm:^16.8.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: f7a19ac3496de32ca9ae12aa030f00f14a3d45374f1ceca0af707c831b2a6098ef0d6bdae51bd437b0a306d7f01d4677fcc8de7c0d331eb47ad0f46130e53c5f
