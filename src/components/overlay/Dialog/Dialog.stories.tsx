@@ -105,3 +105,39 @@ ModalInScroll.args = {
   body: someStrings,
   visible: true,
 };
+
+export const Confirm: React.FC = () => {
+  return (
+    <div>
+      <button
+        onClick={() => {
+          Dialog.confirm({
+            title: 'title',
+            body: 'body',
+            onOk: () => {
+              console.log('ok');
+            },
+          });
+        }}
+      >
+        confirm
+      </button>
+    </div>
+  );
+};
+
+export const Alert: React.FC = () => {
+  return (
+    <div>
+      <button
+        onClick={() => {
+          Dialog.alert({
+            body: '경고',
+          });
+        }}
+      >
+        alert
+      </button>
+    </div>
+  );
+};
