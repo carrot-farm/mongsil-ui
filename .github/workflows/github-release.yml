@@ -1,4 +1,4 @@
-name: 'carrot-ui package'
+name: 'mongsil-ui'
 
 on:
   release:
