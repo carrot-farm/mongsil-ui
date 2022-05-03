@@ -19,5 +19,5 @@
     "allowSyntheticDefaultImports": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", ".yarn", "dist", "public", "src/**/*.stories.tsx"]
+  "exclude": ["node_modules", ".yarn", "public", "src/**/*.stories.tsx"]
 }
