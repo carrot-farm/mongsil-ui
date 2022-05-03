@@ -1,22 +1,23 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "esnext",
+    "module": "CommonJS",
     "outDir": "./dist/",
-    "baseUrl": ".",
     "moduleResolution": "node",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "strict": true,
     "allowJs": false,
-    "declaration": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "noImplicitAny": true,
-    "inlineSourceMap": true,
     "skipLibCheck": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+
     "lib": ["dom", "dom.iterable", "esnext"]
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", ".eslintrc"],
   "exclude": ["node_modules", ".yarn", "dist", "public"]
 }

@@ -1,0 +1,21 @@
+#Mongsil-modal-root {
+  z-index: 1000;
+  .Mongsil-modal-backdrop {
+    backdrop-filter: blur(0px);
+    background-color: hsla(var(--color-base-deg) 22% 95% / 0);
+    @apply fixed inset-0;
+    &.show {
+      background-color: hsla(var(--color-base-deg) 22% 95% / 0.5);
+      backdrop-filter: blur(4px);
+      @apply visible;
+    }
+  }
+  .Mongsil-modal-container {
+    @apply fixed left-0 top-0 w-full flex justify-center;
+    &.body-scroll {
+      max-height: 100vh;
+      @apply overflow-y-auto;
+    }
+    z-index: 1;
+  }
+}
