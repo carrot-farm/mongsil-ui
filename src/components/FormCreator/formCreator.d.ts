@@ -1,5 +1,5 @@
 import { InputChange } from '../../types/components';
-import { FormProps } from '../Form/form.d';
+import { FormProps } from '../Form/form';
 import { FormItemProps } from '../FormItem/formItem.d';
 import { InputProps } from '../Input/input.d';
 import { SelectCreatorProps } from '../SelectCreator/selectCreator.d';
@@ -9,7 +9,8 @@ import { SwitchProps } from '../Switch/switch.d';
 import { ButtonProps } from '../Button';
 import { LayoutProps } from '../Layout';
 
-export interface FormCreatorProps extends Omit<FormProps, 'children'> {
+export interface FormCreatorProps
+  extends Omit<FormProps, 'children' | 'onChange'> {
   model: FormCreatorModel[];
   layout?: Pick<
     LayoutProps,

@@ -1,6 +1,8 @@
-import { InputHTMLAttributes } from 'react';
+import React from 'react';
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps
+  extends Omit<React.HTMLAttributes<HTMLInputElement>, 'onChange'> {
   className?: string;
-  onChange?: (vlaue?: string, name?: name) => void | false;
+  disabled?: boolean;
+  onChange?: (vlaue?: string, name?: string) => void | false;
 }

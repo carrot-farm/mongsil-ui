@@ -5,9 +5,13 @@ import FormItemLabel from '../FormItemLabel';
 import CloneComponent from '../CloneComponent/CloneComponent';
 
 import { FormItemProps, FormItemChild, DisplayName } from './formItem.d';
-import { ValueTypes } from '../../types/components';
+import { InputChange, ValueTypes } from '../../types/components';
 import { FormContext } from '../../contexts/formContext';
 import { validate } from '../../utils/validator';
+
+type ChildType = React.ReactElement & {
+  type: { displayName: string };
+};
 
 function FormItem({
   className,
@@ -41,8 +45,8 @@ function FormItem({
   const [required, setRequired] = useState<boolean>(false);
 
   /** 값 변경 */
-  const handleChange = useCallback(
-    (newValue: ValueTypes, name?: string): void => {
+  const handleChange = useCallback<InputChange>(
+    (newValue, name) => {
       // # 유효성 검사(change에서는 required를 검사하지 않는다.)
       if (rules) {
         if (newValue) {
@@ -71,6 +75,8 @@ function FormItem({
       if (name) {
         setFormValue(name, newValue);
       }
+
+      return undefined;
     },
     [stateBind, id, rules, onChange, setFormValue, setError],
   );
@@ -160,8 +166,8 @@ function FormItem({
       >
         {React.Children.map(children, (child) => {
           if (React.isValidElement<FormItemChild>(child)) {
-            const _type = child.type as any;
-            const displayName = _type.type.displayName;
+            const _type = (child.type as unknown) as ChildType;
+            const displayName = _type.type.displayName as DisplayName;
             let newValue = name && values[name] ? values[name] : undefined;
             let _checked =
               (displayName === 'Checkbox' || displayName === 'Switch') &&

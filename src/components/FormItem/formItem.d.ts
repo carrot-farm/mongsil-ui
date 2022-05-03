@@ -4,7 +4,7 @@ import {
   ValueTypes,
   StateBind,
   InputChange,
-  Rules,
+  RulesItems,
   Direction,
 } from '../../types/components';
 
@@ -24,7 +24,7 @@ export interface FormItemProps {
   gridArea?: React.CSSProperties['gridArea'];
   disabled?: boolean;
   children?: React.ReactNode;
-  rules?: Rules;
+  rules?: RulesItems;
   onChange?: InputChange;
 }
 

@@ -1,28 +1,32 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, Story } from '@storybook/react';
 
-import Dropdown from './Dropdown';
+import Dropdown, { DropdownProps } from './Dropdown';
+interface Item {
+  id: number;
+  title: string;
+}
+
+const data: Item[] = [
+  { id: 1, title: 'title-1' },
+  { id: 2, title: 'title-2' },
+  { id: 3, title: 'title-3' },
+  { id: 4, title: 'title-4' },
+  { id: 5, title: 'title-5' },
+];
 
 export default {
   title: 'overlay/Dropdown',
   component: Dropdown,
-  args: {
-    data: [
-      { id: 1, title: 'title-1' },
-      { id: 2, title: 'title-2' },
-      { id: 3, title: 'title-3' },
-      { id: 4, title: 'title-4' },
-      { id: 5, title: 'title-5' },
-    ],
-  },
 } as ComponentMeta<typeof Dropdown>;
 
-const Template: ComponentStory<typeof Dropdown> = (args) => (
-  <Dropdown {...args} />
-);
-
-export const Default = Template.bind({});
+export const Default = <T extends Item>(): Story<DropdownProps<T>> => ({
+  ...args
+}) => {
+  return <Dropdown<T> {...args} />;
+};
 Default.args = {
+  data,
   rowKey: 'id',
-  renderItem: (item: Record<string, string>) => item.title,
+  renderItem: (item: Item) => item.title,
 };

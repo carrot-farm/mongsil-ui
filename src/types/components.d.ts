@@ -2,17 +2,44 @@
 export type StateBind = 'none' | 'stateOnly' | 'both';
 export type ValueTypes = string | string[] | boolean | number | undefined;
 export type Values = Record<string, ValueTypes>;
-export type InputChange = (value?: ValueTypes, name?: string) => void | false;
+export type InputChange = (
+  value?: ValueTypes,
+  name?: string,
+) => boolean | undefined;
 export type Direction = 'x' | 'y';
 
 /** ===== rule  ===== */
-export type RuleRequired = ['required'];
-export type RuleLength = ['length', minLength: number, maxLength?: number];
-export type RuleMin = ['min', min: number];
-export type RuleMax = ['max', max: number];
-export type Rule = RuleRequired | RuleLength | RuleMin | RuleMax;
-export type RuleType = 'required' | 'length' | 'min' | 'max';
-export type RuleOptions = [] | [number] | [number, (number | undefined)?];
+export interface RulesObj {
+  required: [ruleName: 'required'];
+  length: [ruleName: 'length', minLength: number, maxLength?: number];
+  min: [ruleName: 'min', min: number];
+  max: [ruleName: 'max', max: number];
+}
+export type RuleNames = keyof RulesObj;
+export type RuleValues = RulesObj[keyof RulesObj];
+export interface RulesItem {
+  rule: RuleValues;
+  message?: string;
+}
+export type RulesItems = RulesItem[];
+export interface Pass {
+  required(value: ValueTypes): boolean;
+  length(value: ValueTypes, options: PassOptions['length']): boolean;
+  min(value: ValueTypes, options: PassOptions['min']): boolean;
+  max(value: ValueTypes, options: PassOptions['max']): boolean;
+  route<T extends RuleNames>(
+    rule: T,
+    value: ValueTypes,
+    options: PassOptions[T],
+  ): boolean;
+}
+export interface PassOptions {
+  required: undefined;
+  length: [RulesObj['length'][1], RulesObj['length'][2]];
+  min: [RulesObj['min'][1]];
+  max: [RulesObj['max'][1]];
+}
+
 export type MessageFn = (validateFailed: ValidateFailed) => string;
 interface ValidationResult {
   /** true일 경우 유효성 검증 통과 */
@@ -23,7 +50,7 @@ interface ValidationResult {
 /** 유효성 검사 실패시 반환 객체 */
 export interface ValidateFailed {
   value: ValueTypes;
-  rule: Rule;
+  rule: RuleNames;
 }
 export interface ValidateFailedModel extends FormModelItem {
   error: {
@@ -31,11 +58,6 @@ export interface ValidateFailedModel extends FormModelItem {
     message: null | string | undefined;
   };
 }
-export interface RulesItem {
-  rule: Rule;
-  message?: string;
-}
-export type Rules = RulesItem[];
 
 /** ===== errors ===== */
 export type ErrorType = string | null | undefined;
@@ -62,7 +84,7 @@ export interface FormModelItem {
   /** true 일 경우 비활성화 */
   disabled?: boolean;
   /** validation rules */
-  rules?: Rules;
+  rules?: RulesItems;
 }
 
 export type FormModel = FormModelItem[];

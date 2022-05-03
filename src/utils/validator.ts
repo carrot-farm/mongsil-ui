@@ -1,15 +1,18 @@
 import {
   Values,
   ValueTypes,
-  RuleType,
-  Rules,
-  RuleOptions,
+  RulesItems,
   ValidationResult,
   ValidateFailedModel,
   FormModel,
+  Pass,
+  PassOptions,
 } from '../types/components';
 
-export const validate = (rules: Rules, value: ValueTypes): ValidationResult => {
+export const validate = <T extends RulesItems>(
+  rules: T,
+  value: ValueTypes,
+): ValidationResult => {
   const result: ValidationResult = {
     pass: true,
     message: undefined,
@@ -23,7 +26,10 @@ export const validate = (rules: Rules, value: ValueTypes): ValidationResult => {
 
     const [_rule, ...options] = rule;
 
-    if (pass.route(_rule, value, options) === false) {
+    if (
+      pass.route(_rule, value, options as PassOptions[keyof PassOptions]) ===
+      false
+    ) {
       result.pass = false;
       result.message = message;
     }
@@ -64,13 +70,9 @@ export const validateModel = (
 };
 
 /** `true`리턴 시 통과, false 리턴 시 실패 */
-const pass = {
-  required: (value: ValueTypes) =>
-    Array.isArray(value) ? value.length > 0 : !!value,
-  length: (
-    value: ValueTypes,
-    [min, max]: [min?: number, max?: number] = [],
-  ) => {
+const pass: Pass = {
+  required: (value) => (Array.isArray(value) ? value.length > 0 : !!value),
+  length: (value, [min, max] = [1, undefined]) => {
     if (!min) {
       throw new Error(`not defined min: ${min ? min : ''}`);
     }
@@ -87,15 +89,23 @@ const pass = {
           return false;
         }
       }
-    } else {
-      return false;
+    }
+    return false;
+  },
+  min: (value, [min]) => Number(value) >= min,
+  max: (value, [max]) => Number(value) <= max,
+  route(rule, value, options) {
+    switch (rule) {
+      case 'required':
+        return pass.required(value);
+      case 'length':
+        return pass.length(value, options as PassOptions['length']);
+      case 'min':
+        return pass.min(value, options as PassOptions['min']);
+      case 'max':
+        return pass.min(value, options as PassOptions['max']);
+      default:
+        throw new Error('invalid rule: ');
     }
   },
-  min: (value: ValueTypes, [min]: [min: number]) => Number(value) >= min,
-  max: (value: ValueTypes, [max]: [max: number]) => Number(value) <= max,
-  route(rule: RuleType, value: ValueTypes, options?: RuleOptions): boolean {
-    return this[rule](value, options as any);
-  },
 };
-
-// export const validateAll = (rules: Rules, values: Values) => {};

@@ -48,6 +48,7 @@ function FormCreator({
       if (onChange && onChange(value, name) === false) {
         return false;
       }
+      return undefined;
     },
     [onChange],
   );

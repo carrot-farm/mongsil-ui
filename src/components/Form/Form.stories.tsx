@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
-import Form from './Form';
-import { FormProps } from './form.d';
+import Form, { FormProps } from './Form';
 import FormItem from '../FormItem';
 import Input from '../Input';
 import TextArea from '../TextArea';
