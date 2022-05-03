@@ -31,7 +31,8 @@
     "url": "https://github.com/carrot-farm/mongsil-ui.git"
   },
   "files": [
-    "/dist"
+    "tsconfig*.json",
+    "dist"
   ],
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
