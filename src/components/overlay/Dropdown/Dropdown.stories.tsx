@@ -24,5 +24,5 @@ const Template: ComponentStory<typeof Dropdown> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   rowKey: 'id',
-  renderItem: (item) => item.title,
+  renderItem: (item: Record<string, string>) => item.title,
 };

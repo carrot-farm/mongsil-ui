@@ -25,6 +25,11 @@ export default {
       options: ['body', 'modal', 'modal-in'],
       defaultValue: 'body',
     },
+    argTypes: {
+      title: {
+        type: { name: 'string' },
+      },
+    },
   },
 } as ComponentMeta<typeof Dialog>;
 
@@ -99,45 +104,45 @@ ModalScroll.args = {
   visible: true,
 };
 
-export const ModalInScroll = Template.bind({});
-ModalInScroll.args = {
-  scrollType: 'modal-in',
-  body: someStrings,
-  visible: true,
-};
+// export const ModalInScroll = Template.bind({});
+// ModalInScroll.args = {
+//   scrollType: 'modal-in',
+//   body: someStrings,
+//   visible: true,
+// };
 
-export const Confirm: React.FC = () => {
-  return (
-    <div>
-      <button
-        onClick={() => {
-          Dialog.confirm({
-            title: 'title',
-            body: 'body',
-            onOk: () => {
-              console.log('ok');
-            },
-          });
-        }}
-      >
-        confirm
-      </button>
-    </div>
-  );
-};
+// export const Confirm: React.FC = () => {
+//   return (
+//     <div>
+//       <button
+//         onClick={() => {
+//           Dialog.confirm({
+//             title: 'title',
+//             body: 'body',
+//             onOk: () => {
+//               console.log('ok');
+//             },
+//           });
+//         }}
+//       >
+//         confirm
+//       </button>
+//     </div>
+//   );
+// };
 
-export const Alert: React.FC = () => {
-  return (
-    <div>
-      <button
-        onClick={() => {
-          Dialog.alert({
-            body: '경고',
-          });
-        }}
-      >
-        alert
-      </button>
-    </div>
-  );
-};
+// export const Alert: React.FC = () => {
+//   return (
+//     <div>
+//       <button
+//         onClick={() => {
+//           Dialog.alert({
+//             body: '경고',
+//           });
+//         }}
+//       >
+//         alert
+//       </button>
+//     </div>
+//   );
+// };

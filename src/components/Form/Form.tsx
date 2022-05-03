@@ -6,14 +6,24 @@ import { FormContext } from '../../contexts/formContext';
 import { validateModel } from '../../utils/validator';
 
 import { Values } from '../../types/components';
-import { FormProps } from './form.d';
+import { FormRef } from '../../hooks/useForm';
+
+export interface FormProps
+  extends Omit<React.HTMLAttributes<HTMLFormElement>, 'onSubmit'> {
+  /** form ref 객체 */
+  form?: React.MutableRefObject<FormRef>;
+  /** components */
+  children?: React.ReactNode;
+  /** submit event */
+  onSubmit?: (values: Values) => void | false;
+}
 
 /** ===== component ===== */
 const Form = forwardRef<HTMLFormElement, FormProps>(
   ({ form, children, onSubmit, ...args }, ref) => {
-    const { values, scheme, setValue, setValues, setErrors } =
-      useContext(FormContext);
-    // console.log('> Form:', setValue);
+    const { values, scheme, setValue, setValues, setErrors } = useContext(
+      FormContext,
+    );
 
     /** event: submit */
     const handleSubmit = useCallback<

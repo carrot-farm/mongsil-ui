@@ -39,11 +39,16 @@ describe('<SelectCreator />', () => {
   });
 
   it('클릭 활성화 테스트', () => {
-    const { Panel, SelectedOption, click, clickOption, checkValue } =
-      renderSelectCreator({
-        defaultValue: 'b',
-        model,
-      });
+    const {
+      Panel,
+      SelectedOption,
+      click,
+      clickOption,
+      checkValue,
+    } = renderSelectCreator({
+      defaultValue: 'b',
+      model,
+    });
 
     checkValue('b');
     click();
@@ -59,8 +64,8 @@ describe('<SelectCreator />', () => {
 function renderSelectCreator(props?: Partial<SelectCreatorProps>) {
   const onChange = jest.fn();
 
-  const { container, rerender, queryByText } = render(
-    <SelectCreator onChange={onChange} {...props} />,
+  const { container, rerender } = render(
+    <SelectCreator model={model} onChange={onChange} {...props} />,
   );
 
   // console.log('> ', container.querySelector('.Mongsil-select_creator'));
@@ -73,12 +78,14 @@ function renderSelectCreator(props?: Partial<SelectCreatorProps>) {
   const SelectedOption = () =>
     container.querySelector('.Mongsil-option-root.selected');
 
-  const click = () => userEvent.click(Icon() as Element);
+  const click = () => userEvent.click(Icon() as any);
   const clickOption = (index: number) => userEvent.click(Options()[index]);
   // const clickOption = (index: number) => userEvent.click();
 
   const changeValue = (v: string) =>
-    rerender(<SelectCreator onChange={onChange} {...props} value={v} />);
+    rerender(
+      <SelectCreator onChange={onChange} model={model} {...props} value={v} />,
+    );
   const checkValue = (v: string) => {
     expect(SelectedOption()).toHaveTextContent(v);
     expect(Value()).toHaveTextContent(v);

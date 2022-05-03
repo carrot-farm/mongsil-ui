@@ -9,7 +9,7 @@ import SelectCreator from '../SelectCreator';
 import CheckboxCreator from '../CheckboxCreator';
 import RadioCreator from '../RadioCreator';
 import Switch from '../Switch';
-import Button from '../Button';
+import Button, { ButtonProps } from '../Button';
 import Layout, { LayoutProps } from '../Layout';
 import LayoutItem from '../LayoutItem';
 
@@ -22,7 +22,6 @@ import { SelectCreatorProps } from '../SelectCreator/selectCreator.d';
 import { CheckboxCreatorProps } from '../CheckboxCreator/checkboxCreator.d';
 import { RadioCreatorProps } from '../RadioCreator/radioCreator.d';
 import { SwitchProps } from '../Switch/switch.d';
-import { ButtonProps } from '../Button/button.d';
 
 function FormCreator({
   model,

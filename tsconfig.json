@@ -2,22 +2,19 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "es2020",
-    "lib": ["es6", "dom", "es2016", "esnext"],
     "jsx": "react",
     "moduleResolution": "node",
-    "outDir": "./dist",
-    "declaration": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "esModuleInterop": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "removeComments": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "allowSyntheticDefaultImports": true
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "lib": ["es6", "dom", "es2016", "esnext"]
   },
   "include": ["src"],
-  "exclude": ["node_modules", ".yarn", "public", "src/**/*.stories.tsx"]
+  "exclude": ["node_modules", ".yarn", "public"]
 }

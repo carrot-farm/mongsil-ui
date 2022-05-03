@@ -1,18 +1,16 @@
 import * as React from 'react';
-import { useState, useMemo, useCallback, useRef } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 
 import {
   ValueTypes,
   Values,
   FormModelItem,
   FormScheme,
-  ErrorType,
   Errors,
 } from '../../types/components';
 import { FormContext, FormContextProps } from '../../contexts/formContext';
 
 /** ===== type ===== */
-
 interface FormProviderProps {
   children?: React.ReactNode;
 }
@@ -45,8 +43,8 @@ function FormProvider({ children }: FormProviderProps): JSX.Element {
 
   /** 모델을 추가 하거나 수정 */
   const handleModel = useCallback((model: FormModelItem) => {
-    if (typeof model.id !== 'string') {
-      throw new Error('invalid id: ' + model.id);
+    if (model.id && typeof model.id !== 'string') {
+      throw new Error('invalid type  model.id: ');
     }
 
     setScheme((a) => {
@@ -95,7 +93,7 @@ function FormProvider({ children }: FormProviderProps): JSX.Element {
   const addError = useCallback(
     (id) => {
       setErrors((a) => {
-        if (a[id] !== undefined) {
+        if (id && typeof id === 'string' && a[id] !== undefined) {
           return a;
         }
 

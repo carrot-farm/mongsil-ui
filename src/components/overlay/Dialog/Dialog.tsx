@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Modal, { ModalProps } from '../Modal';
 import Button from '../../Button';
-import * as Confirm from './confirm';
+// import * as Confirm from './confirm';
 
 export interface DialogPropos
   extends Omit<ModalProps, 'bosyScroll' | 'children'> {
@@ -108,7 +108,7 @@ function Dialog({
   );
 }
 
-Dialog.confirm = Confirm.confirm;
-Dialog.alert = Confirm.alert;
+// Dialog.confirm = Confirm.confirm;
+// Dialog.alert = Confirm.alert;
 
 export default Dialog;
