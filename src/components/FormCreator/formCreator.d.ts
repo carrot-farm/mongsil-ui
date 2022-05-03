@@ -1,5 +1,5 @@
 import { InputChange } from '../../types/components';
-import { FormProps } from '../Form/form';
+import { FormProps } from '../Form/Form';
 import { FormItemProps } from '../FormItem/formItem.d';
 import { InputProps } from '../Input/input.d';
 import { SelectCreatorProps } from '../SelectCreator/selectCreator.d';
