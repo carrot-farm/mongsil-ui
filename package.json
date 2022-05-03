@@ -6,9 +6,9 @@
   "author": "chohoki@gmail.com",
   "packageManager": "yarn@3.0.2",
   "homepage": "https://github.com/carrot-farm/mongsil-ui#readme",
-  "main": "./lib/cjs/index.js",
-  "module": "./lib/esm/index.js",
-  "types": "./lib/esm/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
   "scripts": {
     "dev": "webpack serve --open --config webpack.dev.js",
     "start": "concurrently \"yarn tw:watch\" \"yarn dev\"",
