@@ -12,9 +12,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
+      - run: yarn install
       - run: yarn build
 
   publish-gpr:
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
