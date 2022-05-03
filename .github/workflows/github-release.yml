@@ -2,18 +2,29 @@ name: 'mongsil-ui'
 
 on:
   release:
-    types: [created]
+    types: [published]
 
 jobs:
-  publish-github:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 12
-          registry-url: https://npm.pkg.github.com/
-      - run: npm install
-      - run: npm publish
+      - run: yarn install
+      - run: yarn build
+
+  publish-package:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: yarn install
+      - run: yarn publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.PACKAGE_AUTH_TOKEN}}
