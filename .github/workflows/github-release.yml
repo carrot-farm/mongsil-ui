@@ -5,7 +5,7 @@ on:
     branches: [master]
 
 jobs:
-  publish:
+  publish-github:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -13,6 +13,26 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
+      - run: |
+          echo "//npm.pkg.github.com/:_authToken=\${NODE_AUTH_TOKEN}" > .npmrc
+          echo "@carrot-farm:registry=https://npm.pkg.github.com" >> .npmrc
+      - run: yarn install
+      - run: yarn build
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  publish-npm:
+    needs: [publish-github]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: |
+          echo "always-auth=true" >> .npmrc
       - run: yarn install
       - run: yarn build
       - run: npm publish
