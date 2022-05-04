@@ -26,7 +26,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
-          registry-url: 'https://npm.pkg.github.com/
+          registry-url: 'https://npm.pkg.github.com'
       - run: |
           echo "//npm.pkg.github.com/:_authToken=\${NODE_AUTH_TOKEN}" > .npmrc
           echo "@carrot-farm:registry=https://npm.pkg.github.com" >> .npmrc
