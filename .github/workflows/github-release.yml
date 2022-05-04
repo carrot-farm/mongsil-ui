@@ -1,7 +1,7 @@
 name: 'mongsil-ui'
 
 on:
-  push:
+  release:
     branches: [master]
 
 jobs:
@@ -34,4 +34,4 @@ jobs:
       - run: yarn build
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GHP_AUTH_TOKEN }}
