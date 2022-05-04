@@ -74,4 +74,8 @@
   ::-webkit-scrollbar-track {
     background-color: hsl(var(--color-base-deg) 22% 93%);
   }
+  html,
+  body {
+    background-color: var(--color-base);
+  }
 }
