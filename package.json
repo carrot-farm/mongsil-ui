@@ -4,8 +4,8 @@
   "description": "react ui library",
   "license": "MIT",
   "author": "chohoki@gmail.com",
-  "packageManager": "yarn@3.0.3",
   "homepage": "https://github.com/carrot-farm/mongsil-ui#readme",
+  "packageManager": "yarn@3.0.3",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
@@ -47,18 +47,6 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "keywords": [
     "react",
