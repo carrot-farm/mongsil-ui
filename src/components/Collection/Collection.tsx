@@ -30,7 +30,7 @@ const Collection = forwardRef<HTMLUListElement, CollectionProps>(
       return {
         display: 'grid',
         gap,
-        gridTemplateColumns: `repeat(auto-fit, minmax(${_breakPoints},1fr))`,
+        gridTemplateColumns: `repeat(auto-fit, minmax(${_breakPoints}, 1fr))`,
       };
     }, [gap, breakPoints, defaultColumn]);
 

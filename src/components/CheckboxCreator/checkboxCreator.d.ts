@@ -6,6 +6,8 @@ type eventFunc = (values: Values, name?: string) => void | false;
 
 export interface CheckboxCreatorProps
   extends Pick<CheckboxProps, 'variant' | 'name'> {
+  className?: string;
+  itemClassName?: string;
   value?: Values;
   defaultValue?: Values;
   disabled?: boolean;
