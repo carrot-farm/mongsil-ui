@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useMemo } from 'react';
 
-interface DonutProps {
+export interface DonutProps {
   /** 도형의 width, height */
   width: number;
   /** stroke의 넓이 */

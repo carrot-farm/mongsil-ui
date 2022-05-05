@@ -101,7 +101,7 @@
     @apply dent-100;
   }
   .Mongsil-checkbox-root > .Mongsil-checkbox-checker.dent {
-    transition: color var(--easing);
+    transition: color var(--easing), box-shadow var(--easing);
   }
   .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.dent {
     @apply text-primary;
@@ -114,8 +114,16 @@
   .Mongsil-checkbox-root.checked > .Mongsil-checkbox-checker.dent-outline {
     @apply border-transparent text-primary;
   }
-  .Mongsil-checkbox-root .Mongsil-checkbox-icon {
-    @apply w-3;
+  .Mongsil-checkbox-root {
+    .Mongsil-checkbox-icon {
+      @apply w-3;
+      transition: width var(--easing);
+    }
+    & > .Mongsil-checkbox-base:checked + .Mongsil-checkbox-checker {
+      .Mongsil-checkbox-icon {
+        @apply w-2;
+      }
+    }
   }
   .Mongsil-checkbox-root > label {
     @apply ml-3 cursor-pointer;
@@ -172,13 +180,17 @@
   }
 
   /* emboss */
-  .Mongsil-radio-root > .Mongsil-radio-checker.emboss {
-    @apply emboss-200;
-  }
-  .Mongsil-radio-root
-    .Mongsil-radio-base:checked
-    + .Mongsil-radio-checker.emboss {
-    @apply emboss-0;
+  .Mongsil-radio-root {
+    .Mongsil-radio-checker.emboss {
+      @apply emboss-200;
+    }
+    .Mongsil-radio-base:checked + .Mongsil-radio-checker.emboss {
+      .Mongsil-radio-checker-outer {
+        transition: border-width var(--easing);
+        border-width: 1px;
+      }
+      @apply emboss-0;
+    }
   }
 
   /* dent */
@@ -204,7 +216,7 @@
     > .Mongsil-radio-base:checked
     + .Mongsil-radio-checker.dent
     .Mongsil-radio-checker-inner {
-    @apply scale-150;
+    transform: scale(1.5);
   }
   .Mongsil-radio-root.disabled,
   .Mongsil-radio-root.disabled .Mongsil-radio-label {
@@ -277,6 +289,7 @@
   }
   .Mongsil-select-root > .Mongsil-select-value-container {
     @apply flex items-center justify-between border border-gray-300 rounded px-4 py-2 cursor-pointer;
+    @apply w-full;
   }
   .Mongsil-select-root .Mongsil-select-value {
     @apply inline-flex leading-normal;

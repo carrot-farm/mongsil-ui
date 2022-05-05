@@ -10,6 +10,8 @@ const CheckboxCreator = React.forwardRef<HTMLSpanElement, CheckboxCreatorProps>(
   (
     {
       name,
+      className,
+      itemClassName,
       value: _value,
       variant,
       defaultValue,
@@ -54,20 +56,22 @@ const CheckboxCreator = React.forwardRef<HTMLSpanElement, CheckboxCreatorProps>(
       if (_value === undefined) {
         return;
       }
-
       setValue(_value);
     }, [_value]);
 
     return (
-      <span className="Mongsil-checkbox-creator-root" ref={ref}>
-        {/* <input type="hidden" name={name} value={value?.join(',')} /> */}
+      <span
+        className={`Mongsil-checkbox-creator-root ${className ?? ''}`}
+        ref={ref}
+      >
         {model?.map((a, i) => (
           <Checkbox
+            className={itemClassName}
+            key={`Mongsil-check-${name ?? ''}-${i}`}
             label={a.label}
             variant={variant}
             checked={value.includes(a.value)}
-            onClick={useCallback(() => handleClick(a.value), [model, a, value])}
-            key={`Mongsil-check-${name}-${i}`}
+            onClick={() => handleClick(a.value)}
             {...args}
           />
         ))}
