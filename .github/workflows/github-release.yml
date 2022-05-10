@@ -32,6 +32,7 @@ jobs:
           echo "@carrot-farm:registry=https://npm.pkg.github.com" >> .npmrc
       - run: yarn install
       - run: yarn build
+      - run: cp package.json ./dist/package.json
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GHP_AUTH_TOKEN }}
