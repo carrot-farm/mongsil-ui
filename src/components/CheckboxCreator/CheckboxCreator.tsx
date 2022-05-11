@@ -2,9 +2,31 @@ import * as React from 'react';
 import { memo } from 'react';
 import { useState, useEffect, useCallback } from 'react';
 
-import Checkbox from '../Checkbox';
+import Checkbox, { CheckboxProps } from '../Checkbox';
 
-import { CheckboxCreatorProps, HandleClick, Values } from './checkboxCreator.d';
+export type Values = (string | undefined)[];
+
+type eventFunc = (values: Values, name?: string) => void | false;
+
+export interface CheckboxCreatorProps
+  extends Pick<CheckboxProps, 'variant' | 'name'> {
+  className?: string;
+  itemClassName?: string;
+  value?: Values;
+  defaultValue?: Values;
+  disabled?: boolean;
+  model: CheckboxCreatorModel[];
+  children?: React.ReactChildren;
+  onChange?: eventFunc;
+  onClick?: eventFunc;
+}
+
+export interface CheckboxCreatorModel {
+  label?: string;
+  value?: string;
+}
+
+export type HandleClick = (value?: string) => void;
 
 const CheckboxCreator = React.forwardRef<HTMLSpanElement, CheckboxCreatorProps>(
   (

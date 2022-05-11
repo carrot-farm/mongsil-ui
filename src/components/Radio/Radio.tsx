@@ -1,7 +1,19 @@
 import * as React from 'react';
 import { useCallback, forwardRef, memo } from 'react';
 
-import { RadioProps } from './radio.d';
+export interface RadioProps
+  extends Omit<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    'className' | 'value' | 'defaultValue' | 'checked' | 'onClick' | 'onChange'
+  > {
+  className?: string;
+  value?: string;
+  checked?: boolean;
+  label?: React.ReactNode;
+  variant?: 'emboss' | 'dent';
+  disabled?: boolean;
+  onChange?: (value: boolean, name?: string) => void;
+}
 
 const Radio = forwardRef<HTMLLabelElement, RadioProps>(
   (

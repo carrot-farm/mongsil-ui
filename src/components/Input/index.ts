@@ -1,2 +1,2 @@
-export type { InputProps } from './Input.d';
+export type { InputProps } from './Input';
 export { default } from './Input';

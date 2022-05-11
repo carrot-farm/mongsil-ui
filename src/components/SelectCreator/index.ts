@@ -1,2 +1,2 @@
-export type { SelectCreatorProps } from './SelectCreator.d';
+export type { SelectCreatorProps } from './SelectCreator';
 export { default } from './SelectCreator';

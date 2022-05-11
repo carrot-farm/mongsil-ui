@@ -1,7 +1,12 @@
 import * as React from 'react';
 import { useState, forwardRef, useCallback } from 'react';
 
-import { InputProps } from './input.d';
+export interface InputProps
+  extends Omit<React.HTMLAttributes<HTMLInputElement>, 'onChange'> {
+  className?: string;
+  disabled?: boolean;
+  onChange?: (vlaue?: string, name?: string) => void | false;
+}
 
 const Input = forwardRef<HTMLDivElement, InputProps>(
   ({ className, disabled, onChange, ...args }, ref) => {
