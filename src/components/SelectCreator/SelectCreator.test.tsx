@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import SelectCreator from './SelectCreator';
-import { SelectCreatorProps } from './selectCreator.d';
+import { SelectCreatorProps } from './selectCreator';
 
 describe('<SelectCreator />', () => {
   it('기본 렌더링 테스트', () => {

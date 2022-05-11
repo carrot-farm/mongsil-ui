@@ -17,9 +17,9 @@ import { FormItemProps } from '../FormItem/formItem';
 import { InputChange } from '../../types/components';
 import { InputProps } from '../Input/input';
 import { TextAreaProps } from '../TextArea/TextArea';
-import { SelectCreatorProps } from '../SelectCreator/selectCreator.d';
-import { RadioCreatorProps } from '../RadioCreator/radioCreator.d';
-import { SwitchProps } from '../Switch/switch.d';
+import { SelectCreatorProps } from '../SelectCreator/selectCreator';
+import { RadioCreatorProps } from '../RadioCreator/radioCreator';
+import { SwitchProps } from '../Switch/switch';
 
 export interface FormCreatorProps
   extends Omit<FormProps, 'children' | 'onChange'> {
