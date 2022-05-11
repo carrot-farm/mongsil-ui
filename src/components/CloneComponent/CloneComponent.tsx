@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { memo, cloneElement } from 'react';
 
-import { FormItemChild } from '../FormItem/formItem';
+import { FormItemChild } from '../FormItem';
 
 interface CloneComponentProps extends FormItemChild {
   child: React.ReactElement<FormItemChild>;

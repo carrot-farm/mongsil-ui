@@ -2,25 +2,18 @@ import * as React from 'react';
 import { useCallback, useState, useEffect } from 'react';
 
 import Form, { FormProps } from '../Form';
-import FormItem from '../FormItem';
-import Input from '../Input';
-import TextArea from '../TextArea';
-import SelectCreator from '../SelectCreator';
+import FormItem, { FormItemProps } from '../FormItem';
+import Input, { InputProps } from '../Input';
+import TextArea, { TextAreaProps } from '../TextArea';
+import SelectCreator, { SelectCreatorProps } from '../SelectCreator';
 import CheckboxCreator, { CheckboxCreatorProps } from '../CheckboxCreator';
-import RadioCreator from '../RadioCreator';
-import Switch from '../Switch';
+import RadioCreator, { RadioCreatorProps } from '../RadioCreator';
+import Switch, { SwitchProps } from '../Switch';
 import Button, { ButtonProps } from '../Button';
 import Layout, { LayoutProps } from '../Layout';
 import LayoutItem from '../LayoutItem';
 
-import { FormItemProps } from '../FormItem/formItem';
 import { InputChange } from '../../types/components';
-import { InputProps } from '../Input/input';
-import { TextAreaProps } from '../TextArea/TextArea';
-import { SelectCreatorProps } from '../SelectCreator/selectCreator';
-import { RadioCreatorProps } from '../RadioCreator/radioCreator';
-import { SwitchProps } from '../Switch/switch';
-
 export interface FormCreatorProps
   extends Omit<FormProps, 'children' | 'onChange'> {
   model: FormCreatorModel[];
