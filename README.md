@@ -14,7 +14,7 @@
 
 - [storybook](https://mongsil-sb.netlify.app/)
 
-## Usage
+## Setup
 
 ---
 
