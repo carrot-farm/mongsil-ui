@@ -1,9 +1,21 @@
 import * as React from 'react';
 import { useState, useEffect, useCallback, forwardRef, memo } from 'react';
 
-import Radio from '../Radio';
+import Radio, { RadioProps } from '../Radio';
 
-import { RadioCreatorProps } from './radioCreator.d';
+interface RaioModelItem {
+  label?: string;
+  value?: string;
+}
+
+export interface RadioCreatorProps
+  extends Pick<
+    RadioProps,
+    'variant' | 'name' | 'value' | 'className' | 'onChange' | 'disabled'
+  > {
+  defaultValue?: RadioProps['value'];
+  model?: RaioModelItem[];
+}
 
 const RadioCreator = forwardRef<HTMLDivElement, RadioCreatorProps>(
   (

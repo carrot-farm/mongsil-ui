@@ -1,2 +1,2 @@
-export type { FormItemProps } from './FormItem.d';
+export type { FormItemProps } from './FormItem';
 export { default } from './FormItem';

@@ -1,2 +1,2 @@
-export type { SwitchProps } from './Switch.d';
+export type { SwitchProps } from './Switch';
 export { default } from './Switch';

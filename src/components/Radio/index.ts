@@ -1,2 +1,2 @@
-export type { RadioProps } from './Radio.d';
+export type { RadioProps } from './Radio';
 export { default } from './Radio';

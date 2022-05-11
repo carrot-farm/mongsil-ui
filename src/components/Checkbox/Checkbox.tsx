@@ -2,7 +2,22 @@ import * as React from 'react';
 import { memo } from 'react';
 import { FaCheck } from 'react-icons/fa';
 
-import { CheckboxProps } from './checkbox.d';
+export interface CheckboxProps {
+  className?: string;
+  variant?:
+    | 'emboss'
+    | 'emboss-outline'
+    | 'emboss-fill'
+    | 'dent'
+    | 'dent-outline';
+  label?: React.ReactNode;
+  name?: string;
+  checked?: boolean;
+  defaultChecked?: boolean;
+  disabled?: boolean;
+  onChange?: (checked: boolean, name?: string) => void | false;
+  onClick?: (checked: boolean, name?: string) => void;
+}
 
 const Checkbox = React.forwardRef<HTMLSpanElement, CheckboxProps>(
   (
