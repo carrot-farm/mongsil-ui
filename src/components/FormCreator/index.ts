@@ -1,2 +1,2 @@
-export type { FormCreatorProps } from './FormCreator.d';
+export type { FormCreatorProps } from './FormCreator';
 export { default } from './FormCreator';
