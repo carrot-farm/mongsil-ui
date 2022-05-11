@@ -28,7 +28,7 @@ const model = [
 ];
 
 export const Default = (args: FormProps): JSX.Element => (
-  <div style={{ width: 300 }}>
+  <div className="m-auto" style={{ width: 300 }}>
     <Form {...args}>
       <FormItem name="input" defaultValue="input">
         <Input />
