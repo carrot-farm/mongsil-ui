@@ -1,23 +1,25 @@
 import * as React from 'react';
 
-import DromdownView from './DropdownView';
+import DromdownView, { DropdownViewProps } from './DropdownView';
 import DropdownItem from './DropdownItemView';
 
 export interface DropdownProps<T> {
+  position?: DropdownViewProps['position'];
   /** `false` 일 경우 스타일 비활성화 */
   styled?: boolean;
-  data?: T[];
-  children?: React.ReactNode;
+  data: T[];
   rowKey?: ((item: T) => React.Key) | string;
-  renderItem?: (item: T, index: number) => React.ReactNode;
+  /** 토글 버튼 */
+  button?: DropdownViewProps['button'];
+  renderItem: (item: T, index: number) => React.ReactNode;
   onClick?: (item: T, index: number) => void;
 }
 
 function Dropdown<T>({
   styled,
   data = [],
-  children,
   rowKey,
+  button = 'button',
   renderItem,
   onClick,
   ...args
@@ -53,7 +55,7 @@ function Dropdown<T>({
     <DromdownView
       styled={styled}
       visible={visible}
-      button={'Button'}
+      button={button}
       onClick={handleVisibleClick}
       {...args}
     >
@@ -66,7 +68,6 @@ function Dropdown<T>({
           {renderItem && renderItem(item, index)}
         </DropdownItem>
       ))}
-      {children}
     </DromdownView>
   );
 }

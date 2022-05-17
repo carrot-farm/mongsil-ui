@@ -2,6 +2,8 @@ import React from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
 
 import Dropdown, { DropdownProps } from './Dropdown';
+import Button from '../../Button';
+
 interface Item {
   id: number;
   title: string;
@@ -20,13 +22,14 @@ export default {
   component: Dropdown,
 } as ComponentMeta<typeof Dropdown>;
 
-export const Default = <T extends Item>(): Story<DropdownProps<T>> => ({
-  ...args
-}) => {
-  return <Dropdown<T> {...args} />;
-};
-Default.args = {
-  data,
-  rowKey: 'id',
-  renderItem: (item: Item) => item.title,
+export const Default = () => {
+  return (
+    <div className="flex justify-center items-center h-full">
+      <Dropdown
+        button={<Button>open</Button>}
+        data={data}
+        renderItem={(item) => item.title}
+      />
+    </div>
+  );
 };

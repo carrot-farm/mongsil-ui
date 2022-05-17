@@ -3,8 +3,6 @@ name: 'mongsil-ui'
 on:
   release:
     types: [published]
-  push:
-    branched: [master]
 
 jobs:
   publish-npm:
