@@ -4,15 +4,15 @@
     "es2021": true,
     "jest": true
   },
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "project": "./tsconfig.json",
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": "latest",
-    "sourceType": "module"
-  },
+  // "parser": "@typescript-eslint/parser",
+  // "parserOptions": {
+  //   "project": "./tsconfig.json",
+  //   "ecmaFeatures": {
+  //     "jsx": true
+  //   },
+  //   "ecmaVersion": "latest",
+  //   "sourceType": "module"
+  // },
   "rules": {
     "quotes": ["error", "single", { "avoidEscape": true }],
     "no-empty-function": "off",
@@ -21,8 +21,8 @@
     "@typescript-eslint/no-unsafe-return": "off",
     "react/display-name": "off",
     "react/prop-types": "off",
-
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "storybook/hierarchy-separator": "error"
   },
   "settings": {
     "react": {
@@ -37,5 +37,12 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"]
+  "plugins": [
+    "plugin:storybook/recommended",
+    "react",
+    "react-hooks",
+    // "@typescript-eslint",
+    // "prettier"
+    "eslint:recommended"
+  ]
 }
