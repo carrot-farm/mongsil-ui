@@ -6,7 +6,6 @@
   @apply outline-none;
 }
 .dropdown .dropdown-content {
-  /* @apply invisible absolute z-50 opacity-0; */
   @apply invisible absolute z-50 opacity-0;
   transition: opacity 0.3s linear, visible 0.3s linear;
 }
@@ -36,7 +35,7 @@
 .dropdown {
   .dropdown-content.styled {
     @apply overflow-y-auto overflow-x-hidden shadow-xl cursor-pointer rounded p-0 bg-blur;
-    @apply z-10 pl-0 m-0;
+    @apply z-10 pl-0 m-1 border-2 border-gray-200 rounded;
     min-height: 40px;
     max-height: 160px;
     a,
