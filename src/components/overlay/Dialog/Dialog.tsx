@@ -75,14 +75,14 @@ function Dialog({
         )}
 
         {/* body */}
-        <div className="dialog-body flex flex-wrap break-all min-h-12 text-gray-700 font-light">
+        <div className="dialog-body break-all min-h-12 text-gray-700 font-light">
           {body}
         </div>
 
         {/* footer */}
         <div className="dialog-footer flex justify-between items-center bg-base z-10">
           <div></div>
-          <div className="gap-2">
+          <div className="space-x-5">
             {onCancel && (
               <Button
                 variant="dent"
