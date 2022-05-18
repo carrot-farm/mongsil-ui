@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState, forwardRef, useCallback } from 'react';
 
 export interface InputProps
-  extends Omit<React.HTMLAttributes<HTMLInputElement>, 'onChange'> {
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   className?: string;
   disabled?: boolean;
   onChange?: (vlaue?: string, name?: string) => void | false;

@@ -18,8 +18,8 @@ export const parameters = {
       },
     ],
   },
-  viewport: {
-    viewports: INITIAL_VIEWPORTS,
-    defaultViewport: 'iphone6',
-  },
+  // viewport: {
+  //   viewports: INITIAL_VIEWPORTS,
+  //   defaultViewport: 'iphone6',
+  // },
 };

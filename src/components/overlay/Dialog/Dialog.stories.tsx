@@ -72,6 +72,17 @@ Title.args = {
   visible: true,
 };
 
+export const Body = Template.bind({});
+Body.args = {
+  visible: true,
+  body: (
+    <>
+      <div>body text</div>
+      <div>{someStrings}</div>
+    </>
+  ),
+};
+
 export const BackgroundStyle: React.FC = () => {
   const [visible, setVisible] = React.useState(false);
   return (
