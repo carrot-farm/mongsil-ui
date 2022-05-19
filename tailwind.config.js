@@ -3,7 +3,6 @@ const components = require('./src/components/tailwind.config');
 
 module.exports = {
   mode: 'jit',
-  darkMode: false,
   theme: {
     // # layout
     extend: {
@@ -49,7 +48,6 @@ module.exports = {
     },
   },
   variants: {},
-  content: ['./src/components/**/*.{html,js}'],
+  content: ['./src/**/*.{ts,tsx,js,jsx,html}'],
   plugins: [utilities, components],
-  purge: ['./src/**/*.{ts,tsx}'],
 };

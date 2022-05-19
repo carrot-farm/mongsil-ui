@@ -5,13 +5,14 @@ import DropdownItem from './DropdownItemView';
 
 export interface DropdownProps<T> {
   position?: DropdownViewProps['position'];
+  positionButtonWrap?: DropdownViewProps['positionButtonWrap'];
   /** `false` 일 경우 스타일 비활성화 */
   styled?: boolean;
-  data: T[];
+  data?: T[];
   rowKey?: ((item: T) => React.Key) | string;
   /** 토글 버튼 */
   button?: DropdownViewProps['button'];
-  renderItem: (item: T, index: number) => React.ReactNode;
+  renderItem?: (item: T, index: number) => React.ReactNode;
   onClick?: (item: T, index: number) => void;
 }
 
@@ -59,7 +60,7 @@ function Dropdown<T>({
       onClick={handleVisibleClick}
       {...args}
     >
-      {data.map((item, index) => (
+      {data?.map((item, index) => (
         <DropdownItem
           selected={selectedIndex === index}
           key={getRowKey(item, index)}
