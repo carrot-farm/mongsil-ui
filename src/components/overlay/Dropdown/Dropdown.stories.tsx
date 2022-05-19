@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentMeta, Story } from '@storybook/react';
+import { ComponentMeta, ComponentStory, Story } from '@storybook/react';
 
 import Dropdown, { DropdownProps } from './Dropdown';
 import Button from '../../Button';
@@ -22,14 +22,44 @@ export default {
   component: Dropdown,
 } as ComponentMeta<typeof Dropdown>;
 
-export const Default = () => {
+const Template: ComponentStory<typeof Dropdown> = (args) => {
   return (
     <div className="flex justify-center items-center h-full">
-      <Dropdown
-        button={<Button>open</Button>}
-        data={data}
-        renderItem={(item) => item.title}
-      />
+      <Dropdown button={<Button>open</Button>} {...args} />
     </div>
   );
+};
+
+export const Default = Template.bind({});
+Default.args = {
+  data,
+  renderItem: (item) => item.title,
+};
+
+export const Left = Template.bind({});
+Left.args = {
+  position: 'left',
+  data,
+  renderItem: (item) => item.title,
+};
+
+export const Right = Template.bind({});
+Right.args = {
+  position: 'right',
+  data,
+  renderItem: (item) => item.title,
+};
+
+export const Top = Template.bind({});
+Top.args = {
+  position: 'top',
+  data,
+  renderItem: (item) => item.title,
+};
+
+export const PositionButtonUnwrapBottom = Template.bind({});
+PositionButtonUnwrapBottom.args = {
+  positionButtonWrap: false,
+  data,
+  renderItem: (item) => item.title,
 };

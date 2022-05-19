@@ -8,7 +8,9 @@ export interface DropdownViewProps {
   /** class */
   className: string;
   /** 드롭다운 박스의 포지션 */
-  position: 'top' | 'right' | 'left';
+  position: 'top' | 'right' | 'left' | 'bottom';
+  /** false일 경우 드롭다운이 버튼을 덮지 않는다 */
+  positionButtonWrap: boolean;
   /** 내부 랜더링 */
   children: React.ReactNode;
   /** 라벨 클릭 */
@@ -22,8 +24,9 @@ const DropdownView = React.forwardRef<
   (
     {
       button,
-      position,
       className = '',
+      position,
+      positionButtonWrap = true,
       styled = true,
       visible = false,
       children,
@@ -43,8 +46,10 @@ const DropdownView = React.forwardRef<
               ? 'dropdown-right'
               : position === 'top'
               ? 'dropdown-top'
-              : ''
-          } ${className}`}
+              : 'dropdown-bottom'
+          } ${className} ${
+            positionButtonWrap === true ? 'position-button-wrap' : ''
+          }`}
           ref={ref}
           {...args}
         >

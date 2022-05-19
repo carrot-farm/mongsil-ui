@@ -55,6 +55,12 @@ export { default as Switch } from './components/Switch';
 export type { DialogPropos } from './components/overlay/Dialog';
 export { default as Dialog } from './components/overlay/Dialog';
 
+export type { ConfirmProps } from './components/overlay/Confirm';
+export { default as Confirm } from './components/overlay/Confirm';
+
+export type { PromptProps } from './components/overlay/Prompt';
+export { default as Prompt } from './components/overlay/Prompt';
+
 export type { DropdownProps } from './components/overlay/Dropdown';
 export { default as Dropdown } from './components/overlay/Dropdown';
 
